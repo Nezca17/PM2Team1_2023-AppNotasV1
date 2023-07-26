@@ -17,5 +17,20 @@ namespace PM2Team1_2023_AppNotasV1.Views
             InitializeComponent();
             this.BindingContext = new LoginViewModel();
         }
+
+        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInSecion_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.Dashboard());
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace PM2Team1_2023_AppNotasV1
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

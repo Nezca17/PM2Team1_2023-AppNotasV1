@@ -5,11 +5,64 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="PM2Team1_2023_AppNotasV1.Views.LoginPage"
-             Shell.NavBarIsVisible="False">
+            Shell.NavBarIsVisible="True"
+             BackgroundColor="#202120">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
-            <!--Primer prueba-->
-            <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+            
+            <StackLayout VerticalOptions="Center">
+                <Image Source="logouth.png" WidthRequest="130" HeightRequest="130"></Image>
+            </StackLayout>
+
+            <Entry x:Name="usuario" 
+                    TextColor="White"
+                   PlaceholderColor="White" 
+                   Placeholder="Usuario" 
+                   Keyboard="Email" 
+                   ></Entry>
+
+
+            <Entry x:Name="contraseña" 
+                   TextColor="White"
+                   PlaceholderColor="White"
+                   Placeholder="Contraseña" 
+                   Keyboard="Text" 
+                   ></Entry>
+
+            <Button 
+                VerticalOptions="Center"
+                Text="Iniciar Secion"
+                x:Name="btnInSecion" 
+                Clicked="btnInSecion_Clicked"
+                BackgroundColor="Transparent"
+                BorderColor="ForestGreen"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                TextColor="White"
+                ></Button>
+
+            <Label HorizontalOptions="EndAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="No tienes una Cuenta?" TextColor="White"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label HorizontalOptions="EndAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Registrarse" TextColor="White" FontAttributes="Bold" TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Label.GestureRecognizers>
+            </Label>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
