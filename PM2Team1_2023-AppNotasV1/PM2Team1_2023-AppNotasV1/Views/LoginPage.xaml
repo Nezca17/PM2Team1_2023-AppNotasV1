@@ -7,13 +7,16 @@
              x:Class="PM2Team1_2023_AppNotasV1.Views.LoginPage"
             Shell.NavBarIsVisible="True"
              BackgroundColor="#202120">
+    
     <ContentPage.Content>
         <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+            <Label Text="APP Notas" TextColor="White" FontSize="30" FontAttributes="Bold"  HorizontalTextAlignment="Center"/>
             
             <StackLayout VerticalOptions="Center">
                 <Image Source="logouth.png" WidthRequest="130" HeightRequest="130"></Image>
             </StackLayout>
 
+            
             <Entry x:Name="usuario" 
                     TextColor="White"
                    PlaceholderColor="White" 
@@ -35,7 +38,7 @@
                 x:Name="btnInSecion" 
                 Clicked="btnInSecion_Clicked"
                 BackgroundColor="Transparent"
-                BorderColor="ForestGreen"
+                BorderColor="White"
                 BorderWidth="1.5"
                 CornerRadius="50"
                 TextColor="White"

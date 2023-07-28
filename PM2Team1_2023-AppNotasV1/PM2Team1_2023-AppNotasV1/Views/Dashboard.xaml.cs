@@ -14,9 +14,17 @@ public partial class Dashboard : ContentPage
 {
     public Dashboard()
     {
-            InitializeComponent();
+        InitializeComponent();
     }
 
-    
-}
+        private void ImageButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSalir_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.LoginPage());
+        }
+    }
 }

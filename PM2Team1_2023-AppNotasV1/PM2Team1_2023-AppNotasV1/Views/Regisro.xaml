@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2Team1_2023_AppNotasV1.Views.Regisro">
+    <ContentPage.Content>
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+            <Label 
+                 Text="Registrate"
+                 TextColor="White"
+                 HorizontalOptions="Center"
+                 FontAttributes="Bold"
+                 FontSize="30" />
+
+
+            <Entry x:Name="nombres" 
+                   TextColor="White"
+                   PlaceholderColor="Gray" 
+                   Placeholder="Nombres" 
+                   Keyboard="Text" 
+                   ></Entry>
+
+            <Entry x:Name="apellidos" 
+                   TextColor="White"
+                   PlaceholderColor="Gray" 
+                   Placeholder="Apellidos" 
+                   Keyboard="Text" 
+                   ></Entry>
+
+            <Entry x:Name="correo" 
+                   TextColor="White"
+                   PlaceholderColor="Gray" 
+                   Placeholder="usuario@gmail.com" 
+                   Keyboard="Email" 
+                   ></Entry>
+
+            <Entry x:Name="contraseña" 
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Placeholder="Contraseña" 
+                   Keyboard="Text" 
+                   ></Entry>
+
+            <Entry x:Name="edad" 
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Placeholder="Edad" 
+                   Keyboard="Numeric" 
+                   ></Entry>
+
+            <Entry x:Name="ciudad" 
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Placeholder="Ciudad" 
+                   Keyboard="Text" 
+                   ></Entry>
+
+            <Entry x:Name="telefono" 
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Placeholder="Telefono" 
+                   Keyboard="Numeric" 
+                   ></Entry>
+
+            <Entry x:Name="direccion" 
+                   TextColor="White"
+                   PlaceholderColor="Gray"
+                   Placeholder="Direccion" 
+                   Keyboard="Text" 
+                   ></Entry>
+
+
+            <Button 
+                VerticalOptions="Center"
+                Text="REGISTRARME"
+                x:Name="btnRegistrar" 
+                Clicked="btnRegistrar_Clicked"
+                BackgroundColor="Transparent"
+                BorderColor="WhiteSmoke"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                TextColor="White"
+                ></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

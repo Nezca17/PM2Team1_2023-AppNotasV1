@@ -3,11 +3,82 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.Dashboard">
     <ContentPage.Content>
-        <StackLayout Padding="10" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+        <StackLayout Padding="10" HorizontalOptions="FillAndExpand" >
             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
-                <Image Source="logouth.png" WidthRequest="100" HeightRequest="100"></Image>
-                <Label Text="BIENVENIDOS" FontSize="24" TextColor="White" VerticalOptions="Center"></Label>
+                <Image Source="lgrecordatorio.jpg" WidthRequest="150" HeightRequest="100"></Image>
+                <Label Text="BIENVENIDO" FontSize="24" TextColor="White" VerticalOptions="Center"></Label>
             </StackLayout>
+
+            <StackLayout Padding="40"  VerticalOptions="Center">
+                <FlexLayout Direction="Row" Wrap="Wrap">
+                    <StackLayout>
+                        <ImageButton Source="ad.png" 
+                                 HeightRequest="140"
+                                 WidthRequest="150"                              
+                                 BackgroundColor="Transparent"  
+                                 Clicked="ImageButton_Clicked" />
+
+                        <Label Text="Agregar" TextColor="White" 
+                           FontSize="20" FontAttributes="Bold"  
+                           HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout>
+
+                        <ImageButton Source="misNotas.png" 
+                             HeightRequest="140"
+                             WidthRequest="150"                              
+                             BackgroundColor="Transparent"  
+                             Clicked="ImageButton_Clicked" />
+
+                        <Label Text="Mis Notas" TextColor="White" 
+                           FontSize="20" FontAttributes="Bold" 
+                           HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                </FlexLayout>
+
+                <FlexLayout Direction="Row" Wrap="Wrap">
+                    <StackLayout>
+                        <ImageButton Source="recordatorio.png" 
+                             HeightRequest="140"
+                             WidthRequest="150"                              
+                             BackgroundColor="Transparent"  
+                             Clicked="ImageButton_Clicked" />
+
+                        <Label Text="Recordatorio" TextColor="White" 
+                           FontSize="20" FontAttributes="Bold" 
+                           HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+
+                    <StackLayout>
+                        <ImageButton Source="importantes.png" 
+                             HeightRequest="140"
+                             WidthRequest="150"                              
+                             BackgroundColor="Transparent"  
+                             Clicked="ImageButton_Clicked" />
+
+                        <Label Text="Importantes" TextColor="White" 
+                           FontSize="20" FontAttributes="Bold"  
+                           HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </FlexLayout>
+                    <StackLayout>
+
+                        <Button 
+                        VerticalOptions="Center"
+                        Text="SALIR"
+                        x:Name="btnSalir" 
+                        Clicked="btnSalir_Clicked"
+                        BackgroundColor="Transparent"
+                        BorderColor="White"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        TextColor="White"
+                        ></Button>
+                    </StackLayout>  
+            </StackLayout>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

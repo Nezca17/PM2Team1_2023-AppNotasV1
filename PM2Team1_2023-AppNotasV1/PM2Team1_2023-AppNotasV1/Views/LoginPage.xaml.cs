@@ -25,7 +25,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
         private void TapGestureRecognizer_Tapped_1(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Views.Regisro());
         }
 
         private void btnInSecion_Clicked(object sender, EventArgs e)
