@@ -4,6 +4,8 @@ using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
+using Android.Gms.Common;
+using Xamarin.Essentials;
 
 namespace PM2Team1_2023_AppNotasV1.Droid
 {
@@ -13,7 +15,7 @@ namespace PM2Team1_2023_AppNotasV1.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            IsPlayServicesAvailable();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
             LoadApplication(new App());
@@ -23,6 +25,13 @@ namespace PM2Team1_2023_AppNotasV1.Droid
             Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+        public void IsPlayServicesAvailable()
+        {
+            int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+            bool isGooglePlayServce = resultCode != ConnectionResult.Success;
+            Preferences.Set("isGooglePlayServce", isGooglePlayServce);
+
         }
     }
 }
