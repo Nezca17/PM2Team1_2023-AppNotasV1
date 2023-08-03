@@ -17,7 +17,7 @@
             </StackLayout>
 
             
-            <Entry x:Name="usuario" 
+            <Entry x:Name="txtusuario" 
                     TextColor="White"
                    PlaceholderColor="White" 
                    Placeholder="Usuario" 
@@ -25,12 +25,14 @@
                    ></Entry>
 
 
-            <Entry x:Name="contraseña" 
+            <Entry x:Name="txtcontraseña" 
                    TextColor="White"
                    PlaceholderColor="White"
                    Placeholder="Contraseña" 
+                   IsPassword="True"
                    Keyboard="Text" 
                    ></Entry>
+            
 
             <Button 
                 VerticalOptions="Center"

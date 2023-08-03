@@ -13,56 +13,57 @@
                  FontSize="30" />
 
 
-            <Entry x:Name="nombres" 
+            <Entry x:Name="txtnombres" 
                    TextColor="White"
                    PlaceholderColor="Gray" 
                    Placeholder="Nombres" 
                    Keyboard="Text" 
                    ></Entry>
 
-            <Entry x:Name="apellidos" 
+            <Entry x:Name="txtapellidos" 
                    TextColor="White"
                    PlaceholderColor="Gray" 
                    Placeholder="Apellidos" 
                    Keyboard="Text" 
                    ></Entry>
 
-            <Entry x:Name="correo" 
+            <Entry x:Name="txtcorreo" 
                    TextColor="White"
                    PlaceholderColor="Gray" 
                    Placeholder="usuario@gmail.com" 
                    Keyboard="Email" 
                    ></Entry>
 
-            <Entry x:Name="contraseña" 
+            <Entry x:Name="txtcontraseña" 
                    TextColor="White"
                    PlaceholderColor="Gray"
                    Placeholder="Contraseña" 
                    Keyboard="Text" 
+                   IsPassword="True"
                    ></Entry>
 
-            <Entry x:Name="edad" 
+            <Entry x:Name="txtedad" 
                    TextColor="White"
                    PlaceholderColor="Gray"
                    Placeholder="Edad" 
                    Keyboard="Numeric" 
                    ></Entry>
 
-            <Entry x:Name="ciudad" 
+            <Entry x:Name="txtciudad" 
                    TextColor="White"
                    PlaceholderColor="Gray"
                    Placeholder="Ciudad" 
                    Keyboard="Text" 
                    ></Entry>
 
-            <Entry x:Name="telefono" 
+            <Entry x:Name="txttelefono" 
                    TextColor="White"
                    PlaceholderColor="Gray"
                    Placeholder="Telefono" 
                    Keyboard="Numeric" 
                    ></Entry>
 
-            <Entry x:Name="direccion" 
+            <Entry x:Name="txtdireccion" 
                    TextColor="White"
                    PlaceholderColor="Gray"
                    Placeholder="Direccion" 
