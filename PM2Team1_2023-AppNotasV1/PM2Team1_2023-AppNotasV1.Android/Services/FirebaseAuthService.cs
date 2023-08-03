@@ -55,6 +55,8 @@ namespace PM2Team1_2023_AppNotasV1.Droid.Services
             try
             {
                 await FirebaseAuth.GetInstance(MainActivity.app).SignInWithEmailAndPasswordAsync(email, password);
+
+                
                 return true;
             }
             catch (Exception ex)

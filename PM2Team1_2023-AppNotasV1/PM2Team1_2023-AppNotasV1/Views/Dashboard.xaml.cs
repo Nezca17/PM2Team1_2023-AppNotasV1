@@ -22,10 +22,23 @@ public partial class Dashboard : ContentPage
    
         }
 
-        private void ImageButton_Clicked(object sender, EventArgs e)
+        private async void BtnAddNotasView_Clicked(object sender, EventArgs e)
         {
-
+            await Navigation.PushAsync(new IngresarNotas());
         }
+        private async void BtnMisNotas_Clicked(object sender, EventArgs e)
+        {
+          //  await Navigation.PushAsync(new IngresarNotas());
+        }
+        private async void BtnRecordatorio_Clicked(object sender, EventArgs e)
+        {
+         //   await Navigation.PushAsync(new IngresarNotas());
+        }
+        private async void BtnImportantes_Clicked(object sender, EventArgs e)
+        {
+         //   await Navigation.PushAsync(new IngresarNotas());
+        }
+
 
         private async void btnSalir_Clicked(object sender, EventArgs e)
         {
@@ -56,5 +69,7 @@ public partial class Dashboard : ContentPage
 
 
         }
+
+
     }
 }

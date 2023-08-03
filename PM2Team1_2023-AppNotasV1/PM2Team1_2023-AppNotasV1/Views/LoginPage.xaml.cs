@@ -27,24 +27,32 @@ namespace PM2Team1_2023_AppNotasV1.Views
                await LoginGoogle(args);
 
             });
+
         }
 
         private async Task LoginCommandExecute(string Username, string Password)
         {
             try
             {
-                if (await _firebaseService.SignIn(Username, Password))
+                if (_firebaseService.IsUserSigned())
                 {
-                    await DisplayAlert("Aviso", "Bienvenido", "Ok");
                     await Navigation.PushAsync(new Dashboard());
-
                 }
-                else
-                {
-                   // _userDialogService.Toast();
-                  await  DisplayAlert("Aviso", "Usuario o contraseña incorrectos", "Ok");
+                else {
+                    if (await _firebaseService.SignIn(Username, Password))
+                    {
+                        await DisplayAlert("Aviso", "Bienvenido", "Ok");
+                        await Navigation.PushAsync(new Dashboard());
 
+                    }
+                    else
+                    {
+                        // _userDialogService.Toast();
+                        await DisplayAlert("Aviso", "Usuario o contraseña incorrectos", "Ok");
+
+                    }
                 }
+               
             }
             catch (Exception ex) {
                await DisplayAlert("Error", $"{ex}", "ok");

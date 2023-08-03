@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas">
+    <ContentPage.Content>
+        <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
+            <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center"></Label>
+            <Entry Placeholder="Título" Text="{Binding Titulo}" />
+            <Entry Placeholder="Detalles" Text="{Binding Descripcion}" />
+            <Editor Placeholder="Nota de Texto" Text="{Binding NotaTexto}" HeightRequest="100" />
+
+            <Label Text="¿Es un recordatorio?"/>
+            <Switch />
+
+            <Label Text="Longitud: " />
+            <Entry Text="{Binding Longitud}" IsReadOnly="True" />
+            <Label Text="Latitud: " />
+            <Entry Text="{Binding Latitud}" IsReadOnly="True" />
+            <!-- DatePicker para seleccionar la fecha -->
+            <DatePicker Date="{Binding FechaSeleccionada}" />
+
+            <!-- TimePicker para seleccionar la hora -->
+            <TimePicker Time="{Binding HoraSeleccionada}" />
+
+            <Label Text="{Binding Audio}"/>
+            <Button Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
+
+            <Image Source="{Binding imagen}" />
+            <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
+            <Button Text="Guardar" Clicked="BtnGuardar_Clicked" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
