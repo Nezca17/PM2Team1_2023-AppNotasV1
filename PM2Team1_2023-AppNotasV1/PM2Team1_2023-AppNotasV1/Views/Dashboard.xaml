@@ -1,85 +1,86 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.Dashboard"
              BackgroundColor="#202120">
     <ContentPage.Content>
-        <StackLayout Padding="10" HorizontalOptions="FillAndExpand" >
+        <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Horizontal" VerticalOptions="Center">
                 <Image Source="lgrecordatorio.jpg" WidthRequest="150" HeightRequest="100"></Image>
                 <Label Text="BIENVENIDO" FontSize="24" TextColor="White" VerticalOptions="Center"></Label>
             </StackLayout>
 
-            <StackLayout Padding="40"  VerticalOptions="Center">
-                <FlexLayout Direction="Row" Wrap="Wrap">
-                    <StackLayout>
-                        <ImageButton Source="ad.png" 
-                                 HeightRequest="140"
-                                 WidthRequest="150"                              
-                                 BackgroundColor="Transparent"  
-                                 Clicked="ImageButton_Clicked" />
+            <StackLayout Padding="40" VerticalOptions="Center">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
-                        <Label Text="Agregar" TextColor="White" 
-                           FontSize="20" FontAttributes="Bold"  
-                           HorizontalTextAlignment="Center"/>
+                    <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand">
+                        <ImageButton Source="ad.png"
+                                     HeightRequest="140"
+                                     WidthRequest="150"
+                                     BackgroundColor="Transparent"
+                                     Clicked="ImageButton_Clicked" />
+
+                        <Label Text="Agregar" TextColor="White"
+                               FontSize="20" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
                     </StackLayout>
 
-                    <StackLayout>
+                    <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                        <ImageButton Source="misNotas.png"
+                                     HeightRequest="140"
+                                     WidthRequest="150"
+                                     BackgroundColor="Transparent"
+                                     Clicked="ImageButton_Clicked" />
 
-                        <ImageButton Source="misNotas.png" 
-                             HeightRequest="140"
-                             WidthRequest="150"                              
-                             BackgroundColor="Transparent"  
-                             Clicked="ImageButton_Clicked" />
-
-                        <Label Text="Mis Notas" TextColor="White" 
-                           FontSize="20" FontAttributes="Bold" 
-                           HorizontalTextAlignment="Center"/>
+                        <Label Text="Mis Notas" TextColor="White"
+                               FontSize="20" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
                     </StackLayout>
 
-                </FlexLayout>
+                    <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="CenterAndExpand">
+                        <ImageButton Source="recordatorio.png"
+                                     HeightRequest="140"
+                                     WidthRequest="150"
+                                     BackgroundColor="Transparent"
+                                     Clicked="ImageButton_Clicked" />
 
-                <FlexLayout Direction="Row" Wrap="Wrap">
-                    <StackLayout>
-                        <ImageButton Source="recordatorio.png" 
-                             HeightRequest="140"
-                             WidthRequest="150"                              
-                             BackgroundColor="Transparent"  
-                             Clicked="ImageButton_Clicked" />
-
-                        <Label Text="Recordatorio" TextColor="White" 
-                           FontSize="20" FontAttributes="Bold" 
-                           HorizontalTextAlignment="Center"/>
+                        <Label Text="Recordatorio" TextColor="White"
+                               FontSize="20" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
                     </StackLayout>
 
-                    <StackLayout>
-                        <ImageButton Source="importantes.png" 
-                             HeightRequest="140"
-                             WidthRequest="150"                              
-                             BackgroundColor="Transparent"  
-                             Clicked="ImageButton_Clicked" />
+                    <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand">
+                        <ImageButton Source="importantes.png"
+                                     HeightRequest="140"
+                                     WidthRequest="150"
+                                     BackgroundColor="Transparent"
+                                     Clicked="ImageButton_Clicked" />
 
-                        <Label Text="Importantes" TextColor="White" 
-                           FontSize="20" FontAttributes="Bold"  
-                           HorizontalTextAlignment="Center"/>
+                        <Label Text="Importantes" TextColor="White"
+                               FontSize="20" FontAttributes="Bold"
+                               HorizontalTextAlignment="Center" />
                     </StackLayout>
-                </FlexLayout>
-                    <StackLayout>
+                </Grid>
 
-                        <Button 
-                        VerticalOptions="Center"
-                        Text="SALIR"
-                        x:Name="btnSalir" 
-                        Clicked="btnSalir_Clicked"
-                        BackgroundColor="Transparent"
-                        BorderColor="White"
-                        BorderWidth="1.5"
-                        CornerRadius="50"
-                        TextColor="White"
-                        ></Button>
-                    </StackLayout>  
+                <StackLayout HorizontalOptions="Center">
+                    <Button VerticalOptions="Center"
+                            Text="SALIR"
+                            x:Name="btnSalir"
+                            Clicked="btnSalir_Clicked"
+                            BackgroundColor="Transparent"
+                            BorderColor="White"
+                            BorderWidth="1.5"
+                            CornerRadius="50"
+                            TextColor="White" />
+                </StackLayout>
             </StackLayout>
-
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
