@@ -38,6 +38,20 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             OnPropertyChanged(propertyName);
             return true;
         }
+        protected void SetValue<T>(ref T backingFieled, T value, [CallerMemberName] string propertyName = null)
+        {
+            if (EqualityComparer<T>.Default.Equals(backingFieled, value))
+
+            {
+
+                return;
+
+            }
+
+            backingFieled = value;
+
+            OnPropertyChanged(propertyName);
+        }
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;

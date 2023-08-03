@@ -6,27 +6,26 @@
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
             <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center"></Label>
-            <Entry Placeholder="Título" Text="{Binding Titulo}" />
-            <Entry Placeholder="Detalles" Text="{Binding Descripcion}" />
-            <Editor Placeholder="Nota de Texto" Text="{Binding NotaTexto}" HeightRequest="100" />
+            <Entry x:Name="txtTitulo" Placeholder="Título" Text="{Binding Titulo}" />
+            <Editor x:Name="txtDetalles" Placeholder="Nota de Texto" Text="{Binding Detalles}" HeightRequest="100" />
 
             <Label Text="¿Es un recordatorio?"/>
-            <Switch />
+            <Switch x:Name="swIsRecordatorio" />
 
-            <Label Text="Longitud: " />
-            <Entry Text="{Binding Longitud}" IsReadOnly="True" />
+            <Label  Text="Longitud: " />
+            <Entry x:Name="txtLongitud" Text="{Binding Longitud}" IsReadOnly="True" />
             <Label Text="Latitud: " />
-            <Entry Text="{Binding Latitud}" IsReadOnly="True" />
+            <Entry x:Name="txtLatitude" Text="{Binding Latitud}" IsReadOnly="True" />
             <!-- DatePicker para seleccionar la fecha -->
-            <DatePicker Date="{Binding FechaSeleccionada}" />
+            <DatePicker x:Name="dtFecha" Date="{Binding FechaSeleccionada}" />
 
             <!-- TimePicker para seleccionar la hora -->
-            <TimePicker Time="{Binding HoraSeleccionada}" />
+            <TimePicker x:Name="dtHora" Time="{Binding HoraSeleccionada}" />
 
-            <Label Text="{Binding Audio}"/>
-            <Button Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
+            <Label x:Name="lbAudio" Text="{Binding Audio}"/>
+            <Button  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
 
-            <Image Source="{Binding imagen}" />
+            <Image x:Name="imgContainer" Source="{Binding imagen}" />
             <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
             <Button Text="Guardar" Clicked="BtnGuardar_Clicked" />
 

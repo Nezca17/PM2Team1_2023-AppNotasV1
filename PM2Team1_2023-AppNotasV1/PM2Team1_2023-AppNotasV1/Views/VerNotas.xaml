@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2Team1_2023_AppNotasV1.Views.VerNotas">
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView
+                x:Name="ListViewNotas"
+                ItemsSource="{Binding listViewSource}"
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding isRefreshing}"
+                ItemSelected="ListViewNotas_ItemSelected"
+                >
+                <ListView.ItemTemplate>
+
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="auto"/>
+                                </Grid.RowDefinitions>
+
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    
+                                </Grid.ColumnDefinitions>
+
+                                <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
+                                    <Label Text="{Binding Titulo}"></Label>
+                                    <Label Text="{Binding Detalles}"></Label>
+                                    <Label Text="{Binding fechaIngreso}"></Label>
+                                </StackLayout>
+                                
+                            </Grid>
+                            
+                        </ViewCell>
+                    </DataTemplate>
+                    
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+            <Button x:Name="btnActualizar" Text="Actualizar/eliminar"/>
+        </StackLayout>
+
+ 
+    </ContentPage.Content>
+</ContentPage>
