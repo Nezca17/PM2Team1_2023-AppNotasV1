@@ -28,7 +28,7 @@ public partial class Dashboard : ContentPage
         }
         private async void BtnMisNotas_Clicked(object sender, EventArgs e)
         {
-          //  await Navigation.PushAsync(new IngresarNotas());
+            await Navigation.PushAsync(new VerNotas());
         }
         private async void BtnRecordatorio_Clicked(object sender, EventArgs e)
         {

@@ -13,7 +13,7 @@ namespace PM2Team1_2023_AppNotasV1
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+          //  DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage(new LoginPage());
         }
 

@@ -19,7 +19,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            //this.BindingContext = new LoginViewModel();
            // _userDialogService = userDialogsService;
             _firebaseService = DependencyService.Get<IFirebaseAuthService>();
             MessagingCenter.Subscribe<String, String>(this, _firebaseService.getAuthKey(), async (sender, args) =>

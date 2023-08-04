@@ -10,34 +10,15 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
+        public event PropertyChangedEventHandler PropertyChanged;
 
-        bool isBusy = false;
-        public bool IsBusy
+        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            get { return isBusy; }
-            set { SetProperty(ref isBusy, value); }
+
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+
         }
 
-        string title = string.Empty;
-        public string Title
-        {
-            get { return title; }
-            set { SetProperty(ref title, value); }
-        }
-
-        protected bool SetProperty<T>(ref T backingStore, T value,
-            [CallerMemberName] string propertyName = "",
-            Action onChanged = null)
-        {
-            if (EqualityComparer<T>.Default.Equals(backingStore, value))
-                return false;
-
-            backingStore = value;
-            onChanged?.Invoke();
-            OnPropertyChanged(propertyName);
-            return true;
-        }
         protected void SetValue<T>(ref T backingFieled, T value, [CallerMemberName] string propertyName = null)
         {
             if (EqualityComparer<T>.Default.Equals(backingFieled, value))
@@ -53,16 +34,17 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             OnPropertyChanged(propertyName);
         }
 
-        #region INotifyPropertyChanged
-        public event PropertyChangedEventHandler PropertyChanged;
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = "")
+        protected virtual void OnPropertyChangeds([CallerMemberName] string propertyName = null)
         {
-            var changed = PropertyChanged;
-            if (changed == null)
-                return;
+            PropertyChangedEventHandler handler = PropertyChanged;
 
-            changed.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            if (handler != null)
+
+            {
+
+                handler(this, new PropertyChangedEventArgs(propertyName));
+
+            }
         }
-        #endregion
     }
 }

@@ -1,33 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
+             xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" x:DataType="viewmodels:NotasViewModel"
              x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas">
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
             <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center"></Label>
-            <Entry x:Name="txtTitulo" Placeholder="Título" Text="{Binding Titulo}" />
-            <Editor x:Name="txtDetalles" Placeholder="Nota de Texto" Text="{Binding Detalles}" HeightRequest="100" />
+            <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}"/>
+            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="100" Text="{Binding Detalles, Mode=TwoWay}" />
 
             <Label Text="¿Es un recordatorio?"/>
             <Switch x:Name="swIsRecordatorio" />
 
             <Label  Text="Longitud: " />
-            <Entry x:Name="txtLongitud" Text="{Binding Longitud}" IsReadOnly="True" />
+            <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}" />
             <Label Text="Latitud: " />
-            <Entry x:Name="txtLatitude" Text="{Binding Latitud}" IsReadOnly="True" />
+            <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}"  />
             <!-- DatePicker para seleccionar la fecha -->
-            <DatePicker x:Name="dtFecha" Date="{Binding FechaSeleccionada}" />
+            <DatePicker x:Name="dtFecha" Date="{Binding Fecha, Mode=TwoWay}"/>
 
             <!-- TimePicker para seleccionar la hora -->
-            <TimePicker x:Name="dtHora" Time="{Binding HoraSeleccionada}" />
+            <TimePicker x:Name="dtHora"  />
 
-            <Label x:Name="lbAudio" Text="{Binding Audio}"/>
+            <Label x:Name="lbAudio" />
             <Button  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
 
-            <Image x:Name="imgContainer" Source="{Binding imagen}" />
+            <Image x:Name="imgContainer" Source="" />
             <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
-            <Button Text="Guardar" Clicked="BtnGuardar_Clicked" />
+            <Button Text="Guardar" Clicked="BtnGuardar_Clicked" Command="{Binding insertCommand}"/>
 
         </StackLayout>
     </ContentPage.Content>

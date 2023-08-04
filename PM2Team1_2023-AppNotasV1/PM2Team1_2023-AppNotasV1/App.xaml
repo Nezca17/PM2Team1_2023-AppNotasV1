@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:PM2Team1_2023_AppNotasV1.Views"
              x:Class="PM2Team1_2023_AppNotasV1.App">
     <!--
         Define global resources and styles here, that apply to all pages in your app.
@@ -11,6 +11,7 @@
                <On Platform="Android" Value="FontAwesome6Brands-Regular-400.otf#Regular">
                 </On>
             </OnPlatform>
+            <local:FechaConverter x:Key="FechaConverter" />
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

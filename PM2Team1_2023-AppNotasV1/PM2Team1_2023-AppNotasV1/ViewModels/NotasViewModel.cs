@@ -1,12 +1,15 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 using PM2Team1_2023_AppNotasV1.Models;
 using PM2Team1_2023_AppNotasV1.Services;
 using PM2Team1_2023_AppNotasV1.Views;
 using System;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -16,94 +19,111 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         FirebaseHelper firebaseHelper = new FirebaseHelper();
 
 
-        public NotasViewModel() {
+        public  NotasViewModel() {
 
-            LoadData();
+         LoadData();
         } 
 
 
         #region Attributes
-        public string _Titulo;
-        public string _detalles;
-        public DateTime _fechaIngreso;
-        public bool _IsRecordatorio;
-        public DateTime _fecha;
-        public TimeSpan _hora;
-        public string _audioFile;
-        public string _imagenFile;
-        public string _longitud;
-        public string _latitude;
+        public string txtTitulo;
+        public string txtDetalles;
+        public DateTime txtFechaIngreso;
+        public bool txtIsRecordatorio;
+        public DateTime txtfecha;
+        public TimeSpan txtHora;
+        public string txtaudioFile;
+        public string txtImagenFile;
+        public string txtlongitud;
+        public string txtLatitude;
         public bool isRefreshing = false;
         public object listViewSource;
+        public string fechaConvertido ;
         #endregion
 
 
+        
 
         #region Properties
         public string Titulo
         {
-            get { return _Titulo; }
-            set { SetValue(ref _Titulo, value); }
+            get { return txtTitulo; }
+            set { SetValue(ref txtTitulo, value); }
         }
 
         public string Detalles
         {
-            get { return _detalles; }
-            set { SetValue(ref _detalles, value); }
+            get { return txtDetalles; }
+            set { SetValue(ref txtDetalles, value); }
+        }
+        public string FechaConvertida
+        {
+            get { return ConvertirFechaTexto(this.txtfecha); }
+            
         }
 
         public DateTime FechaIngreso
         {
-            get { return _fechaIngreso; }
-            set { SetValue(ref _fechaIngreso, value); }
+            get { return txtFechaIngreso; }
+            set { SetValue(ref txtFechaIngreso, value); }
         }
 
         public bool IsRecordatorio
         {
-            get { return _IsRecordatorio; }
-            set { SetValue(ref _IsRecordatorio, value); }
+            get { return txtIsRecordatorio; }
+            set { SetValue(ref txtIsRecordatorio, value); }
         }
 
         public DateTime Fecha
         {
-            get { return _fecha; }
-            set { SetValue(ref _fecha, value); }
+            get { return txtfecha; }
+            set { SetValue(ref txtfecha, value); }
         }
 
         public TimeSpan Hora
         {
-            get { return _hora; }
-            set { SetValue(ref _hora, value); }
+            get { return txtHora; }
+            set { SetValue(ref txtHora, value); }
         }
 
         public string AudioFile
         {
-            get { return _audioFile; }
-            set { SetValue(ref _audioFile, value); }
+            get { return txtaudioFile; }
+            set { SetValue(ref txtaudioFile, value); }
         }
 
         public string ImagenFile
         {
-            get { return _imagenFile; }
-            set { SetValue(ref _imagenFile, value); }
+            get { return txtImagenFile; }
+            set { SetValue(ref txtImagenFile, value); }
         }
 
         public string Longitud
         {
-            get { return _longitud; }
-            set { SetValue(ref _longitud, value); }
+            get { return txtlongitud; }
+            set { SetValue(ref txtlongitud, value); }
         }
 
         public string Latitude
         {
-            get { return _latitude; }
-            set { SetValue(ref _latitude, value); }
+            get { return txtLatitude; }
+            set { SetValue(ref txtLatitude, value); }
         }
 
         public bool IsRefreshing
         {
             get { return isRefreshing; }
             set { SetValue(ref isRefreshing, value); }
+        }
+
+        public object ListViewSource
+        {
+            get { return this.listViewSource; }
+            set
+            {
+                SetValue(ref this.listViewSource, value);
+            }
+
         }
 
         // Resto del ViewModel...
@@ -127,34 +147,47 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         private async void InsertMethod()
         {
-            var nota = new Nota
+            try
             {
-                Titulo = _Titulo,
-                Detalles = _detalles,
-                fechaIngreso = _fecha.Date,
-                isRecordatorio = _IsRecordatorio,
-                fecha = _fecha.Date,
-                hora = _hora,
-                audioFile = "aas",
-                imagenFile = "aaa",
-                longitud = double.Parse(_longitud),
-                latitude = double.Parse(_latitude)
+                var nota = new Nota
+                {
+                    Titulo = txtTitulo,
+                    Detalles = txtDetalles,
+                    fechaIngreso = txtfecha.Date,
+                    isRecordatorio = txtIsRecordatorio,
+                    fecha = txtfecha.Date,
+                    hora = txtHora,
+                    audioFile = "aas",
+                    imagenFile = "aaa",
+                    longitud = double.Parse(txtlongitud),
+                    latitude = double.Parse(txtLatitude)
 
-            };
+                };
 
-            await firebaseHelper.AddNota(nota);
-            this.IsRefreshing = true;
-            await Task.Delay(1000);
+                await firebaseHelper.AddNota(nota);
+                this.IsRefreshing = true;
+                await Task.Delay(1000);
 
-           await LoadData();
+                await LoadData();
 
-            this.IsRefreshing = false;
+                this.IsRefreshing = false;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.ToString());
+            }
+
+        }
+        public string  ConvertirFechaTexto(DateTime fecha)
+        {
+            return fecha.ToString("dd/MM/yyyy");
         }
 
         public async Task LoadData()
         {
-            this.listViewSource = await firebaseHelper.GetNotas();
-
+            this.ListViewSource = await firebaseHelper.GetNotas();
+            fechaConvertido = ConvertirFechaTexto(txtfecha);
         }
 
         #endregion

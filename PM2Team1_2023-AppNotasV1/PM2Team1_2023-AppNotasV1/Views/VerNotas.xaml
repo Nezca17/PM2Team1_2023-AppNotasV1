@@ -1,15 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PM2Team1_2023_AppNotasV1.Views.VerNotas">
+             x:Class="PM2Team1_2023_AppNotasV1.Views.VerNotas"
+              xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" x:DataType="viewmodels:NotasViewModel">
     <ContentPage.Content>
         <StackLayout>
             <ListView
                 x:Name="ListViewNotas"
-                ItemsSource="{Binding listViewSource}"
+                ItemsSource="{Binding ListViewSource}"
                 HasUnevenRows="True"
                 IsPullToRefreshEnabled="True"
-                IsRefreshing="{Binding isRefreshing}"
+                IsRefreshing="{Binding IsRefreshing}"
                 ItemSelected="ListViewNotas_ItemSelected"
                 >
                 <ListView.ItemTemplate>
@@ -18,7 +19,7 @@
                         <ViewCell>
                             <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="60"/>
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
@@ -28,12 +29,22 @@
                                     
                                 </Grid.ColumnDefinitions>
 
+
                                 <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
-                                    <Label Text="{Binding Titulo}"></Label>
-                                    <Label Text="{Binding Detalles}"></Label>
-                                    <Label Text="{Binding fechaIngreso}"></Label>
+                                    <Label Text="{Binding Titulo}"  FontSize="20"></Label>
+                                   
+
                                 </StackLayout>
-                                
+                                <StackLayout Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
+
+                                    <Label Text="{Binding Detalles}" FontSize="20" ></Label>
+                                   
+
+                                </StackLayout>
+                                <StackLayout Grid.Column="3" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
+                                    <DatePicker Date="{Binding Fecha}" IsEnabled="False"/>
+                                </StackLayout>
+
                             </Grid>
                             
                         </ViewCell>

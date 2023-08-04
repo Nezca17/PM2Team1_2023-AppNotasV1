@@ -1,5 +1,6 @@
 ﻿using PM2Team1_2023_AppNotasV1.Models;
 using PM2Team1_2023_AppNotasV1.Services;
+using PM2Team1_2023_AppNotasV1.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,24 +16,27 @@ namespace PM2Team1_2023_AppNotasV1.Views
     public partial class IngresarNotas : ContentPage
     {
 
+        NotasViewModel NotasViewModel = new NotasViewModel();
 
         public IngresarNotas()
         {
             InitializeComponent();
-
+           // NotasViewModel.LoadData();
+            BindingContext = new NotasViewModel();
+             
         }
 
         private async void AgregarFotografia_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new IngresarNotas());
+        //    await Navigation.PushAsync(new IngresarNotas());
         }
         private async void AgregarAudio_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new IngresarNotas());
+          //  await Navigation.PushAsync(new IngresarNotas());
         }
         private async void BtnGuardar_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new IngresarNotas());
+            //await Navigation.PushAsync(new IngresarNotas());
         }
     }
 }
