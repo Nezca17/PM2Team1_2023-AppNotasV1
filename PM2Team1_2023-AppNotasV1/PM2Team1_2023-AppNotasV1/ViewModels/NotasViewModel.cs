@@ -9,6 +9,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
@@ -21,7 +22,9 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         public  NotasViewModel() {
 
-         LoadData();
+            GetLocation();
+            LoadData();
+        
         } 
 
 
@@ -189,6 +192,37 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             this.ListViewSource = await firebaseHelper.GetNotas();
             fechaConvertido = ConvertirFechaTexto(txtfecha);
         }
+
+
+
+
+        public async void GetLocation()
+        {
+            try
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                var location = await Geolocation.GetLocationAsync(request);
+
+                if (location != null)
+                {
+             
+                    this.Latitude = location.Latitude.ToString();
+                    this.Longitud = location.Longitude.ToString();
+                }
+                else
+                {
+                
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+
+
+
 
         #endregion
 
