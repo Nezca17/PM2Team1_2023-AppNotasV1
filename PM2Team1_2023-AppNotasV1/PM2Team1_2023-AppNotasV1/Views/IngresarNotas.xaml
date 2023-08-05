@@ -26,8 +26,10 @@
             <Label x:Name="lbAudio" />
             <Button  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
 
-            <Image x:Name="imgContainer" Source="" />
+         
             <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
+            <Image Source="{Binding ImageData}" WidthRequest="50" HeightRequest="50" />
+            <Label Text="{Binding ImageName}" VerticalOptions="Center" />
             <Button Text="Guardar" Clicked="BtnGuardar_Clicked" Command="{Binding insertCommand}"/>
 
         </StackLayout>

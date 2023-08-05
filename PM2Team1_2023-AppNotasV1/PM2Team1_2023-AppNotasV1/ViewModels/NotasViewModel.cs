@@ -11,13 +11,29 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using System;
+using System.IO;
+using Path = System.IO.Path;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
     public class NotasViewModel :BaseViewModel
 {
-
         FirebaseHelper firebaseHelper = new FirebaseHelper();
+        private ImageSource imageData;
+        public ImageSource ImageData
+        {
+            get => imageData;
+            set { SetValue(ref imageData, value); }
+        }
+        private string imageName;
+        public string ImageName
+        {
+            get => imageName;
+            set { SetValue(ref imageName, value); }
+        }
 
 
         public  NotasViewModel() {
@@ -219,6 +235,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 Console.WriteLine(ex.ToString());
             }
         }
+
 
 
 
