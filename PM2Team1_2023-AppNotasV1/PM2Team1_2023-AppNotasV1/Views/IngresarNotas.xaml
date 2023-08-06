@@ -3,32 +3,57 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
              xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" x:DataType="viewmodels:NotasViewModel"
-             x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas">
+             x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas"
+             BackgroundColor="#202120">
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-            <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center"></Label>
-            <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}"/>
-            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="100" Text="{Binding Detalles, Mode=TwoWay}" />
+            <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
+            <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}" PlaceholderColor="White"/>
+            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding Detalles, Mode=TwoWay}" PlaceholderColor="White" />
+            
+           
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                <Label Text="Es un recordatorio?" TextColor="White"></Label>
+                <Switch x:Name="switch" OnColor="AliceBlue" ThumbColor="AntiqueWhite" ></Switch>
+            </FlexLayout>
 
-            <Label Text="¿Es un recordatorio?"/>
-            <Switch x:Name="swIsRecordatorio" />
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                <Label  Text="Longitud: " TextColor="White"/>
+                <Label Text="Latitud: " TextColor="White"/>
+            </FlexLayout>
 
-            <Label  Text="Longitud: " />
-            <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}" />
-            <Label Text="Latitud: " />
-            <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}"  />
-            <!-- DatePicker para seleccionar la fecha -->
-            <DatePicker x:Name="dtFecha" Date="{Binding Fecha, Mode=TwoWay}"/>
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
 
-            <!-- TimePicker para seleccionar la hora -->
-            <TimePicker x:Name="dtHora"  />
+                <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}" TextColor="White" WidthRequest="150"/>
 
+                <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}" TextColor="White" WidthRequest="150" />
+            </FlexLayout>
+
+
+
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+            </FlexLayout>
+
+            <!-- FlexLayout para alinear horizontalmente el DatePicker y el TimePicker -->
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                <!-- Calendario (DatePicker) -->
+                <DatePicker x:Name="dtFecha" TextColor="White" FlexLayout.AlignSelf="Start" Margin="0,0,0,0" />
+                <!-- Reloj (TimePicker) -->
+                <TimePicker x:Name="dtHora" TextColor="White" FlexLayout.AlignSelf="End" Margin="0,0,0,0" />
+            </FlexLayout>
+            
             <Label x:Name="lbAudio" />
             <Button  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
 
-            <Image x:Name="imgContainer" Source="" />
+         
             <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
+            <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Gray"/>
             <Button Text="Guardar" Clicked="BtnGuardar_Clicked" Command="{Binding insertCommand}"/>
+            <Image Source="{Binding ImageData}" WidthRequest="50" HeightRequest="50" />
+            <Label Text="{Binding ImageName}" VerticalOptions="Center" />
+           
 
         </StackLayout>
     </ContentPage.Content>

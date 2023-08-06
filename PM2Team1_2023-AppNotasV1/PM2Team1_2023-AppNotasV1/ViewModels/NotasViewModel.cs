@@ -9,22 +9,38 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using System;
+using System.IO;
+using Path = System.IO.Path;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
     public class NotasViewModel :BaseViewModel
 {
-
         FirebaseHelper firebaseHelper = new FirebaseHelper();
+        private ImageSource imageData;
+        public ImageSource ImageData
+        {
+            get => imageData;
+            set { SetValue(ref imageData, value); }
+        }
+        private string imageName;
+        public string ImageName
+        {
+            get => imageName;
+            set { SetValue(ref imageName, value); }
+        }
 
 
         public  NotasViewModel() {
 
-            
-          //  LoadData();
-            
-
+            GetLocation();
+            LoadData();
+        
         } 
 
 
@@ -202,6 +218,38 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             //listViewSource. = ConvertirFechaTexto(txtfecha);
             
         }
+
+
+
+
+        public async void GetLocation()
+        {
+            try
+            {
+                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
+                var location = await Geolocation.GetLocationAsync(request);
+
+                if (location != null)
+                {
+             
+                    this.Latitude = location.Latitude.ToString();
+                    this.Longitud = location.Longitude.ToString();
+                }
+                else
+                {
+                
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
+
+
+
+
+
 
         #endregion
 
