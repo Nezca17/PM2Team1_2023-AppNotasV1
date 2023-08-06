@@ -21,7 +21,10 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         public  NotasViewModel() {
 
-         LoadData();
+            
+          //  LoadData();
+            
+
         } 
 
 
@@ -37,7 +40,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string txtlongitud;
         public string txtLatitude;
         public bool isRefreshing = false;
-        public object listViewSource;
+        public object listViewSource1;
         public string fechaConvertido ;
         #endregion
 
@@ -118,10 +121,10 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         public object ListViewSource
         {
-            get { return this.listViewSource; }
+            get { return this.listViewSource1; }
             set
             {
-                SetValue(ref this.listViewSource, value);
+                SetValue(ref this.listViewSource1, value);
             }
 
         }
@@ -137,9 +140,16 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 return new RelayCommand(InsertMethod);
 
             }
-
         }
 
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadData);
+
+            }
+        }
 
         #endregion
 
@@ -157,7 +167,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                     isRecordatorio = txtIsRecordatorio,
                     fecha = txtfecha.Date,
                     hora = txtHora,
-                    audioFile = "aas",
+                    audioFile = "aaa",
                     imagenFile = "aaa",
                     longitud = double.Parse(txtlongitud),
                     latitude = double.Parse(txtLatitude)
@@ -168,7 +178,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 this.IsRefreshing = true;
                 await Task.Delay(1000);
 
-                await LoadData();
+               // await LoadData();
 
                 this.IsRefreshing = false;
             }
@@ -184,10 +194,13 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             return fecha.ToString("dd/MM/yyyy");
         }
 
-        public async Task LoadData()
+        public async void LoadData()
         {
+
+            //await Task.Delay(1000);
             this.ListViewSource = await firebaseHelper.GetNotas();
-            fechaConvertido = ConvertirFechaTexto(txtfecha);
+            //listViewSource. = ConvertirFechaTexto(txtfecha);
+            
         }
 
         #endregion

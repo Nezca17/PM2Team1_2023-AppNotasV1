@@ -29,22 +29,9 @@
                                     
                                 </Grid.ColumnDefinitions>
 
-
-                                <StackLayout Grid.Column="1" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
-                                    <Label Text="{Binding Titulo}"  FontSize="20"></Label>
-                                   
-
-                                </StackLayout>
-                                <StackLayout Grid.Column="2" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
-
-                                    <Label Text="{Binding Detalles}" FontSize="20" ></Label>
-                                   
-
-                                </StackLayout>
-                                <StackLayout Grid.Column="3" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center" Orientation="Vertical">
-                                    <DatePicker Date="{Binding Fecha}" IsEnabled="False"/>
-                                </StackLayout>
-
+                                <Label Grid.Column="1" Grid.Row="0" Text="{Binding Titulo}"  FontSize="20"></Label>
+                                <Label Grid.Column="2" Grid.Row="0" Text="{Binding Detalles}" FontSize="20" ></Label>
+                                <DatePicker Grid.Column="3" Grid.Row="0" Date="{Binding Fecha}" IsEnabled="False"/>
                             </Grid>
                             
                         </ViewCell>
@@ -54,6 +41,7 @@
 
             </ListView>
 
+            <Button x:Name="btnRefresh" Command="{Binding RefreshCommand}" Text="Refresh"/>
             <Button x:Name="btnActualizar" Text="Actualizar/eliminar"/>
         </StackLayout>
 

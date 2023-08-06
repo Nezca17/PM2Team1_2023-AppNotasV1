@@ -16,9 +16,9 @@ namespace PM2Team1_2023_AppNotasV1.Views
          
         public VerNotas()
         {
+
             InitializeComponent();
-            BindingContext = new NotasViewModel();
-            
+            BindingContext =  new NotasViewModel();
         }
         public async void ListViewNotas_ItemSelected(object sender, EventArgs e)
         {
