@@ -9,7 +9,7 @@
         <StackLayout>
             <ListView
                 x:Name="ListViewNotas"
-                ItemsSource="{Binding ListViewSource}"
+                ItemsSource="{Binding ListViewSource, Mode=TwoWay}"
                 HasUnevenRows="True"
                 IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsRefreshing}"
@@ -29,12 +29,13 @@
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
 
                                 <Label Grid.Column="1" Grid.Row="0" Text="{Binding Titulo}"  FontSize="20"></Label>
                                 <Label Grid.Column="2" Grid.Row="0" Text="{Binding Detalles}" FontSize="20" ></Label>
                                 <Label Grid.Column="3" Grid.Row="0" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="20" ></Label>
-
+                                <Image Grid.Column="4" Grid.Row="0" Source="{Binding ImagenFile}" WidthRequest="50" HeightRequest="50" />
                             </Grid>
                             
                         </ViewCell>

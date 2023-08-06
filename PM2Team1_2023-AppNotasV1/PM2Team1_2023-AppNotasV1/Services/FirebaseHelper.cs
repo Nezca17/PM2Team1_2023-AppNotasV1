@@ -37,7 +37,7 @@ namespace PM2Team1_2023_AppNotasV1.Services
                     Fecha = Item.Object.Fecha,
                     Hora = Item.Object.Hora,
                     audioFile = Item.Object.audioFile,
-                    imagenFile = Item.Object.imagenFile,
+                    ImagenFile = Item.Object.ImagenFile,
                     longitud = Item.Object.longitud,
                     latitude = Item.Object.latitude,
 
@@ -58,7 +58,7 @@ namespace PM2Team1_2023_AppNotasV1.Services
                 Fecha = _Nota.Fecha,
                 Hora = _Nota.Hora,
                 audioFile = _Nota.audioFile,
-                imagenFile = _Nota.imagenFile,
+                ImagenFile = _Nota.ImagenFile,
                 longitud = _Nota.longitud,
                 latitude = _Nota.latitude,
 
@@ -76,7 +76,7 @@ namespace PM2Team1_2023_AppNotasV1.Services
                 .Child(toUpdateNota.Key)
                 .PutAsync(new Nota() { Id = _Nota.Id, Titulo = _Nota.Titulo, Detalles = _Nota.Detalles, FechaIngreso = _Nota.FechaIngreso, 
                     audioFile = _Nota.audioFile, isRecordatorio = _Nota.isRecordatorio, Fecha = _Nota.Fecha, Hora= _Nota.Hora,
-                    imagenFile = _Nota.audioFile, longitud = _Nota.longitud, latitude = _Nota.latitude
+                    ImagenFile = _Nota.audioFile, longitud = _Nota.longitud, latitude = _Nota.latitude
                 });
 
 

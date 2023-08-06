@@ -16,6 +16,8 @@ using System;
 using System.IO;
 using Path = System.IO.Path;
 
+using PM2Team1_2023_AppNotasV1.Converters;
+
 namespace PM2Team1_2023_AppNotasV1.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -23,6 +25,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
     {
         private string filePath; // Variable para almacenar la ruta de la foto capturada
         private MediaFile photo; // Variable para almacenar la foto capturada
+        ConvertStreamToByteArray converter;
 
 
         NotasViewModel NotasViewModel = new NotasViewModel();
@@ -32,7 +35,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
             InitializeComponent();
            // NotasViewModel.LoadData();
             BindingContext = new NotasViewModel();
-             
+            converter = new ConvertStreamToByteArray();
         }
 
         private async void AgregarFotografia_Clicked(object sender, EventArgs e)
@@ -68,9 +71,13 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 {
                     // Obtener la ruta de la foto capturada
                     filePath = photo.Path;
+
                     imageField.Source = ImageSource.FromFile(filePath);
 
                 }
+                var stream = photo.GetStream();
+
+             await   NotasViewModel.TomarFoto(converter.ConvertStreamToByteArrayMethod(stream)) ;
             }
             catch (Exception ex)
             {
@@ -80,6 +87,9 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
 
         }
+
+
+
         private async void AgregarAudio_Clicked(object sender, EventArgs e)
         {
           //  await Navigation.PushAsync(new IngresarNotas());

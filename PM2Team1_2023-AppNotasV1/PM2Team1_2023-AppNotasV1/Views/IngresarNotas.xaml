@@ -39,9 +39,9 @@
             <!-- FlexLayout para alinear horizontalmente el DatePicker y el TimePicker -->
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
                 <!-- Calendario (DatePicker) -->
-                <DatePicker x:Name="dtFecha" TextColor="White" FlexLayout.AlignSelf="Start" Margin="0,0,0,0" />
+                <DatePicker x:Name="dtFecha" Date="{Binding Fecha, Mode=TwoWay}"  FlexLayout.AlignSelf="Start" Margin="0,0,0,0" />
                 <!-- Reloj (TimePicker) -->
-                <TimePicker x:Name="dtHora" TextColor="White" FlexLayout.AlignSelf="End" Margin="0,0,0,0" />
+                <TimePicker x:Name="dtHora" Time="{Binding Hora, Mode=TwoWay}" FlexLayout.AlignSelf="End" Margin="0,0,0,0" />
             </FlexLayout>
             
             <Label x:Name="lbAudio" />
@@ -51,7 +51,7 @@
             <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
             <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Gray"/>
             <Button Text="Guardar" Clicked="BtnGuardar_Clicked" Command="{Binding insertCommand}"/>
-            <Image Source="{Binding ImageData}" WidthRequest="50" HeightRequest="50" />
+            <Image Source="{Binding ImagenFile, Mode=TwoWay}" WidthRequest="50" HeightRequest="50"  />
             <Label Text="{Binding ImageName}" VerticalOptions="Center" />
            
 

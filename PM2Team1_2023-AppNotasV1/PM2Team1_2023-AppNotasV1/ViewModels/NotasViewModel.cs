@@ -17,6 +17,7 @@ using System;
 using System.IO;
 using Path = System.IO.Path;
 using System.Collections.ObjectModel;
+using PM2Team1_2023_AppNotasV1.Converters;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -24,6 +25,9 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
         private ImageSource imageData;
+
+        ConvertStreamToByteArray convert = new ConvertStreamToByteArray();
+
         public ImageSource ImageData
         {
             get => imageData;
@@ -40,7 +44,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public  NotasViewModel() {
 
             GetLocation();
-           // LoadData();
+            LoadData();
         
         } 
 
@@ -53,8 +57,8 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public bool txtIsRecordatorio;
         public DateTime txtfecha;
         public TimeSpan txtHora;
-        public string txtaudioFile;
-        public string txtImagenFile;
+        public byte[] txtaudioFile;
+        public byte[] txtImagenFile;
         public string txtlongitud;
         public string txtLatitude;
         public bool isRefreshing = false;
@@ -108,13 +112,13 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             set { SetValue(ref txtHora, value); }
         }
 
-        public string AudioFile
+        public byte[] AudioFile
         {
             get { return txtaudioFile; }
             set { SetValue(ref txtaudioFile, value); }
         }
 
-        public string ImagenFile
+        public byte[] ImagenFile
         {
             get { return txtImagenFile; }
             set { SetValue(ref txtImagenFile, value); }
@@ -170,6 +174,15 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             }
         }
 
+        public ICommand CamaraCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadData);
+
+            }
+        }
+
         #endregion
 
         #region Methods
@@ -186,14 +199,16 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                     isRecordatorio = txtIsRecordatorio,
                     Fecha = txtfecha.Date,
                     Hora = txtHora,
-                    audioFile = "aaa",
-                    imagenFile = "aaa",
+                 //   audioFile = txtaudioFile,
+               //     ImagenFile = txtImagenFile,
                     longitud = double.Parse(txtlongitud),
                     latitude = double.Parse(txtLatitude)
 
                 };
 
                 await firebaseHelper.AddNota(nota);
+
+                
                 this.IsRefreshing = true;
                 await Task.Delay(1000);
 
@@ -216,11 +231,10 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public async void LoadData()
         {
 
-           // await Task.Delay(4000);
-            this.ListViewSource = await firebaseHelper.GetNotas();
-           
-            //listViewSource. = ConvertirFechaTexto(txtfecha);
 
+            this.IsRefreshing = true;
+            this.ListViewSource = await firebaseHelper.GetNotas();
+            this.IsRefreshing = false;
         }
 
 
@@ -250,7 +264,10 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             }
         }
 
+        public async Task TomarFoto(byte[] fotoFile) {
 
+            ImagenFile =  fotoFile; 
+        }
 
 
 

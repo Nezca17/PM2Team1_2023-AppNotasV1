@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" 
+             x:DataType="viewmodels:EditNotaViewModel"
+             x:Class="PM2Team1_2023_AppNotasV1.Views.EditNotaPage"
+             >
+    <ContentPage.Content>
+        <StackLayout>
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+
+                <Label Text="Actualizar/Eliminas una Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
+                <Entry x:Name="txtactTitulo" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
+                <Editor x:Name="txtactDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding txtDetalles, Mode=TwoWay}" PlaceholderColor="White" />
+                <Switch x:Name="swEsRecordatorio"></Switch>
+                <DatePicker x:Name="dtpActFecha"/>
+                <TimePicker x:Name="dtActHora" />
+                <Entry x:Name="txtactLongitud" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
+                <Entry x:Name="txtactLatitude" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
+
+
+            </FlexLayout>
+
+            <FlexLayout>
+                <Image x:Name="imageActField" WidthRequest="120" BackgroundColor="Gray"/>
+                <Button Text="Cambiar Imagen" Command=""></Button>
+            </FlexLayout>
+            <FlexLayout>
+                <Label Text="Estado del Audio"></Label>
+                <Button Text="Cambiar el Audio" Command=""></Button>
+            </FlexLayout>
+
+            <Button Text="Actualizar" Command="{Binding UpdateCommand}"></Button>
+            <Button Text="Borrar" Command="{Binding DeleteCommand}"></Button>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -15,11 +15,14 @@ namespace PM2Team1_2023_AppNotasV1.Models
         public bool isRecordatorio { get; set; }
         public DateTime Fecha { get; set; }
         public TimeSpan Hora { get; set; }
-        public string audioFile { get; set; }
-        public string imagenFile { get; set; }  
+        public byte[] audioFile { get; set; }
+        public byte[] ImagenFile { get; set; }  
         public double longitud { get; set; }
         public double latitude { get; set; }
 
-        
-}
+        public string RutaAudioFile { get; set; }
+        public string RutaImagenFile { get; set; }
+
+
+    }
 }
