@@ -3,38 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
              xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" x:DataType="viewmodels:NotasViewModel"
-             x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas">
+             x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas"
+             BackgroundColor="#202120">
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-            <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
-            <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}"/>
-            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding Detalles, Mode=TwoWay}" />
-
+            <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
+            <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}" PlaceholderColor="White"/>
+            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding Detalles, Mode=TwoWay}" PlaceholderColor="White" />
+            
+           
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                <Label  Text="Longitud: " />
-                <Label Text="Latitud: " />
+                <Label Text="Es un recordatorio?" TextColor="White"></Label>
+                <Switch x:Name="switch" OnColor="AliceBlue" ThumbColor="AntiqueWhite" ></Switch>
             </FlexLayout>
 
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-              
-                <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}"/>
-               
-                <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}"  />
+                <Label  Text="Longitud: " TextColor="White"/>
+                <Label Text="Latitud: " TextColor="White"/>
+            </FlexLayout>
+
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+
+                <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}" TextColor="White" WidthRequest="150"/>
+
+                <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}" TextColor="White" WidthRequest="150" />
             </FlexLayout>
 
 
 
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                <Label Text="Seleccione la hora" TextColor="Black" FontSize="16" HorizontalOptions="Center" />
-                <Label Text="Seleccione la hora" TextColor="Black" FontSize="16" HorizontalOptions="Center" />
+                <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
             </FlexLayout>
 
             <!-- FlexLayout para alinear horizontalmente el DatePicker y el TimePicker -->
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
                 <!-- Calendario (DatePicker) -->
-                <DatePicker x:Name="dtFecha" TextColor="Black" FlexLayout.AlignSelf="Start" Margin="0,0,0,0" />
+                <DatePicker x:Name="dtFecha" TextColor="White" FlexLayout.AlignSelf="Start" Margin="0,0,0,0" />
                 <!-- Reloj (TimePicker) -->
-                <TimePicker x:Name="dtHora" TextColor="Black" FlexLayout.AlignSelf="End" Margin="0,0,0,0" />
+                <TimePicker x:Name="dtHora" TextColor="White" FlexLayout.AlignSelf="End" Margin="0,0,0,0" />
             </FlexLayout>
             
             <Label x:Name="lbAudio" />
