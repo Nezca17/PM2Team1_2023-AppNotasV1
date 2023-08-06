@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System;
 using Firebase.Database.Query;
+using PM2Team1_2023_AppNotasV1.Views;
 
 namespace PM2Team1_2023_AppNotasV1.Services
 {
@@ -12,9 +13,12 @@ namespace PM2Team1_2023_AppNotasV1.Services
     {
         FirebaseClient firebase;
 
+        FechaConverter fechaConver;
+
         public FirebaseHelper() {
 
             firebase = new FirebaseClient("https://pm2team1-2023-default-rtdb.firebaseio.com/");
+            fechaConver = new FechaConverter();
         }
 
         public async Task<List<Nota>> GetNotas()
@@ -28,10 +32,10 @@ namespace PM2Team1_2023_AppNotasV1.Services
                     Id = Item.Object.Id,
                     Titulo = Item.Object.Titulo,
                     Detalles = Item.Object.Detalles,
-                    fechaIngreso = Item.Object.fechaIngreso,
+                    FechaIngreso = Item.Object.FechaIngreso,
                     isRecordatorio = Item.Object.isRecordatorio,
-                    fecha = Item.Object.fecha,
-                    hora = Item.Object.hora,
+                    Fecha = Item.Object.Fecha,
+                    Hora = Item.Object.Hora,
                     audioFile = Item.Object.audioFile,
                     imagenFile = Item.Object.imagenFile,
                     longitud = Item.Object.longitud,
@@ -49,10 +53,10 @@ namespace PM2Team1_2023_AppNotasV1.Services
                 Id = Guid.NewGuid(),
                 Titulo = _Nota.Titulo,
                 Detalles = _Nota.Detalles,
-                fechaIngreso = _Nota.fechaIngreso,
+                FechaIngreso = _Nota.FechaIngreso,
                 isRecordatorio = _Nota.isRecordatorio,
-                fecha = _Nota.fecha,
-                hora = _Nota.hora,
+                Fecha = _Nota.Fecha,
+                Hora = _Nota.Hora,
                 audioFile = _Nota.audioFile,
                 imagenFile = _Nota.imagenFile,
                 longitud = _Nota.longitud,
@@ -70,8 +74,8 @@ namespace PM2Team1_2023_AppNotasV1.Services
 
             await firebase.Child("Notas")
                 .Child(toUpdateNota.Key)
-                .PutAsync(new Nota() { Id = _Nota.Id, Titulo = _Nota.Titulo, Detalles = _Nota.Detalles, fechaIngreso = _Nota.fechaIngreso, 
-                    audioFile = _Nota.audioFile, isRecordatorio = _Nota.isRecordatorio, fecha = _Nota.fecha, hora = _Nota.hora,
+                .PutAsync(new Nota() { Id = _Nota.Id, Titulo = _Nota.Titulo, Detalles = _Nota.Detalles, FechaIngreso = _Nota.FechaIngreso, 
+                    audioFile = _Nota.audioFile, isRecordatorio = _Nota.isRecordatorio, Fecha = _Nota.Fecha, Hora= _Nota.Hora,
                     imagenFile = _Nota.audioFile, longitud = _Nota.longitud, latitude = _Nota.latitude
                 });
 

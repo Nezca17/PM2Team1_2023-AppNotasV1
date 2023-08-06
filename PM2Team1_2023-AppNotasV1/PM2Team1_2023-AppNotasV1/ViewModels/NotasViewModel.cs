@@ -16,6 +16,7 @@ using Plugin.Media.Abstractions;
 using System;
 using System.IO;
 using Path = System.IO.Path;
+using System.Collections.ObjectModel;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -39,7 +40,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public  NotasViewModel() {
 
             GetLocation();
-            LoadData();
+           // LoadData();
         
         } 
 
@@ -48,6 +49,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string txtTitulo;
         public string txtDetalles;
         public DateTime txtFechaIngreso;
+       // public ObservableCollection<DateTime> fechaCo;
         public bool txtIsRecordatorio;
         public DateTime txtfecha;
         public TimeSpan txtHora;
@@ -77,13 +79,14 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         }
         public string FechaConvertida
         {
-            get { return ConvertirFechaTexto(this.txtfecha); }
+            get { return ConvertirFechaTexto(this.txtfecha.Date); }
             
         }
 
+
         public DateTime FechaIngreso
         {
-            get { return txtFechaIngreso; }
+            get { return txtFechaIngreso.Date; }
             set { SetValue(ref txtFechaIngreso, value); }
         }
 
@@ -95,7 +98,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         public DateTime Fecha
         {
-            get { return txtfecha; }
+            get { return txtfecha.Date; }
             set { SetValue(ref txtfecha, value); }
         }
 
@@ -179,10 +182,10 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 {
                     Titulo = txtTitulo,
                     Detalles = txtDetalles,
-                    fechaIngreso = txtfecha.Date,
+                    FechaIngreso = txtfecha.Date,
                     isRecordatorio = txtIsRecordatorio,
-                    fecha = txtfecha.Date,
-                    hora = txtHora,
+                    Fecha = txtfecha.Date,
+                    Hora = txtHora,
                     audioFile = "aaa",
                     imagenFile = "aaa",
                     longitud = double.Parse(txtlongitud),
@@ -213,10 +216,11 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public async void LoadData()
         {
 
-            //await Task.Delay(1000);
+           // await Task.Delay(4000);
             this.ListViewSource = await firebaseHelper.GetNotas();
+           
             //listViewSource. = ConvertirFechaTexto(txtfecha);
-            
+
         }
 
 
