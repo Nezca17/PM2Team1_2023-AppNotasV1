@@ -6,31 +6,47 @@
              x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas">
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-            <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center"></Label>
+            <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center"></Label>
             <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}"/>
-            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="100" Text="{Binding Detalles, Mode=TwoWay}" />
+            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding Detalles, Mode=TwoWay}" />
 
-            <Label Text="¿Es un recordatorio?"/>
-            <Switch x:Name="swIsRecordatorio" />
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                <Label  Text="Longitud: " />
+                <Label Text="Latitud: " />
+            </FlexLayout>
 
-            <Label  Text="Longitud: " />
-            <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}" />
-            <Label Text="Latitud: " />
-            <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}"  />
-            <!-- DatePicker para seleccionar la fecha -->
-            <DatePicker x:Name="dtFecha" Date="{Binding Fecha, Mode=TwoWay}"/>
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+              
+                <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}"/>
+               
+                <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}"  />
+            </FlexLayout>
 
-            <!-- TimePicker para seleccionar la hora -->
-            <TimePicker x:Name="dtHora"  />
 
+
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                <Label Text="Seleccione la hora" TextColor="Black" FontSize="16" HorizontalOptions="Center" />
+                <Label Text="Seleccione la hora" TextColor="Black" FontSize="16" HorizontalOptions="Center" />
+            </FlexLayout>
+
+            <!-- FlexLayout para alinear horizontalmente el DatePicker y el TimePicker -->
+            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                <!-- Calendario (DatePicker) -->
+                <DatePicker x:Name="dtFecha" TextColor="Black" FlexLayout.AlignSelf="Start" Margin="0,0,0,0" />
+                <!-- Reloj (TimePicker) -->
+                <TimePicker x:Name="dtHora" TextColor="Black" FlexLayout.AlignSelf="End" Margin="0,0,0,0" />
+            </FlexLayout>
+            
             <Label x:Name="lbAudio" />
             <Button  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
 
          
             <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
+            <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Gray"/>
+            <Button Text="Guardar" Clicked="BtnGuardar_Clicked" Command="{Binding insertCommand}"/>
             <Image Source="{Binding ImageData}" WidthRequest="50" HeightRequest="50" />
             <Label Text="{Binding ImageName}" VerticalOptions="Center" />
-            <Button Text="Guardar" Clicked="BtnGuardar_Clicked" Command="{Binding insertCommand}"/>
+           
 
         </StackLayout>
     </ContentPage.Content>

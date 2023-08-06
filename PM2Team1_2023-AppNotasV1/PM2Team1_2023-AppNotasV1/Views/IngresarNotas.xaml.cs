@@ -68,6 +68,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 {
                     // Obtener la ruta de la foto capturada
                     filePath = photo.Path;
+                    imageField.Source = ImageSource.FromFile(filePath);
 
                 }
             }
