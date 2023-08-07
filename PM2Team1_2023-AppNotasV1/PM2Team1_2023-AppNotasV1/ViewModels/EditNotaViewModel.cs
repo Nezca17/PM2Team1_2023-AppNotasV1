@@ -147,7 +147,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 Detalles = Detalles,
                 Fecha = Fecha,
                 FechaIngreso = FechaIngreso,
-                isRecordatorio=isRecordatorio,
+                IsRecordatorio = IsRecordatorio,
                 Hora = Hora,
                 RutaAudioFile = RutaAudioFile,
                 RutaImagenFile = RutaImagenFile,
@@ -180,7 +180,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             Titulo = _nota.Titulo;
             Detalles = _nota.Detalles;
             FechaIngreso = _nota.FechaIngreso;
-            isRecordatorio = _nota.isRecordatorio;
+            IsRecordatorio = _nota.IsRecordatorio;
             Fecha = _nota.Fecha;
             Hora = _nota.Hora;
             audioFile = _nota.audioFile;

@@ -52,7 +52,7 @@
            
 
             <Button x:Name="btnRefresh" Command="{Binding RefreshCommand}" Text="Refresh"/>
-            <Button x:Name="btnActualizar" Text="Actualizar/eliminar"/>
+            <Button x:Name="btnAtras" Text="Atras" Clicked="btnAtras_Clicked"/>
         </StackLayout>
 
  

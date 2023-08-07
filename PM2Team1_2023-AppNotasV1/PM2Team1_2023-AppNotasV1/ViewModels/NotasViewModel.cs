@@ -76,6 +76,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string fechaConvertido ;
         public Stream streamFoto;
         public string txtRutaImagenFile;
+        public string txtRutaAudioFile;
         #endregion
 
 
@@ -92,6 +93,11 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             get { return txtRutaImagenFile; }
             set { SetValue(ref txtRutaImagenFile, value); }
+        }
+        public string RutaAudioFile
+        {
+            get { return txtRutaAudioFile; }
+            set { SetValue(ref txtRutaAudioFile, value); }
         }
 
         public INavigation Navigation { get; set; }
@@ -227,12 +233,11 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                     Titulo = txtTitulo,
                     Detalles = txtDetalles,
                     FechaIngreso = txtfecha.Date,
-                    isRecordatorio = txtIsRecordatorio,
+                    IsRecordatorio = txtIsRecordatorio,
                     Fecha = txtfecha.Date,
                     Hora = txtHora,
                     RutaImagenFile = txtRutaImagenFile,
-                 //   audioFile = txtaudioFile,
-                 //     ImagenFile = txtImagenFile,
+                    RutaAudioFile = txtRutaAudioFile,
                     longitud = double.Parse(txtlongitud),
                     latitude = double.Parse(txtLatitude)
 

@@ -14,7 +14,7 @@
            
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
                 <Label Text="Es un recordatorio?" TextColor="White"></Label>
-                <Switch x:Name="switch" OnColor="AliceBlue" ThumbColor="AntiqueWhite" ></Switch>
+                <Switch x:Name="switch" OnColor="AliceBlue" ThumbColor="AntiqueWhite" IsToggled="{Binding IsRecordatorio, Mode=TwoWay}" ></Switch>
             </FlexLayout>
 
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
@@ -45,9 +45,10 @@
             </FlexLayout>
             
             <Label x:Name="lbAudio" />
-            <Button  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
+            <Button x:Name="btnGrabarAudio"  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
+            <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
+            <ProgressBar x:Name="progressBar2"/>
 
-         
             <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
             <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Gray"/>
             <Label x:Name="lbRutaFirebase" Text="{Binding RutaImagenFile, Mode=TwoWay}" IsVisible="false"></Label>

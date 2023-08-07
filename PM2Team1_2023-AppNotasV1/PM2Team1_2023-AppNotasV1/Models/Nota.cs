@@ -12,7 +12,7 @@ namespace PM2Team1_2023_AppNotasV1.Models
         public string Titulo { get; set; }
         public string Detalles { get; set; }
         public DateTime FechaIngreso { get; set; }    
-        public bool isRecordatorio { get; set; }
+        public bool IsRecordatorio { get; set; }
         public DateTime Fecha { get; set; }
         public TimeSpan Hora { get; set; }
         public byte[] audioFile { get; set; }

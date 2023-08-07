@@ -33,7 +33,7 @@ namespace PM2Team1_2023_AppNotasV1.Services
                     Titulo = Item.Object.Titulo,
                     Detalles = Item.Object.Detalles,
                     FechaIngreso = Item.Object.FechaIngreso,
-                    isRecordatorio = Item.Object.isRecordatorio,
+                    IsRecordatorio = Item.Object.IsRecordatorio,
                     Fecha = Item.Object.Fecha,
                     Hora = Item.Object.Hora,
                     audioFile = Item.Object.audioFile,
@@ -54,11 +54,11 @@ namespace PM2Team1_2023_AppNotasV1.Services
                 Titulo = _Nota.Titulo,
                 Detalles = _Nota.Detalles,
                 FechaIngreso = _Nota.FechaIngreso,
-                isRecordatorio = _Nota.isRecordatorio,
+                IsRecordatorio = _Nota.IsRecordatorio,
                 Fecha = _Nota.Fecha,
                 Hora = _Nota.Hora,
                 RutaImagenFile = _Nota.RutaImagenFile,
-                ImagenFile = _Nota.ImagenFile,
+                RutaAudioFile = _Nota.RutaAudioFile,
                 longitud = _Nota.longitud,
                 latitude = _Nota.latitude,
 
@@ -75,7 +75,7 @@ namespace PM2Team1_2023_AppNotasV1.Services
             await firebase.Child("Notas")
                 .Child(toUpdateNota.Key)
                 .PutAsync(new Nota() { Id = _Nota.Id, Titulo = _Nota.Titulo, Detalles = _Nota.Detalles, FechaIngreso = _Nota.FechaIngreso, 
-                    audioFile = _Nota.audioFile, isRecordatorio = _Nota.isRecordatorio, Fecha = _Nota.Fecha, Hora= _Nota.Hora,
+                    audioFile = _Nota.audioFile, IsRecordatorio = _Nota.IsRecordatorio, Fecha = _Nota.Fecha, Hora= _Nota.Hora,
                     ImagenFile = _Nota.audioFile, longitud = _Nota.longitud, latitude = _Nota.latitude
                 });
 

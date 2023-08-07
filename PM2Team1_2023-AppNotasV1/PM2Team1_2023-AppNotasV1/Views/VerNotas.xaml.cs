@@ -45,6 +45,12 @@ namespace PM2Team1_2023_AppNotasV1.Views
             
            
         }
+
+        private async void btnAtras_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new Dashboard());
+
+        }
     }
 
     
