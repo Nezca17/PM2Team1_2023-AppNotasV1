@@ -17,6 +17,8 @@ using System.IO;
 using Path = System.IO.Path;
 
 using PM2Team1_2023_AppNotasV1.Converters;
+using System.Runtime.InteropServices;
+using Firebase.Storage;
 
 namespace PM2Team1_2023_AppNotasV1.Views
 {
@@ -33,17 +35,57 @@ namespace PM2Team1_2023_AppNotasV1.Views
         public IngresarNotas()
         {
             InitializeComponent();
-           // NotasViewModel.LoadData();
             BindingContext = new NotasViewModel();
             converter = new ConvertStreamToByteArray();
         }
+        public async Task<string> TomarFoto(Stream fotoFile, string nombre)
+        {
+            try
+            {
 
-        private async void AgregarFotografia_Clicked(object sender, EventArgs e)
+                var photo = fotoFile;
+
+                if (photo != null)
+                {
+                    var task = new FirebaseStorage("pm2team1-2023.appspot.com", new FirebaseStorageOptions
+                    {
+
+                        ThrowOnCancel = true
+
+                    }).Child("Notas").Child(nombre).PutAsync(photo);
+
+                    task.Progress.ProgressChanged += (s, args) =>
+                    {
+                        progressBar.Progress = args.Percentage;
+                    };
+
+                    var dowloadlink = await task;
+
+                    return dowloadlink;
+                }
+                else
+                {
+                    return "No se envio";
+                }
+
+              
+
+            }
+            catch (Exception e)
+            {
+
+
+                await App.Current.MainPage.DisplayAlert("Aviso", $"{e}", "Ok");
+                return "N/A";
+            }
+        }
+            private async void AgregarFotografia_Clicked(object sender, EventArgs e)
         {
             //    await Navigation.PushAsync(new IngresarNotas());
 
             try
             {
+                btnGuardar.IsEnabled=false;
                 // Verificar si se otorgó el permiso de cámara
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {
@@ -77,7 +119,9 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 }
                 var stream = photo.GetStream();
 
-             await   NotasViewModel.TomarFoto(converter.ConvertStreamToByteArrayMethod(stream)) ;
+                //  NotasViewModel.StreamFoto = stream;
+                lbRutaFirebase.Text= await TomarFoto(stream, photo.OriginalFilename) ;
+                btnGuardar.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -87,6 +131,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
 
         }
+
 
 
 

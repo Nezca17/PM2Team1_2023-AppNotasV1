@@ -57,7 +57,7 @@ namespace PM2Team1_2023_AppNotasV1.Services
                 isRecordatorio = _Nota.isRecordatorio,
                 Fecha = _Nota.Fecha,
                 Hora = _Nota.Hora,
-                audioFile = _Nota.audioFile,
+                RutaImagenFile = _Nota.RutaImagenFile,
                 ImagenFile = _Nota.ImagenFile,
                 longitud = _Nota.longitud,
                 latitude = _Nota.latitude,

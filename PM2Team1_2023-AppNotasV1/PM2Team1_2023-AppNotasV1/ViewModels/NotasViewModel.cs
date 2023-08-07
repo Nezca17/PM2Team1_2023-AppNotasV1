@@ -19,6 +19,8 @@ using Path = System.IO.Path;
 using System.Collections.ObjectModel;
 using PM2Team1_2023_AppNotasV1.Converters;
 using Acr.UserDialogs;
+using Firebase.Storage;
+using System.ComponentModel;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -72,12 +74,26 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public bool isRefreshing = false;
         public ObservableCollection<Nota> listViewSource1;
         public string fechaConvertido ;
+        public Stream streamFoto;
+        public string txtRutaImagenFile;
         #endregion
 
 
 
 
         #region Properties
+
+        public Stream StreamFoto
+        {
+            get { return streamFoto; }
+            set { SetValue(ref streamFoto, value); } 
+        }
+        public string RutaImagenFile
+        {
+            get { return txtRutaImagenFile; }
+            set { SetValue(ref txtRutaImagenFile, value); }
+        }
+
         public INavigation Navigation { get; set; }
         public Guid Id
         {
@@ -205,6 +221,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             try
             {
+                
                 var nota = new Nota
                 {
                     Titulo = txtTitulo,
@@ -213,25 +230,21 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                     isRecordatorio = txtIsRecordatorio,
                     Fecha = txtfecha.Date,
                     Hora = txtHora,
+                    RutaImagenFile = txtRutaImagenFile,
                  //   audioFile = txtaudioFile,
-               //     ImagenFile = txtImagenFile,
+                 //     ImagenFile = txtImagenFile,
                     longitud = double.Parse(txtlongitud),
                     latitude = double.Parse(txtLatitude)
 
                 };
 
                 await firebaseHelper.AddNota(nota);
+               
+
                 await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
                 await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
 
                
-
-                // this.IsRefreshing = true;
-                //await Task.Delay(1000);
-
-                // await LoadData();
-
-                //this.IsRefreshing = false;
             }
             catch (Exception ex)
             {
@@ -295,14 +308,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             }
         }
 
-        public async Task TomarFoto(byte[] fotoFile) {
-
-            ImagenFile =  fotoFile; 
-        }
-
-
-
-
+ 
         #endregion
 
 

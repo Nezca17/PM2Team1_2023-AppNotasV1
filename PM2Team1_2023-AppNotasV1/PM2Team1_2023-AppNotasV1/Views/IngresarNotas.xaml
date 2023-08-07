@@ -50,7 +50,10 @@
          
             <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
             <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Gray"/>
-            <Button Text="Guardar" Clicked="BtnGuardar_Clicked" Command="{Binding insertCommand}"/>
+            <Label x:Name="lbRutaFirebase" Text="{Binding RutaImagenFile, Mode=TwoWay}" IsVisible="false"></Label>
+            <ProgressBar x:Name="progressBar"/>
+
+            <Button x:Name="btnGuardar" Text="Guardar" Clicked="BtnGuardar_Clicked" Command="{Binding insertCommand}"/>
             <Image Source="{Binding ImagenFile, Mode=TwoWay}" WidthRequest="50" HeightRequest="50"  />
             <!--<Label Text="{Binding ImageName}" VerticalOptions="Center" />-->
 

@@ -16,10 +16,19 @@ public partial class Dashboard : ContentPage
         private IFirebaseAuthService _firebaseService;
 
         public Dashboard()
-    {
+        {
         InitializeComponent();
             _firebaseService = DependencyService.Get<IFirebaseAuthService>();
    
+        }
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if (_firebaseService.IsUserSigned()==false)
+            {
+                await Navigation.PushAsync(new LoginPage());
+            }
+
         }
 
         private async void BtnAddNotasView_Clicked(object sender, EventArgs e)

@@ -28,6 +28,18 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
             });
 
+
+
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            if (_firebaseService.IsUserSigned())
+            {
+                await Navigation.PushAsync(new Dashboard());
+            }
+
         }
 
         private async Task LoginCommandExecute(string Username, string Password)
