@@ -7,29 +7,34 @@
              >
     <ContentPage.Content>
         <StackLayout>
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
 
-                <Label Text="Actualizar/Eliminas una Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
-                <Entry x:Name="txtactTitulo" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
-                <Editor x:Name="txtactDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding txtDetalles, Mode=TwoWay}" PlaceholderColor="White" />
-                <Switch x:Name="swEsRecordatorio"></Switch>
-                <DatePicker x:Name="dtpActFecha"/>
-                <TimePicker x:Name="dtActHora" />
-                <Entry x:Name="txtactLongitud" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
-                <Entry x:Name="txtactLatitude" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
+            <Label Text="Actualizar/Eliminas una Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
+            <Label Text="Titulo"/>
+            <Entry x:Name="txtactTitulo" Text="{Binding txtTitulo}" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
+            <Label Text="Detalles"/>
+            <Editor x:Name="txtactDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding txtDetalles, Mode=TwoWay}" PlaceholderColor="White" />
 
+            <Label Text="¿Es un Recordatorio?"/>
+            <Switch x:Name="swEsRecordatorio" IsToggled="{Binding IsRecordatorio}"></Switch>
+            <Label Text="Fecha y Hora del recordatorio"/>
+            <DatePicker x:Name="dtpActFecha" Date="{Binding dtFecha}"/>
+            <TimePicker x:Name="dtActHora" Time="{Binding timHora}" />
+            <Label Text="Datos de Localizacion"/>
+            <Entry x:Name="txtactLongitud" Text="{Binding txtLongitud}" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
+            <Entry x:Name="txtactLatitude" Text="{Binding txtLatitude}" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
 
-            </FlexLayout>
 
             <FlexLayout>
-                <Image x:Name="imageActField" WidthRequest="120" BackgroundColor="Gray"/>
-                <Button Text="Cambiar Imagen" Command=""></Button>
+                <Image x:Name="imageActField" Source="{Binding txtRutaImagenFile}" WidthRequest="120" BackgroundColor="Gray"/>
+                
             </FlexLayout>
+            <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen" ></Button>
             <FlexLayout>
-                <Label Text="Estado del Audio"></Label>
-                <Button Text="Cambiar el Audio" Command=""></Button>
+                <Label Text="Estado del Audio" ></Label>
+                
             </FlexLayout>
-
+            <Button x:Name="btnActualizarAudio" Text="Cambiar el Audio"  Clicked="btnActualizarAudio_Clicked"></Button>
+            <Label Text="" VerticalTextAlignment="Center"  WidthRequest="100"></Label>
             <Button Text="Actualizar" Command="{Binding UpdateCommand}"></Button>
             <Button Text="Borrar" Command="{Binding DeleteCommand}"></Button>
 

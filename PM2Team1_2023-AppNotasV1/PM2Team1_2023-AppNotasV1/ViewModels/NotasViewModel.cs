@@ -18,10 +18,11 @@ using System.IO;
 using Path = System.IO.Path;
 using System.Collections.ObjectModel;
 using PM2Team1_2023_AppNotasV1.Converters;
+using Acr.UserDialogs;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
-    public class NotasViewModel :BaseViewModel
+    public class NotasViewModel : BaseViewModel
 {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
         private ImageSource imageData;
@@ -46,10 +47,11 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             GetLocation();
             LoadData();
         
-        } 
+        }
 
 
         #region Attributes
+        public Guid ID;
         public string txtTitulo;
         public string txtDetalles;
         public DateTime txtFechaIngreso;
@@ -62,7 +64,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string txtlongitud;
         public string txtLatitude;
         public bool isRefreshing = false;
-        public object listViewSource1;
+        public ObservableCollection<Nota> listViewSource1;
         public string fechaConvertido ;
         #endregion
 
@@ -70,6 +72,12 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         
 
         #region Properties
+
+        public Guid Id
+        {
+            get { return ID; }
+        }
+
         public string Titulo
         {
             get { return txtTitulo; }
@@ -142,7 +150,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             set { SetValue(ref isRefreshing, value); }
         }
 
-        public object ListViewSource
+        public ObservableCollection<Nota> ListViewSource
         {
             get { return this.listViewSource1; }
             set
@@ -169,7 +177,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             get
             {
-                return new RelayCommand(LoadData);
+                return new RelayCommand(LoadData2);
 
             }
         }
@@ -178,7 +186,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             get
             {
-                return new RelayCommand(LoadData);
+                return new RelayCommand(LoadData2);
 
             }
         }
@@ -207,14 +215,17 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 };
 
                 await firebaseHelper.AddNota(nota);
+                await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
+                await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
 
-                
-                this.IsRefreshing = true;
-                await Task.Delay(1000);
+               
 
-               // await LoadData();
+                // this.IsRefreshing = true;
+                //await Task.Delay(1000);
 
-                this.IsRefreshing = false;
+                // await LoadData();
+
+                //this.IsRefreshing = false;
             }
             catch (Exception ex)
             {
@@ -228,16 +239,31 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             return fecha.ToString("dd/MM/yyyy");
         }
 
-        public async void LoadData()
+        public async Task<ObservableCollection<Nota>> LoadData()
         {
 
 
             this.IsRefreshing = true;
-            this.ListViewSource = await firebaseHelper.GetNotas();
+            await Task.Delay(1000);
+            var notas = await firebaseHelper.GetNotas();
+            await Task.Delay(1000);
+            ListViewSource = new ObservableCollection<Nota>(notas);
             this.IsRefreshing = false;
+            return ListViewSource;
         }
 
+        public async void LoadData2()
+        {
 
+
+            this.IsRefreshing = true;
+            
+            var notas = await firebaseHelper.GetNotas();
+            await Task.Delay(1000);
+            ListViewSource = new ObservableCollection<Nota>(notas);
+            this.IsRefreshing = false;
+           
+        }
 
 
         public async void GetLocation()

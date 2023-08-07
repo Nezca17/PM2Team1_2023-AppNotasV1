@@ -11,7 +11,7 @@ using Xamarin.Forms;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
-    public class EditNotaViewModel :BaseViewModel
+    public class EditNotaViewModel : BaseViewModel
     {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
 

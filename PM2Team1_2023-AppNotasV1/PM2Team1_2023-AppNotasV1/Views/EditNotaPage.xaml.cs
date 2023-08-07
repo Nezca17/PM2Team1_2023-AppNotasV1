@@ -27,5 +27,11 @@ public partial class EditNotaPage : ContentPage
             BindingContext = new EditNotaViewModel(_nota);
         }
 
-}
+
+
+        private void btnActualizarAudio_Clicked(object sender, EventArgs e)
+        {
+
+        }
+    }
 }
