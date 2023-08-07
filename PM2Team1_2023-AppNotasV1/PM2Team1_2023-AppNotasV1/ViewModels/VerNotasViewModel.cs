@@ -1,67 +1,35 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using PM2Team1_2023_AppNotasV1.Models;
 using PM2Team1_2023_AppNotasV1.Services;
 using PM2Team1_2023_AppNotasV1.Views;
 using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
-using System;
-using System.IO;
-using Path = System.IO.Path;
-using System.Collections.ObjectModel;
-using PM2Team1_2023_AppNotasV1.Converters;
-using Acr.UserDialogs;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
-    public class NotasViewModel : BaseViewModel
+    public class VerNotasViewModel : BaseViewModel
 {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
-        private ImageSource imageData;
 
-        ConvertStreamToByteArray convert = new ConvertStreamToByteArray();
-/*
-        public ImageSource ImageData
+
+        public VerNotasViewModel()
         {
-            get => imageData;
-            set { SetValue(ref imageData, value); }
-        }
-        private string imageName;
-        public string ImageName
-        {
-            get => imageName;
-            set { SetValue(ref imageName, value); }
-        }*/
-
-
-        public  NotasViewModel() {
-
-            GetLocation();
-            LoadData();
-        
-        }
-
-        public NotasViewModel(INavigation navigation)
-        {
-
-            Navigation = navigation;
             LoadData();
         }
-       
+
+
         #region Attributes
         public Guid ID;
         public string txtTitulo;
         public string txtDetalles;
         public DateTime txtFechaIngreso;
-       // public ObservableCollection<DateTime> fechaCo;
+        // public ObservableCollection<DateTime> fechaCo;
         public bool txtIsRecordatorio;
         public DateTime txtfecha;
         public TimeSpan txtHora;
@@ -71,7 +39,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string txtLatitude;
         public bool isRefreshing = false;
         public ObservableCollection<Nota> listViewSource1;
-        public string fechaConvertido ;
+        public string fechaConvertido;
         #endregion
 
 
@@ -98,7 +66,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string FechaConvertida
         {
             get { return ConvertirFechaTexto(this.txtfecha.Date); }
-            
+
         }
 
 
@@ -161,7 +129,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             get { return this.listViewSource1; }
             set
             {
-                SetValue(ref this.listViewSource1, value );
+                SetValue(ref this.listViewSource1, value);
             }
 
         }
@@ -170,14 +138,6 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         #endregion
 
         #region Commands
-        public ICommand insertCommand
-        {
-            get
-            {
-                return new RelayCommand(InsertMethod);
-
-            }
-        }
 
         public ICommand RefreshCommand
         {
@@ -201,51 +161,12 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         #region Methods
 
-        private async void InsertMethod()
-        {
-            try
-            {
-                var nota = new Nota
-                {
-                    Titulo = txtTitulo,
-                    Detalles = txtDetalles,
-                    FechaIngreso = txtfecha.Date,
-                    isRecordatorio = txtIsRecordatorio,
-                    Fecha = txtfecha.Date,
-                    Hora = txtHora,
-                 //   audioFile = txtaudioFile,
-               //     ImagenFile = txtImagenFile,
-                    longitud = double.Parse(txtlongitud),
-                    latitude = double.Parse(txtLatitude)
-
-                };
-
-                await firebaseHelper.AddNota(nota);
-                await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
-                await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
-
-               
-
-                // this.IsRefreshing = true;
-                //await Task.Delay(1000);
-
-                // await LoadData();
-
-                //this.IsRefreshing = false;
-            }
-            catch (Exception ex)
-            {
-
-                Console.WriteLine(ex.ToString());
-            }
-
-        }
-        public string  ConvertirFechaTexto(DateTime fecha)
+        public string ConvertirFechaTexto(DateTime fecha)
         {
             return fecha.ToString("dd/MM/yyyy");
         }
 
-        public async Task<ObservableCollection<Nota>> LoadData()
+        public async Task LoadData()
         {
 
 
@@ -254,7 +175,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             await Task.Delay(1000);
             ListViewSource = new ObservableCollection<Nota>(notas);
             this.IsRefreshing = false;
-            return ListViewSource;
+           // return ListViewSource;
         }
 
         public async void LoadData2()
@@ -262,42 +183,21 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
 
             this.IsRefreshing = true;
-            
+
             var notas = await firebaseHelper.GetNotas();
             await Task.Delay(1000);
             ListViewSource = new ObservableCollection<Nota>(notas);
             this.IsRefreshing = false;
-           
+
         }
 
 
-        public async void GetLocation()
+
+
+        public async Task TomarFoto(byte[] fotoFile)
         {
-            try
-            {
-                var request = new GeolocationRequest(GeolocationAccuracy.Medium);
-                var location = await Geolocation.GetLocationAsync(request);
 
-                if (location != null)
-                {
-             
-                    this.Latitude = location.Latitude.ToString();
-                    this.Longitud = location.Longitude.ToString();
-                }
-                else
-                {
-                
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.ToString());
-            }
-        }
-
-        public async Task TomarFoto(byte[] fotoFile) {
-
-            ImagenFile =  fotoFile; 
+            ImagenFile = fotoFile;
         }
 
 
@@ -306,8 +206,5 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         #endregion
 
 
-
-
     }
 }
-

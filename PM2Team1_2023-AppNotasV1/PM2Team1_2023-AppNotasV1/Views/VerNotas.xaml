@@ -2,24 +2,24 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.VerNotas"
-              xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" x:DataType="viewmodels:NotasViewModel"
-            
+                Title="Lista de Notas"
              >
     <ContentPage.Content>
         <StackLayout>
+
+            
+            
             <ListView
                 x:Name="ListViewNotas"
                 ItemsSource="{Binding ListViewSource, Mode=TwoWay}"
-                HasUnevenRows="True"
-                IsPullToRefreshEnabled="True"
                 IsRefreshing="{Binding IsRefreshing}"
-                ItemSelected="ListViewNotas_ItemSelected"
-                >
+                ItemSelected="ListViewNotas_ItemSelected">
               
                 <ListView.ItemTemplate>
 
                     <DataTemplate>
 
+                       
                         <ViewCell >
 
                             <Grid>
@@ -28,28 +28,28 @@
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="auto"/>
+                                    
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
                                     <ColumnDefinition Width="auto"/>
                                 </Grid.ColumnDefinitions>
-
-                                <Label Grid.Column="1" Grid.Row="0" Text="Elemento"  FontSize="20"></Label>
+                                
                                 <Label Grid.Column="2" Grid.Row="0" Text="{Binding Titulo}"  FontSize="20"></Label>
                                 <Label Grid.Column="3" Grid.Row="0" Text="{Binding Detalles}" FontSize="20" ></Label>
                                 <Label Grid.Column="4" Grid.Row="0" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="20" ></Label>
+                                <Image Grid.Column="5" Grid.Row="0" Source="{Binding ImagenFile}" WidthRequest="50" HeightRequest="50" />
 
                             </Grid>
 
                         </ViewCell>
-
 
                     </DataTemplate>
                     
                 </ListView.ItemTemplate>
 
             </ListView>
+           
 
             <Button x:Name="btnRefresh" Command="{Binding RefreshCommand}" Text="Refresh"/>
             <Button x:Name="btnActualizar" Text="Actualizar/eliminar"/>
