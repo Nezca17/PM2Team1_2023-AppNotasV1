@@ -23,6 +23,8 @@ namespace PM2Team1_2023_AppNotasV1.Models
         public string RutaAudioFile { get; set; }
         public string RutaImagenFile { get; set; }
 
+        public Uri RutaAudioFileUri { get; set; }
+        public Uri RutaImagenFileUri { get; set; }
 
     }
 }

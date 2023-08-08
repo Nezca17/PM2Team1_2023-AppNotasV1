@@ -23,7 +23,7 @@ namespace PM2Team1_2023_AppNotasV1.Services
 
         public async Task<List<Nota>> GetNotas()
         {
-
+           // Uri conversor;
             return (await firebase
                 .Child("Notas")
                 .OnceAsync<Nota>()).Select(Item => new Nota
@@ -36,10 +36,12 @@ namespace PM2Team1_2023_AppNotasV1.Services
                     IsRecordatorio = Item.Object.IsRecordatorio,
                     Fecha = Item.Object.Fecha,
                     Hora = Item.Object.Hora,
-                    audioFile = Item.Object.audioFile,
-                    ImagenFile = Item.Object.ImagenFile,
+                    RutaImagenFile = Item.Object.RutaImagenFile,
+                    RutaAudioFile = Item.Object.RutaAudioFile,
                     longitud = Item.Object.longitud,
                     latitude = Item.Object.latitude,
+                    RutaAudioFileUri = new Uri(Item.Object.RutaAudioFile),
+                    RutaImagenFileUri =  new Uri(Item.Object.RutaImagenFile)
 
                 }).ToList();
 
@@ -75,8 +77,8 @@ namespace PM2Team1_2023_AppNotasV1.Services
             await firebase.Child("Notas")
                 .Child(toUpdateNota.Key)
                 .PutAsync(new Nota() { Id = _Nota.Id, Titulo = _Nota.Titulo, Detalles = _Nota.Detalles, FechaIngreso = _Nota.FechaIngreso, 
-                    audioFile = _Nota.audioFile, IsRecordatorio = _Nota.IsRecordatorio, Fecha = _Nota.Fecha, Hora= _Nota.Hora,
-                    ImagenFile = _Nota.audioFile, longitud = _Nota.longitud, latitude = _Nota.latitude
+                    RutaImagenFile = _Nota.RutaImagenFile, IsRecordatorio = _Nota.IsRecordatorio, Fecha = _Nota.Fecha, Hora= _Nota.Hora,
+                    RutaAudioFile = _Nota.RutaAudioFile, longitud = _Nota.longitud, latitude = _Nota.latitude
                 });
 
 

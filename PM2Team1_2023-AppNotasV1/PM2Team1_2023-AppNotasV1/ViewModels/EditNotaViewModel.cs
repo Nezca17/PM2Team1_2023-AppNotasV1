@@ -29,6 +29,8 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         private double latitude;
         private string RutaAudioFile;
         private string RutaImagenFile;
+        public Uri txtRutaAudioFileUri;
+        public Uri txtRutaImagenFileUri;
 
         #endregion
 
@@ -44,6 +46,16 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             get { return Titulo; }
             set { SetValue(ref this.Titulo, value); }
+        }
+        public Uri RutaImagenFileUri
+        {
+            get { return txtRutaImagenFileUri; }
+            set { SetValue(ref txtRutaImagenFileUri, value); }
+        }
+        public Uri RutaAudioFileUri
+        {
+            get { return txtRutaAudioFileUri; }
+            set { SetValue(ref txtRutaAudioFileUri, value); }
         }
 
         public string txtDetalles
@@ -106,7 +118,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             set { SetValue(ref this.RutaAudioFile, value); }
         }
 
-        public string txtRutaImagenFile
+        public string TxtRutaImagenFile
         {
             get { return RutaImagenFile; }
             set { SetValue(ref this.RutaImagenFile, value); }
@@ -183,10 +195,13 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             IsRecordatorio = _nota.IsRecordatorio;
             Fecha = _nota.Fecha;
             Hora = _nota.Hora;
-            audioFile = _nota.audioFile;
-            ImagenFile = _nota.ImagenFile;
+            RutaAudioFile = _nota.RutaAudioFile;
+            RutaImagenFile = _nota.RutaImagenFile;
+            RutaAudioFileUri = new Uri(_nota.RutaAudioFile);
+            RutaImagenFileUri = new Uri(_nota.RutaImagenFile);
             longitud = _nota.longitud;
             latitude = _nota.latitude;
+
 
         }
 

@@ -77,6 +77,8 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public Stream streamFoto;
         public string txtRutaImagenFile;
         public string txtRutaAudioFile;
+        public Uri txtRutaAudioFileUri;
+        public Uri txtRutaImagenFileUri;
         #endregion
 
 
@@ -98,6 +100,16 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             get { return txtRutaAudioFile; }
             set { SetValue(ref txtRutaAudioFile, value); }
+        }
+        public Uri RutaImagenFileUri
+        {
+            get { return txtRutaImagenFileUri; }
+            set { SetValue(ref txtRutaImagenFileUri, value); }
+        }
+        public Uri RutaAudioFileUri
+        {
+            get { return txtRutaAudioFileUri; }
+            set { SetValue(ref txtRutaAudioFileUri, value); }
         }
 
         public INavigation Navigation { get; set; }

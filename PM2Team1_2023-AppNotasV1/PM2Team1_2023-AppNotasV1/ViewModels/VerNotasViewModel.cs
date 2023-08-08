@@ -40,6 +40,10 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public bool isRefreshing = false;
         public ObservableCollection<Nota> listViewSource1;
         public string fechaConvertido;
+        public string txtRutaImagenFile;
+        public string txtRutaAudioFile;
+        public Uri txtRutaAudioFileUri;
+        public Uri txtRutaImagenFileUri;
         #endregion
 
 
@@ -47,6 +51,26 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         #region Properties
         public INavigation Navigation { get; set; }
+        public string RutaImagenFile
+        {
+            get { return txtRutaImagenFile; }
+            set { SetValue(ref txtRutaImagenFile, value); }
+        }
+        public string RutaAudioFile
+        {
+            get { return txtRutaAudioFile; }
+            set { SetValue(ref txtRutaAudioFile, value); }
+        }
+        public Uri RutaImagenFileUri
+        {
+            get { return txtRutaImagenFileUri; }
+            set { SetValue(ref txtRutaImagenFileUri, value); }
+        }
+        public Uri RutaAudioFileUri
+        {
+            get { return txtRutaAudioFileUri; }
+            set { SetValue(ref txtRutaAudioFileUri, value); }
+        }
         public Guid Id
         {
             get { return ID; }
@@ -68,8 +92,6 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             get { return ConvertirFechaTexto(this.txtfecha.Date); }
 
         }
-
-
         public DateTime FechaIngreso
         {
             get { return txtFechaIngreso.Date; }
@@ -133,8 +155,6 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             }
 
         }
-
-        // Resto del ViewModel...
         #endregion
 
         #region Commands

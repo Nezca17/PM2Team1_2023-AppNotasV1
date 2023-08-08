@@ -22,6 +22,7 @@ using Android.Net.Wifi.Aware;
 using Android;
 using Android.Content.PM;
 using Xamarin.Essentials;
+using System.Data.SqlTypes;
 
 namespace PM2Team1_2023_AppNotasV1.Views
 {
@@ -217,8 +218,8 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
                 var file = recorder.GetAudioFileStream();
 
-
-                 lbRutaAudio.Text = await EnviarAudio(file, txtTitu.Text + "audio.wav");
+                Uri uri = new Uri(await EnviarAudio(file, txtTitu.Text + "audio.wav"));
+                 lbRutaAudio.Text = uri.ToString(); 
 
             }
             catch (Exception ex)

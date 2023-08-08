@@ -3,8 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.VerNotas"
                 Title="Lista de Notas"
+             xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters"
              >
+    <ContentPage.Resources>
+        <!-- Define el convertidor de datos -->
+        <converters:StringToUriConverter x:Key="StringToUriConverter" />
+    </ContentPage.Resources>
     <ContentPage.Content>
+
         <StackLayout>
 
             
@@ -38,7 +44,7 @@
                                 <Label Grid.Column="2" Grid.Row="0" Text="{Binding Titulo}"  FontSize="20"></Label>
                                 <Label Grid.Column="3" Grid.Row="0" Text="{Binding Detalles}" FontSize="20" ></Label>
                                 <Label Grid.Column="4" Grid.Row="0" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="20" ></Label>
-                                <Image Grid.Column="5" Grid.Row="0" Source="{Binding ImagenFile}" WidthRequest="50" HeightRequest="50" />
+                                <Image Grid.Column="5" Grid.Row="0" Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}" WidthRequest="50" HeightRequest="50" />
 
                             </Grid>
 
