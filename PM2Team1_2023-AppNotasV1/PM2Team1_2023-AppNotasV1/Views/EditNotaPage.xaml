@@ -41,7 +41,7 @@
             <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen" ></Button>
             <FlexLayout>
                 <Label x:Name="lbEstadoAudio" Text="Estado del Audio" WidthRequest="200"></Label>
-                <Label x:Name="lbUriAudio" Text="{Binding txtRutaAudioFile}" IsVisible="false" ></Label>
+                <Label x:Name="lbUriAudio" Text="{Binding txtRutaAudioFile}" IsVisible="true" ></Label>
 
                 <Button x:Name="btnEscucharAudio" Text="Escuchar Audio"  Clicked="btnEscucharAudio_Clicked"  WidthRequest="200"></Button>
             </FlexLayout>

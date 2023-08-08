@@ -12,6 +12,7 @@ using PM2Team1_2023_AppNotasV1.Droid.Services;
 using Xamarin.Forms;
 using Android.Content;
 
+
 namespace PM2Team1_2023_AppNotasV1.Droid
 {
     [Activity(Label = "PM2Team1_2023_AppNotasV1", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode | ConfigChanges.ScreenLayout | ConfigChanges.SmallestScreenSize )]
@@ -23,8 +24,10 @@ namespace PM2Team1_2023_AppNotasV1.Droid
             base.OnCreate(savedInstanceState);
             IsPlayServicesAvailable();
             InitFirebaseAuth();
+            //CrossMediaManager.Current.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
+
             LoadApplication(new App());
 
         }

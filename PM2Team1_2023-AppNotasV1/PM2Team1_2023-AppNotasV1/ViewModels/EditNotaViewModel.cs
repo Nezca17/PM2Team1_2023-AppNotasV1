@@ -197,8 +197,8 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             Hora = _nota.Hora;
             RutaAudioFile = _nota.RutaAudioFile;
             RutaImagenFile = _nota.RutaImagenFile;
-            RutaAudioFileUri = new Uri(_nota.RutaAudioFile);
-            RutaImagenFileUri = new Uri(_nota.RutaImagenFile);
+            RutaAudioFileUri = _nota.RutaAudioFileUri;
+            RutaImagenFileUri =_nota.RutaImagenFileUri;
             longitud = _nota.longitud;
             latitude = _nota.latitude;
 

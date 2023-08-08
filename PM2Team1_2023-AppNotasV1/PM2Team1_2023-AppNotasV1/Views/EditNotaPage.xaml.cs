@@ -12,6 +12,13 @@ using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Plugin.Media;
+using Plugin.AudioRecorder;
+using MediaManager.Player;
+using MediaManager;
+using Android.Views.Accessibility;
+using MediaManager.Queue;
+using Android.Views.Animations;
 
 namespace PM2Team1_2023_AppNotasV1.Views
 {
@@ -19,6 +26,11 @@ namespace PM2Team1_2023_AppNotasV1.Views
 public partial class EditNotaPage : ContentPage
 {
         PlayAudioService playbites;
+
+        AudioPlayer audioPlayer = new AudioPlayer();
+        
+        
+        
     public EditNotaPage()
     {
         InitializeComponent();
@@ -31,6 +43,10 @@ public partial class EditNotaPage : ContentPage
             InitializeComponent();
             BindingContext = new EditNotaViewModel(_nota);
             playbites =  new PlayAudioService();
+            /*
+            CrossMediaManager.Current.ShuffleMode = ShuffleMode.All;
+            CrossMediaManager.Current.PlayNextOnFailed = true;
+            CrossMediaManager.Current.AutoPlay = true;*/
         }
 
 
@@ -45,17 +61,25 @@ public partial class EditNotaPage : ContentPage
             try
             {
 
+                var audioUrl = lbUriAudio.Text;
+               // var result = false;
+                await CrossMediaManager.Current.Play(audioUrl);
+
+
+                /*
                 byte[] audioFile = await DownloadByteArrayAsync(new Uri(lbUriAudio.Text));
+
+
                 if(audioFile != null)
                 {
                     Console.WriteLine("Bytes descargados: " + audioFile.Length);
                     playbites.Play(audioFile);
-
+                   // audioPlayer.Play();
                 }
                 else
                 {
                     await DisplayAlert("Aviso","No logro descargar el Audio","Ok");
-                }
+                }*/
 
               
             }
@@ -66,14 +90,7 @@ public partial class EditNotaPage : ContentPage
             }
         }
 
-       /* static async Task<byte[]> AudioBytes( Uri AudioURi)
-        {
-            Uri uri = AudioURi;
-            byte[] bytes = await DownloadByteArrayAsync(uri);
-          
-            Console.WriteLine("Bytes descargados: " + bytes.Length);
-            return bytes;
-        }*/
+
 
         static async Task<byte[]> DownloadByteArrayAsync(Uri uri)
         {

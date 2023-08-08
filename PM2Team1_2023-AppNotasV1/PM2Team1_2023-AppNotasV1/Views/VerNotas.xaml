@@ -5,6 +5,7 @@
                 Title="Lista de Notas"
              BackgroundColor="#202120"
              xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters"
+             
              >
     <ContentPage.Resources>
         <!-- Define el convertidor de datos -->
