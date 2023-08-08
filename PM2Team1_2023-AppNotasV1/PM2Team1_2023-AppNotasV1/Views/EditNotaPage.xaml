@@ -3,6 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters"
              x:Class="PM2Team1_2023_AppNotasV1.Views.EditNotaPage"
+            Title="Actualizar o Elimnar una Nota"
+              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             BackgroundColor="#202120"
              >
     <ContentPage.Resources>
         <!-- Define el convertidor de datos -->
@@ -32,14 +35,15 @@
                 <Image x:Name="imageActField" Source="{Binding RutaImagenFileUri}" WidthRequest="200" 
                HeightRequest="200" 
                Aspect="AspectFill"
-               BackgroundColor="Gray"
-            />
+               BackgroundColor="Gray"/>
                 
             </FlexLayout>
             <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen" ></Button>
             <FlexLayout>
-                <Label Text="Estado del Audio" ></Label>
-                
+                <Label x:Name="lbEstadoAudio" Text="Estado del Audio" WidthRequest="200"></Label>
+                <Label x:Name="lbUriAudio" Text="{Binding txtRutaAudioFile}" IsVisible="false" ></Label>
+
+                <Button x:Name="btnEscucharAudio" Text="Escuchar Audio"  Clicked="btnEscucharAudio_Clicked"  WidthRequest="200"></Button>
             </FlexLayout>
             <Button x:Name="btnActualizarAudio" Text="Cambiar el Audio"  Clicked="btnActualizarAudio_Clicked"></Button>
             <Label Text="" VerticalTextAlignment="Center"  WidthRequest="100"></Label>

@@ -78,7 +78,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                     return "No se envio";
                 }
 
-              
+
 
             }
             catch (Exception e)
@@ -115,7 +115,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                     var dowloadlink2 = await task;
                     progressBar2.Progress = 1;
                     return dowloadlink2;
-                    
+
                 }
                 else
                 {
@@ -140,7 +140,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
             try
             {
-                btnGuardar.IsEnabled=false;
+                btnGuardar.IsEnabled = false;
                 // Verificar si se otorgó el permiso de cámara
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {
@@ -175,7 +175,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 var stream = photo.GetStream();
 
                 //  NotasViewModel.StreamFoto = stream;
-                lbRutaFirebase.Text= await TomarFoto(stream, photo.OriginalFilename) ;
+                lbRutaFirebase.Text = await TomarFoto(stream, photo.OriginalFilename);
                 btnGuardar.IsEnabled = true;
             }
             catch (Exception ex)
@@ -196,7 +196,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 var status3 = await Permissions.RequestAsync<Permissions.StorageWrite>();
                 if (status != PermissionStatus.Granted && status2 != PermissionStatus.Granted && status3 != PermissionStatus.Granted)
                 {
-                    return ; // si no tiene los permisos no avanza
+                    return; // si no tiene los permisos no avanza
                 }
 
                 if (!recorder.IsRecording)
@@ -218,8 +218,8 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
                 var file = recorder.GetAudioFileStream();
 
-                Uri uri = new Uri(await EnviarAudio(file, txtTitu.Text + "audio.wav"));
-                 lbRutaAudio.Text = uri.ToString(); 
+                // Uri uri = new Uri();
+                lbRutaAudio.Text = await EnviarAudio(file, txtTitu.Text + "audio.wav");
 
             }
             catch (Exception ex)
@@ -232,23 +232,22 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
         private async void AgregarAudio_Clicked(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 lbAudio.Text = "Grabando";
-                lbAudio.TextColor= Color.Green;
+                lbAudio.TextColor = Color.Green;
                 btnGrabarAudio.Text = "Pausar";
                 await GrabarAudio();
-               
+
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
                 await DisplayAlert("Aviso", $"{ex}", "Ok");
 
             }
         }
-        private async void BtnGuardar_Clicked(object sender, EventArgs e)
-        {
-            //await Navigation.PushAsync(new IngresarNotas());
-        }
+
     }
 }

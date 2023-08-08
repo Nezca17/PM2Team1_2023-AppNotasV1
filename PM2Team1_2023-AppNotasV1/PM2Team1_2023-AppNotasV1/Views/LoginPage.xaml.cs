@@ -53,7 +53,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 else {
                     if (await _firebaseService.SignIn(Username, Password))
                     {
-                        await DisplayAlert("Aviso", "Bienvenido", "Ok");
+                       // await DisplayAlert("Aviso", "Bienvenido", "Ok");
                         await Navigation.PushAsync(new Dashboard());
 
                     }
