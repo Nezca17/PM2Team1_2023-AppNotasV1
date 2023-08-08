@@ -3,28 +3,17 @@ using PM2Team1_2023_AppNotasV1.Models;
 using PM2Team1_2023_AppNotasV1.Services;
 using PM2Team1_2023_AppNotasV1.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Media;
 using System.IO;
-
-
 using PM2Team1_2023_AppNotasV1.Converters;
-using System.Runtime.InteropServices;
 using Firebase.Storage;
 using Plugin.AudioRecorder;
-using Android.Net.Wifi.Aware;
-using Android;
-using Android.Content.PM;
 using Xamarin.Essentials;
-using System.Data.SqlTypes;
 using MediaManager;
-using static Android.Provider.MediaStore;
+using Java.Sql;
 
 namespace PM2Team1_2023_AppNotasV1.Views
 {
@@ -49,6 +38,11 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
                 TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
             };
+            dtFecha.Date = DateTime.Now;
+
+            lbRutaAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
+            lbRutaFirebase.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
+
         }
         public async Task<string> TomarFoto(Stream fotoFile, string nombre)
         {
