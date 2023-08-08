@@ -13,6 +13,9 @@
 			</intent-filter>
 		</receiver>
 		<meta-data android:name="com.google.firebase.messaging.default_notification_icon" android:resource="@android:drawable/ic_menu_save" />
+		<meta-data
+	   android:name="com.google.android.geo.API_KEY"
+	   android:value="AIzaSyBgrgByFBGTr5QGr9gCaXLEwZtbBCLWUIg" />
 	</application>
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

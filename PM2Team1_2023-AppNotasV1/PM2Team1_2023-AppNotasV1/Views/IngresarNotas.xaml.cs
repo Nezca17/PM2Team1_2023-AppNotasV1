@@ -25,6 +25,7 @@ using Xamarin.Essentials;
 using System.Data.SqlTypes;
 using MediaManager;
 using static Android.Provider.MediaStore;
+using Xamarin.Forms.Maps;
 
 namespace PM2Team1_2023_AppNotasV1.Views
 {
@@ -44,6 +45,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
             BindingContext = new NotasViewModel();
             converter = new ConvertStreamToByteArray();
             recorder = new AudioRecorderService
+
             {
                 StopRecordingOnSilence = true, //will stop recording after 2 seconds (default)
                 StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
@@ -269,5 +271,15 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
             }
         }
+
+        private void ObtenerCoordenadas_Clicked(object sender, EventArgs e)
+        {
+            Position selectedPosition = mapView.VisibleRegion.Center;
+
+            // Actualizar los campos de longitud y latitud
+            txtLongi.Text = selectedPosition.Longitude.ToString();
+            txtLatit.Text = selectedPosition.Latitude.ToString();
+        }
+
     }
 }

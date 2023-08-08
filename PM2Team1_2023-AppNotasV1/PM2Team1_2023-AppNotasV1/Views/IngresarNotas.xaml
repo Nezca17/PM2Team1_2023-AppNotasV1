@@ -4,62 +4,69 @@
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
              xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" x:DataType="viewmodels:NotasViewModel"
              x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas"
-             BackgroundColor="#202120">
+             BackgroundColor="#202120"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+>
     <ContentPage.Content>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-            <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
-            <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}" PlaceholderColor="White"/>
-            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding Detalles, Mode=TwoWay}" PlaceholderColor="White" />
-            
-           
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                <Label Text="Es un recordatorio?" TextColor="White"></Label>
-                <Switch x:Name="switch" OnColor="AliceBlue" ThumbColor="AntiqueWhite" IsToggled="{Binding IsRecordatorio, Mode=TwoWay}" ></Switch>
-            </FlexLayout>
-
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                <Label  Text="Longitud: " TextColor="White"/>
-                <Label Text="Latitud: " TextColor="White"/>
-            </FlexLayout>
-
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-
-                <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}" TextColor="White" WidthRequest="150"/>
-
-                <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}" TextColor="White" WidthRequest="150" />
-            </FlexLayout>
+                <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
+                <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}" PlaceholderColor="White"/>
+                <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding Detalles, Mode=TwoWay}" PlaceholderColor="White" />
 
 
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                    <Label Text="Es un recordatorio?" TextColor="White"></Label>
+                    <Switch x:Name="switch" OnColor="AliceBlue" ThumbColor="AntiqueWhite" IsToggled="{Binding IsRecordatorio, Mode=TwoWay}" ></Switch>
+                </FlexLayout>
 
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
-                <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
-            </FlexLayout>
+                <maps:Map x:Name="mapView"
+                          VerticalOptions="FillAndExpand"
+                          HeightRequest="200"
+                          MapType="Street"/>
 
-            <!-- FlexLayout para alinear horizontalmente el DatePicker y el TimePicker -->
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                <!-- Calendario (DatePicker) -->
-                <DatePicker x:Name="dtFecha" Date="{Binding Fecha, Mode=TwoWay}"  FlexLayout.AlignSelf="Start" Margin="0,0,0,0" />
-                <!-- Reloj (TimePicker) -->
-                <TimePicker x:Name="dtHora" Time="{Binding Hora, Mode=TwoWay}" FlexLayout.AlignSelf="End" Margin="0,0,0,0" />
-            </FlexLayout>
-            
-            <Label x:Name="lbAudio" />
-            <Button x:Name="btnGrabarAudio"  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
-            <Button x:Name="btnEscucharAudio"  Text="Escuchar Audio" Clicked="btnEscucharAudio_Clicked" IsEnabled="false"/>
-            <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
-            <ProgressBar x:Name="progressBar2"/>
+                <Button Text="Obtener Coordenadas" Clicked="ObtenerCoordenadas_Clicked"/>
 
-            <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
-            <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Gray"/>
-            <Label x:Name="lbRutaFirebase" Text="{Binding RutaImagenFile, Mode=TwoWay}" IsVisible="false"></Label>
-            <ProgressBar x:Name="progressBar"/>
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                    <Label  Text="Longitud: " TextColor="White"/>
+                    <Label Text="Latitud: " TextColor="White"/>
+                </FlexLayout>
 
-            <Button x:Name="btnGuardar" Text="Guardar"  Command="{Binding insertCommand}"/>
-            <Image Source="{Binding ImagenFile, Mode=TwoWay}" WidthRequest="50" HeightRequest="50"  />
-            <!--<Label Text="{Binding ImageName}" VerticalOptions="Center" />-->
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+
+                    <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}" TextColor="White" WidthRequest="150"/>
+
+                    <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}" TextColor="White" WidthRequest="150" />
+                </FlexLayout>
 
 
-        </StackLayout>
+
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                    <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                    <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                </FlexLayout>
+
+                <!-- FlexLayout para alinear horizontalmente el DatePicker y el TimePicker -->
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                    <!-- Calendario (DatePicker) -->
+                    <DatePicker x:Name="dtFecha" Date="{Binding Fecha, Mode=TwoWay}"  FlexLayout.AlignSelf="Start" Margin="0,0,0,0" />
+                    <!-- Reloj (TimePicker) -->
+                    <TimePicker x:Name="dtHora" Time="{Binding Hora, Mode=TwoWay}" FlexLayout.AlignSelf="End" Margin="0,0,0,0" />
+                </FlexLayout>
+
+                <Label x:Name="lbAudio" />
+                <Button x:Name="btnGrabarAudio"  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
+                <Button x:Name="btnEscucharAudio"  Text="Escuchar Audio" Clicked="btnEscucharAudio_Clicked" IsEnabled="false"/>
+                <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
+                <ProgressBar x:Name="progressBar2"/>
+
+                <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" />
+                <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Gray"/>
+                <Label x:Name="lbRutaFirebase" Text="{Binding RutaImagenFile, Mode=TwoWay}" IsVisible="false"></Label>
+                <ProgressBar x:Name="progressBar"/>
+
+                <Button x:Name="btnGuardar" Text="Guardar"  Command="{Binding insertCommand}"/>
+                <Image Source="{Binding ImagenFile, Mode=TwoWay}" WidthRequest="50" HeightRequest="50"  />
+                <!--<Label Text="{Binding ImageName}" VerticalOptions="Center" />-->
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>

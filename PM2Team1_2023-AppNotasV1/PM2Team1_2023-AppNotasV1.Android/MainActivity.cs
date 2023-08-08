@@ -24,6 +24,7 @@ namespace PM2Team1_2023_AppNotasV1.Droid
             base.OnCreate(savedInstanceState);
             IsPlayServicesAvailable();
             InitFirebaseAuth();
+            Xamarin.FormsMaps.Init(this, savedInstanceState);
             //CrossMediaManager.Current.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
