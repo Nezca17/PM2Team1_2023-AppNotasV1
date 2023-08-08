@@ -250,13 +250,14 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 var notification = new NotificationRequest {
                     Title = Titulo,
                     Description = Detalles,
-                    NotificationId = ContadorNotifi,
                     Schedule =
                     {
-                        NotifyTime = DateTime.Now.AddSeconds(10)
+                        NotifyTime = HorayFecha
                     }
                     
                 };
+
+                await LocalNotificationCenter.Current.Show(notification);
 
              //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
                 await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
