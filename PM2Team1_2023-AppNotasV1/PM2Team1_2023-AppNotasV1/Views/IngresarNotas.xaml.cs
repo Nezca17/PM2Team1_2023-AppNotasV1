@@ -23,6 +23,8 @@ using Android;
 using Android.Content.PM;
 using Xamarin.Essentials;
 using System.Data.SqlTypes;
+using MediaManager;
+using static Android.Provider.MediaStore;
 
 namespace PM2Team1_2023_AppNotasV1.Views
 {
@@ -237,9 +239,10 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 lbAudio.Text = "Grabando";
                 lbAudio.TextColor = Color.Green;
                 btnGrabarAudio.Text = "Pausar";
+                btnGuardar.IsEnabled = false;
                 await GrabarAudio();
-
-
+                btnGuardar.IsEnabled = true;
+                btnEscucharAudio.IsEnabled = true;
             }
             catch (Exception ex)
             {
@@ -249,5 +252,22 @@ namespace PM2Team1_2023_AppNotasV1.Views
             }
         }
 
+        private async void btnEscucharAudio_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                var audioFile = lbRutaAudio.Text;
+                lbAudio.Text = "Escuchando";
+                lbAudio.TextColor = Color.Yellow;
+                await CrossMediaManager.Current.Play(audioFile);
+
+            }
+            catch (Exception ex)
+            {
+
+                await DisplayAlert("Aviso","Error al reproducir","ok");
+
+            }
+        }
     }
 }
