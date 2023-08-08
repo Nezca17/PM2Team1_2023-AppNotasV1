@@ -1,26 +1,19 @@
 ﻿using GalaSoft.MvvmLight.Command;
-using GalaSoft.MvvmLight.Messaging;
 using PM2Team1_2023_AppNotasV1.Models;
 using PM2Team1_2023_AppNotasV1.Services;
 using PM2Team1_2023_AppNotasV1.Views;
 using System;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
-using System;
 using System.IO;
-using Path = System.IO.Path;
 using System.Collections.ObjectModel;
 using PM2Team1_2023_AppNotasV1.Converters;
 using Acr.UserDialogs;
 using Firebase.Storage;
 using System.ComponentModel;
+using Plugin.LocalNotification;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -30,19 +23,6 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         private ImageSource imageData;
 
         ConvertStreamToByteArray convert = new ConvertStreamToByteArray();
-/*
-        public ImageSource ImageData
-        {
-            get => imageData;
-            set { SetValue(ref imageData, value); }
-        }
-        private string imageName;
-        public string ImageName
-        {
-            get => imageName;
-            set { SetValue(ref imageName, value); }
-        }*/
-
 
         public  NotasViewModel() {
 
@@ -79,6 +59,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string txtRutaAudioFile;
         public Uri txtRutaAudioFileUri;
         public Uri txtRutaImagenFileUri;
+        public int cont;
         #endregion
 
 
@@ -90,6 +71,11 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             get { return streamFoto; }
             set { SetValue(ref streamFoto, value); } 
+        }
+        public int ContadorNotifi
+        {
+            get { return cont; }
+            set { SetValue(ref cont, value); }
         }
         public string RutaImagenFile
         {
@@ -256,8 +242,24 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 };
 
                 await firebaseHelper.AddNota(nota);
-               
+                ContadorNotifi += 10;
 
+                TimeSpan horaMenos20 = Hora.Subtract(TimeSpan.FromMinutes(20));
+                DateTime HorayFecha = Fecha.Date + horaMenos20;
+
+                var notification = new NotificationRequest {
+                    Title = Titulo,
+                    Description = Detalles,
+                    Schedule =
+                    {
+                        NotifyTime = HorayFecha
+                    }
+                    
+                };
+
+                await LocalNotificationCenter.Current.Show(notification);
+
+             //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
                 await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
                 await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
 
