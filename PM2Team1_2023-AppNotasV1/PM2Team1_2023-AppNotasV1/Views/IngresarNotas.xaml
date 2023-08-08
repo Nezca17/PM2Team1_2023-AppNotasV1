@@ -46,6 +46,7 @@
             
             <Label x:Name="lbAudio" />
             <Button x:Name="btnGrabarAudio"  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" />
+            <Button x:Name="btnEscucharAudio"  Text="Escuchar Audio" Clicked="btnEscucharAudio_Clicked" IsEnabled="false"/>
             <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
             <ProgressBar x:Name="progressBar2"/>
 
