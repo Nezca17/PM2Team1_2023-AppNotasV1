@@ -8,6 +8,7 @@
              xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
 >
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
                 <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
                 <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}" PlaceholderColor="White"/>
@@ -68,5 +69,6 @@
                 <Image Source="{Binding ImagenFile, Mode=TwoWay}" WidthRequest="50" HeightRequest="50"  />
                 <!--<Label Text="{Binding ImageName}" VerticalOptions="Center" />-->
             </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
