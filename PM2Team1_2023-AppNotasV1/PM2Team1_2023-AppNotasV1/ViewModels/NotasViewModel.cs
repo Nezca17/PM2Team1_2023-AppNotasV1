@@ -14,6 +14,7 @@ using Acr.UserDialogs;
 using Firebase.Storage;
 using System.ComponentModel;
 using Plugin.LocalNotification;
+using Xamarin.Forms.Maps;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -24,7 +25,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         ConvertStreamToByteArray convert = new ConvertStreamToByteArray();
 
-        public  NotasViewModel() {
+        public NotasViewModel() {
 
             GetLocation();
             LoadData();

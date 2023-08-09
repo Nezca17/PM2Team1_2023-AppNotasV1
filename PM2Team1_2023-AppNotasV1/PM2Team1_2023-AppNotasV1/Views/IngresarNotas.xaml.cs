@@ -21,6 +21,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IngresarNotas : ContentPage
     {
+        private Pin selectedPin;
         private string filePath; // Variable para almacenar la ruta de la foto capturada
         private MediaFile photo; // Variable para almacenar la foto capturada
         ConvertStreamToByteArray converter;
@@ -270,10 +271,29 @@ namespace PM2Team1_2023_AppNotasV1.Views
         {
             Position selectedPosition = mapView.VisibleRegion.Center;
 
-            // Actualizar los campos de longitud y latitud
             txtLongi.Text = selectedPosition.Longitude.ToString();
             txtLatit.Text = selectedPosition.Latitude.ToString();
         }
 
+        private void mapView_MapClicked(object sender, MapClickedEventArgs e)
+        {
+            Position selectedPosition = e.Position;
+
+        
+            mapView.Pins.Remove(selectedPin);
+
+            selectedPin = new Pin
+            {
+                Position = selectedPosition,
+                Label = "Ubicación seleccionada",
+                Type = PinType.Place
+            };
+
+            mapView.Pins.Add(selectedPin);
+
+            txtLongi.Text = selectedPosition.Longitude.ToString();
+            txtLatit.Text = selectedPosition.Latitude.ToString();
+
+        }
     }
 }
