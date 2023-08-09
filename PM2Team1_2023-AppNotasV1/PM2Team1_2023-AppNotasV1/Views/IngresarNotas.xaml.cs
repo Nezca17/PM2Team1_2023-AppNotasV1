@@ -26,6 +26,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
         private MediaFile photo; // Variable para almacenar la foto capturada
         ConvertStreamToByteArray converter;
         AudioRecorderService recorder;
+        private Pin currentLocationPin;
 
         NotasViewModel NotasViewModel = new NotasViewModel();
 
@@ -45,7 +46,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
             lbRutaAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
             lbRutaFirebase.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
-
+            MostrarUbicacionActual();
         }
         public async Task<string> TomarFoto(Stream fotoFile, string nombre)
         {
@@ -267,14 +268,6 @@ namespace PM2Team1_2023_AppNotasV1.Views
             }
         }
 
-     /*   private void ObtenerCoordenadas_Clicked(object sender, EventArgs e)
-        {
-            Position selectedPosition = mapView.VisibleRegion.Center;
-
-            txtLongi.Text = selectedPosition.Longitude.ToString();
-            txtLatit.Text = selectedPosition.Latitude.ToString();
-        }
-     */
         private void mapView_MapClicked(object sender, MapClickedEventArgs e)
         {
             Position selectedPosition = e.Position;
@@ -294,7 +287,40 @@ namespace PM2Team1_2023_AppNotasV1.Views
             txtLongi.Text = selectedPosition.Longitude.ToString();
             txtLatit.Text = selectedPosition.Latitude.ToString();
 
+
         }
+
+        private async void MostrarUbicacionActual()
+        {
+            try
+            {
+                // Solicitar permiso de ubicación si aún no se ha otorgado
+                var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+                if (status != PermissionStatus.Granted)
+                {
+                    status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+                    if (status != PermissionStatus.Granted)
+                        return;
+                }
+
+                // Obtener la ubicación actual
+                var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Medium));
+
+                if (location != null)
+                {
+                    // Crear una posición para la ubicación actual
+                    Position currentPosition = new Position(location.Latitude, location.Longitude);
+
+                    // Establecer la posición en el mapa
+                    mapView.MoveToRegion(MapSpan.FromCenterAndRadius(currentPosition, Distance.FromKilometers(1))); // Ajusta el radio según sea necesario
+                }
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores, si los hay
+            }
+        }
+
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {
