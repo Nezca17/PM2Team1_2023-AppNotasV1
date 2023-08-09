@@ -41,8 +41,8 @@ namespace PM2Team1_2023_AppNotasV1.Services
                     longitud = Item.Object.longitud,
                     latitude = Item.Object.latitude,
                     RutaAudioFileUri = new Uri(Item.Object.RutaAudioFile),
-                    RutaImagenFileUri =  new Uri(Item.Object.RutaImagenFile)
-
+                    RutaImagenFileUri =  new Uri(Item.Object.RutaImagenFile),
+                    IdNoti = Item.Object.IdNoti
                 }).ToList();
 
         }
@@ -63,7 +63,7 @@ namespace PM2Team1_2023_AppNotasV1.Services
                 RutaAudioFile = _Nota.RutaAudioFile,
                 longitud = _Nota.longitud,
                 latitude = _Nota.latitude,
-
+                IdNoti = _Nota.IdNoti
 
             });
 

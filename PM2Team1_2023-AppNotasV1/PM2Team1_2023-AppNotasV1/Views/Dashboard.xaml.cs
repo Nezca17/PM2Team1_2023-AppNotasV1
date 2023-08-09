@@ -1,4 +1,5 @@
 ﻿using PM2Team1_2023_AppNotasV1.Interfaces;
+using PM2Team1_2023_AppNotasV1.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,6 +28,10 @@ public partial class Dashboard : ContentPage
             if (_firebaseService.IsUserSigned()==false)
             {
                 await Navigation.PushAsync(new LoginPage());
+            }
+            else
+            {
+              //  BindingContext = new DashBoardViewModel();
             }
 
         }

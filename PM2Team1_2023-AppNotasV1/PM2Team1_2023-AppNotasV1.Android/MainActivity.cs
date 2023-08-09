@@ -11,7 +11,7 @@ using Android.Gms.Auth.Api.SignIn;
 using PM2Team1_2023_AppNotasV1.Droid.Services;
 using Xamarin.Forms;
 using Android.Content;
-
+using Plugin.LocalNotification;
 
 namespace PM2Team1_2023_AppNotasV1.Droid
 {
@@ -22,8 +22,12 @@ namespace PM2Team1_2023_AppNotasV1.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
+
+            LocalNotificationCenter.CreateNotificationChannel();
+
             IsPlayServicesAvailable();
             InitFirebaseAuth();
+            Xamarin.FormsMaps.Init(this, savedInstanceState);
             //CrossMediaManager.Current.Init();
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);

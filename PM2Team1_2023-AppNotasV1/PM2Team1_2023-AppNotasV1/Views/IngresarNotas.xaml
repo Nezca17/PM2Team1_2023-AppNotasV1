@@ -2,10 +2,11 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
-             xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" x:DataType="viewmodels:NotasViewModel"
+             xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" x:DataType="viewmodels:NotasViewModel"
              x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas"
              BackgroundColor="#202120">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
             <Label Text="Agregar Nueva Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
             <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}" PlaceholderColor="White"/>
@@ -16,6 +17,12 @@
                 <Label Text="Es un recordatorio?" TextColor="White"></Label>
                 <Switch x:Name="switch" OnColor="AliceBlue" ThumbColor="AntiqueWhite" IsToggled="{Binding IsRecordatorio, Mode=TwoWay}" ></Switch>
             </FlexLayout>
+            
+             <maps:Map x:Name="mapView"
+                          VerticalOptions="FillAndExpand"
+                          HeightRequest="200"
+                          MapType="Street"
+                         MapClicked="mapView_MapClicked"/>
 
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
                 <Label  Text="Longitud: " TextColor="White"/>
@@ -61,5 +68,6 @@
 
 
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
