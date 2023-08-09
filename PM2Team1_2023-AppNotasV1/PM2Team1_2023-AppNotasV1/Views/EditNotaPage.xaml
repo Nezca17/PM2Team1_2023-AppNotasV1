@@ -15,7 +15,6 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Label Text="Actualizar/Eliminas una Nota" FontSize="Large" VerticalOptions="Center" HorizontalTextAlignment="Center" TextColor="White"></Label>
             <Label Text="Titulo"/>
             <Entry x:Name="txtactTitulo" Text="{Binding txtTitulo, Mode=TwoWay}" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
             <Label Text="Detalles"/>

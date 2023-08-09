@@ -70,7 +70,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
                 await LocalNotificationCenter.Current.Show(notification);
             }
-            Console.WriteLine("Notificaciones Cargadas");
+            Console.WriteLine("Notificaciones Cargadas Dash");
         }
     }
 }
