@@ -20,11 +20,12 @@
             </FlexLayout>
 
                 <StackLayout x:Name="Elementos" IsVisible="False">
+                    
 
                     <maps:Map x:Name="mapView"
                           VerticalOptions="FillAndExpand"
                           HeightRequest="200"
-                          MapType="Street"
+                          MapType="Satellite"
                          MapClicked="mapView_MapClicked"/>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">

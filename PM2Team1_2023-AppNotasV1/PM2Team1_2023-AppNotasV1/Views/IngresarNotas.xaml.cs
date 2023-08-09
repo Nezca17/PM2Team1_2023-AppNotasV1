@@ -46,7 +46,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
             lbRutaAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
             lbRutaFirebase.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
-            
+            MostrarUbicacionActual();
         }
         public async Task<string> TomarFoto(Stream fotoFile, string nombre)
         {
@@ -286,39 +286,36 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
             txtLongi.Text = selectedPosition.Longitude.ToString();
             txtLatit.Text = selectedPosition.Latitude.ToString();
-            MostrarUbicacionActual();
+          
 
 
         }
 
         private async void MostrarUbicacionActual()
         {
-            try
-            {
-                // Solicitar permiso de ubicación si aún no se ha otorgado
-                var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
-                if (status != PermissionStatus.Granted)
-                {
-                    status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
-                    if (status != PermissionStatus.Granted)
-                        return;
-                }
+            var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
 
-                // Obtener la ubicación actual
-                var location = await Geolocation.GetLocationAsync(new GeolocationRequest(GeolocationAccuracy.Medium));
+            if (status != PermissionStatus.Granted)
+            {
+                status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            }
+
+            if (status == PermissionStatus.Granted)
+            {
+                // Obtener la ubicación actual del dispositivo
+                var location = await Geolocation.GetLocationAsync();
 
                 if (location != null)
                 {
-                    // Crear una posición para la ubicación actual
-                    Position currentPosition = new Position(location.Latitude, location.Longitude);
-
-                    // Establecer la posición en el mapa
-                    mapView.MoveToRegion(MapSpan.FromCenterAndRadius(currentPosition, Distance.FromKilometers(1))); // Ajusta el radio según sea necesario
+                    // Centrar el mapa en la ubicación actual
+                    mapView.MoveToRegion(MapSpan.FromCenterAndRadius(
+                        new Position(location.Latitude, location.Longitude),
+                        Distance.FromMiles(0.1))); // Ajusta el radio según tus necesidades
                 }
             }
-            catch (Exception ex)
+            else
             {
-                // Manejar errores, si los hay
+                // No se otorgó el permiso de ubicación, manejar según tus necesidades
             }
         }
 
