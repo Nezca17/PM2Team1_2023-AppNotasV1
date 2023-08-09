@@ -4,71 +4,46 @@
              x:Class="PM2Team1_2023_AppNotasV1.Views.Regisro"
              BackgroundColor="#202120">
     <ContentPage.Content>
-        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+        
+        <StackLayout Padding="40"  >
+            <StackLayout>
             <Label 
                  Text="Registrate"
                  TextColor="White"
                  HorizontalOptions="Center"
                  FontAttributes="Bold"
                  FontSize="30" />
+            </StackLayout>
+            
+            <StackLayout>
+                <Label Text=" Ingrese un Correo"
+                       TextColor="White"
+                       FontSize="20">
+                    
+                </Label>
+                <Entry x:Name="txtcorreo" 
+                       TextColor="White"
+                       PlaceholderColor="gray" 
+                       Placeholder="usuario@gmail.com" 
+                       Keyboard="Email" 
+                       ></Entry>
+            </StackLayout>
 
+            <StackLayout>
+                <Label Text=" Ingrese una Contraseña"
+                       TextColor="White"
+                       FontSize="20">
+                    
+                </Label>
+                <Entry x:Name="txtcontraseña" 
+                       TextColor="White"
+                       PlaceholderColor="gray"
+                       Placeholder="Contraseña" 
+                       Keyboard="Text" 
+                       IsPassword="True"
+                       ></Entry>
+            </StackLayout>
 
-            <Entry x:Name="txtnombres" 
-                   TextColor="White"
-                   PlaceholderColor="Gray" 
-                   Placeholder="Nombres" 
-                   Keyboard="Text" 
-                   ></Entry>
-
-            <Entry x:Name="txtapellidos" 
-                   TextColor="White"
-                   PlaceholderColor="Gray" 
-                   Placeholder="Apellidos" 
-                   Keyboard="Text" 
-                   ></Entry>
-
-            <Entry x:Name="txtcorreo" 
-                   TextColor="White"
-                   PlaceholderColor="Gray" 
-                   Placeholder="usuario@gmail.com" 
-                   Keyboard="Email" 
-                   ></Entry>
-
-            <Entry x:Name="txtcontraseña" 
-                   TextColor="White"
-                   PlaceholderColor="Gray"
-                   Placeholder="Contraseña" 
-                   Keyboard="Text" 
-                   IsPassword="True"
-                   ></Entry>
-
-            <Entry x:Name="txtedad" 
-                   TextColor="White"
-                   PlaceholderColor="Gray"
-                   Placeholder="Edad" 
-                   Keyboard="Numeric" 
-                   ></Entry>
-
-            <Entry x:Name="txtciudad" 
-                   TextColor="White"
-                   PlaceholderColor="Gray"
-                   Placeholder="Ciudad" 
-                   Keyboard="Text" 
-                   ></Entry>
-
-            <Entry x:Name="txttelefono" 
-                   TextColor="White"
-                   PlaceholderColor="Gray"
-                   Placeholder="Telefono" 
-                   Keyboard="Numeric" 
-                   ></Entry>
-
-            <Entry x:Name="txtdireccion" 
-                   TextColor="White"
-                   PlaceholderColor="Gray"
-                   Placeholder="Direccion" 
-                   Keyboard="Text" 
-                   ></Entry>
 
 
             <Button 
