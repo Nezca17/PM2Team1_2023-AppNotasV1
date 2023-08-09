@@ -31,7 +31,7 @@ public partial class Dashboard : ContentPage
             }
             else
             {
-                BindingContext = new DashBoardViewModel();
+              //  BindingContext = new DashBoardViewModel();
             }
 
         }
