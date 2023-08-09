@@ -104,5 +104,9 @@ namespace PM2Team1_2023_AppNotasV1.Views
             
         }
 
+        private void TapGestureRecognizer_Tapped_2(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new Views.RecupContra());
+        }
     }
 }

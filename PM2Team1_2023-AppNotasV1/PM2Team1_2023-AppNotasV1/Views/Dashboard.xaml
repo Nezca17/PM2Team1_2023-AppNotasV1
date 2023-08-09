@@ -40,7 +40,7 @@
                                      BackgroundColor="Transparent"
                                      Clicked="BtnMisNotas_Clicked" />
 
-                        <Label Text="Mis Notas" TextColor="White"
+                        <Label Text="Recordatorios" TextColor="White"
                                FontSize="20" FontAttributes="Bold"
                                HorizontalTextAlignment="Center" />
                     </StackLayout>
@@ -52,22 +52,12 @@
                                      BackgroundColor="Transparent"
                                      Clicked="BtnRecordatorio_Clicked" />
 
-                        <Label Text="Recordatorio" TextColor="White"
+                        <Label Text="Mis Notas" TextColor="White"
                                FontSize="20" FontAttributes="Bold"
                                HorizontalTextAlignment="Center" />
                     </StackLayout>
 
-                    <StackLayout Grid.Row="1" Grid.Column="1" HorizontalOptions="CenterAndExpand">
-                        <ImageButton Source="importantes.png"
-                                     HeightRequest="140"
-                                     WidthRequest="150"
-                                     BackgroundColor="Transparent"
-                                     Clicked="BtnImportantes_Clicked" />
 
-                        <Label Text="Importantes" TextColor="White"
-                               FontSize="20" FontAttributes="Bold"
-                               HorizontalTextAlignment="Center" />
-                    </StackLayout>
                 </Grid>
 
                 <StackLayout HorizontalOptions="Center">
