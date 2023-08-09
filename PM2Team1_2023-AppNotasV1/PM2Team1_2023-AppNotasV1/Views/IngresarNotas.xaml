@@ -23,8 +23,6 @@
                           HeightRequest="200"
                           MapType="Street"
                          MapClicked="mapView_MapClicked"/>
-            
-            <Button Text="Obtener Coordenadas" Clicked="ObtenerCoordenadas_Clicked"/>
 
             <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
                 <Label  Text="Longitud: " TextColor="White"/>

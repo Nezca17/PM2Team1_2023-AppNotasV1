@@ -267,14 +267,14 @@ namespace PM2Team1_2023_AppNotasV1.Views
             }
         }
 
-        private void ObtenerCoordenadas_Clicked(object sender, EventArgs e)
+     /*   private void ObtenerCoordenadas_Clicked(object sender, EventArgs e)
         {
             Position selectedPosition = mapView.VisibleRegion.Center;
 
             txtLongi.Text = selectedPosition.Longitude.ToString();
             txtLatit.Text = selectedPosition.Latitude.ToString();
         }
-
+     */
         private void mapView_MapClicked(object sender, MapClickedEventArgs e)
         {
             Position selectedPosition = e.Position;
