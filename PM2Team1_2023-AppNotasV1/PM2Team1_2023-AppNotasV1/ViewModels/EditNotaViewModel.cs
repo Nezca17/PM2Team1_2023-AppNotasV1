@@ -31,7 +31,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         private string RutaImagenFile;
         public Uri txtRutaAudioFileUri;
         public Uri txtRutaImagenFileUri;
-
+        public int IdNotiR;
         #endregion
 
         #region Properties
@@ -41,6 +41,11 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             get { return Id;}
             set { SetValue(ref this.Id, value); }
 
+        }
+        public int IdNotif
+        {
+            get { return IdNotiR; }
+            set { SetValue(ref IdNotiR, value); }
         }
         public string txtTitulo
         {
@@ -201,7 +206,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             RutaImagenFileUri =_nota.RutaImagenFileUri;
             longitud = _nota.longitud;
             latitude = _nota.latitude;
-
+            IdNotiR = _nota.IdNoti;
 
         }
 
