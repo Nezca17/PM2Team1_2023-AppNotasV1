@@ -7,12 +7,15 @@
               xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
              BackgroundColor="#202120"
              >
+    
+    
     <ContentPage.Resources>
         <!-- Define el convertidor de datos -->
         <converters:StringToUriConverter x:Key="StringToUriConverter" />
     </ContentPage.Resources>
     
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout>
 
             <Label Text="Titulo"/>
@@ -52,5 +55,6 @@
             <Button Text="Borrar" Command="{Binding DeleteCommand}"></Button>
 
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
