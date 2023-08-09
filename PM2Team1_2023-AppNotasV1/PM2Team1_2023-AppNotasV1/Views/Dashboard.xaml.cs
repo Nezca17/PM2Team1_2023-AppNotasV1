@@ -15,15 +15,17 @@ namespace PM2Team1_2023_AppNotasV1.Views
 public partial class Dashboard : ContentPage
 {
         private IFirebaseAuthService _firebaseService;
+        int start = 0;
 
         public Dashboard()
         {
         InitializeComponent();
             _firebaseService = DependencyService.Get<IFirebaseAuthService>();
-   
+           // start = 0;
         }
         protected override async void OnAppearing()
         {
+
             base.OnAppearing();
             if (_firebaseService.IsUserSigned()==false)
             {
@@ -31,7 +33,12 @@ public partial class Dashboard : ContentPage
             }
             else
             {
-              //  BindingContext = new DashBoardViewModel();
+                if (start == 0)
+                {
+                  //  BindingContext = new DashBoardViewModel();
+                    start = 1;
+                }
+                return;
             }
 
         }
