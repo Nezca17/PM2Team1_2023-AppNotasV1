@@ -227,7 +227,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             try
             {
                 Random random = new Random();
-                IdNotif = random.Next(0, 999999999 + 1);
+                IdNotif = random.Next(0, 999 + 1);
 
                 var nota = new Nota
                 {
@@ -251,9 +251,9 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 DateTime HorayFecha = Fecha.Date + horaMenos20;
 
                 var notification = new NotificationRequest {
-                    Title = Titulo,
+                    Title = txtTitulo,
                     NotificationId = IdNotif,
-                    Description = Detalles,
+                    Description = txtDetalles,
                     Schedule =
                     {
                         NotifyTime = HorayFecha
@@ -261,7 +261,15 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                     
                 };
 
-                await LocalNotificationCenter.Current.Show(notification);
+                
+                if (await LocalNotificationCenter.Current.Show(notification))
+                {
+                    Console.WriteLine("****************************Notificacion creada");
+                }
+                else
+                {
+                    Console.WriteLine("**************************Fallo al crear la notificacion");
+                }
 
              //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
                 await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
@@ -272,7 +280,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             catch (Exception ex)
             {
 
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine("***************************Fallo al crear la notificacion");
             }
 
         }

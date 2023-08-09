@@ -16,7 +16,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         FirebaseHelper firebaseHelper = new FirebaseHelper();
         public DashBoardViewModel() {
 
-            LoadData2();
+            LoadDataDash();
         }
         public int IdNotiR;
         public ObservableCollection<Nota> listViewSource1;
@@ -38,7 +38,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         }
 
-        public async void LoadData2()
+        public async void LoadDataDash()
         {
 
 
@@ -59,7 +59,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 {
 
                     Title = item.Titulo,
-                    NotificationId = item.IdNoti,
+                   // NotificationId = item.IdNoti,
                     Description = item.Detalles,
                     Schedule =
                     {
