@@ -23,6 +23,7 @@
 
             <Label Text="¿Es un Recordatorio?"/>
             <Switch x:Name="swEsRecordatorio" IsToggled="{Binding IsRecordatorio}"></Switch>
+            <Label x:Name="lbIDNoti" Text="{Binding IdNotif}" IsVisible="false" ></Label>
             <Label Text="Fecha y Hora del recordatorio"/>
             <DatePicker x:Name="dtpActFecha" Date="{Binding dtFecha}"/>
             <TimePicker x:Name="dtActHora" Time="{Binding timHora}" />
@@ -36,12 +37,12 @@
                HeightRequest="200" 
                Aspect="AspectFill"
                BackgroundColor="Gray"/>
-                
+               
             </FlexLayout>
             <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen" ></Button>
             <FlexLayout>
                 <Label x:Name="lbEstadoAudio" Text="Estado del Audio" WidthRequest="200"></Label>
-                <Label x:Name="lbUriAudio" Text="{Binding txtRutaAudioFile}" IsVisible="true" ></Label>
+                <Label x:Name="lbUriAudio" Text="{Binding txtRutaAudioFile}" IsVisible="false" ></Label>
 
                 <Button x:Name="btnEscucharAudio" Text="Escuchar Audio"  Clicked="btnEscucharAudio_Clicked"  WidthRequest="200"></Button>
             </FlexLayout>

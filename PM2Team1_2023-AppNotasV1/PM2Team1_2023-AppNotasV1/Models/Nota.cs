@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FirebaseAdmin.Messaging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -25,6 +26,8 @@ namespace PM2Team1_2023_AppNotasV1.Models
 
         public Uri RutaAudioFileUri { get; set; }
         public Uri RutaImagenFileUri { get; set; }
+
+        public int IdNoti { get; set; }
 
     }
 }

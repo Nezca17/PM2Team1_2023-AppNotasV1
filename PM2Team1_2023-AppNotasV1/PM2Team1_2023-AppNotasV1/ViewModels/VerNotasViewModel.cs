@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Plugin.LocalNotification;
 using PM2Team1_2023_AppNotasV1.Models;
 using PM2Team1_2023_AppNotasV1.Services;
 using PM2Team1_2023_AppNotasV1.Views;
@@ -44,6 +45,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string txtRutaAudioFile;
         public Uri txtRutaAudioFileUri;
         public Uri txtRutaImagenFileUri;
+        public int IdNotiR;
         #endregion
 
 
@@ -70,6 +72,11 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             get { return txtRutaAudioFileUri; }
             set { SetValue(ref txtRutaAudioFileUri, value); }
+        }
+        public int IdNotif
+        {
+            get { return IdNotiR; }
+            set { SetValue(ref IdNotiR, value); }
         }
         public Guid Id
         {
@@ -208,6 +215,27 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             await Task.Delay(1000);
             ListViewSource = new ObservableCollection<Nota>(notas);
             this.IsRefreshing = false;
+            
+
+            foreach(var item in ListViewSource) {
+                
+                TimeSpan horaMenos20 = item.Hora.Subtract(TimeSpan.FromMinutes(20));
+                DateTime HorayFecha = item.Fecha.Date + horaMenos20;
+                var notification = new NotificationRequest
+                {
+              
+                Title = Titulo,
+                    NotificationId = item.IdNoti,
+                    Description = Detalles,
+                    Schedule =
+                    {
+                        NotifyTime = HorayFecha
+                    }
+
+                };
+
+                await LocalNotificationCenter.Current.Show(notification);
+            }
 
         }
 

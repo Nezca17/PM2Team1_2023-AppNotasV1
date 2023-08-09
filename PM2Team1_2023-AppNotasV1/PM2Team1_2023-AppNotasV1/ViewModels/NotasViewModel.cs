@@ -59,7 +59,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         public string txtRutaAudioFile;
         public Uri txtRutaAudioFileUri;
         public Uri txtRutaImagenFileUri;
-        public int cont;
+        public int IdNotiR;
         #endregion
 
 
@@ -72,10 +72,10 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             get { return streamFoto; }
             set { SetValue(ref streamFoto, value); } 
         }
-        public int ContadorNotifi
+        public int IdNotif
         {
-            get { return cont; }
-            set { SetValue(ref cont, value); }
+            get { return IdNotiR; }
+            set { SetValue(ref IdNotiR, value); }
         }
         public string RutaImagenFile
         {
@@ -225,7 +225,9 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             try
             {
-                
+                Random random = new Random();
+                IdNotif = random.Next(0, 999999999 + 1);
+
                 var nota = new Nota
                 {
                     Titulo = txtTitulo,
@@ -237,18 +239,19 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                     RutaImagenFile = txtRutaImagenFile,
                     RutaAudioFile = txtRutaAudioFile,
                     longitud = double.Parse(txtlongitud),
-                    latitude = double.Parse(txtLatitude)
-
+                    latitude = double.Parse(txtLatitude),
+                    IdNoti = IdNotif
                 };
 
                 await firebaseHelper.AddNota(nota);
-                ContadorNotifi += 10;
+              
 
                 TimeSpan horaMenos20 = Hora.Subtract(TimeSpan.FromMinutes(20));
                 DateTime HorayFecha = Fecha.Date + horaMenos20;
 
                 var notification = new NotificationRequest {
                     Title = Titulo,
+                    NotificationId = IdNotif,
                     Description = Detalles,
                     Schedule =
                     {
