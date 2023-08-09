@@ -295,5 +295,22 @@ namespace PM2Team1_2023_AppNotasV1.Views
             txtLatit.Text = selectedPosition.Latitude.ToString();
 
         }
+
+        private void Switch_Toggled(object sender, ToggledEventArgs e)
+        {
+            bool isToggled = e.Value;
+            // Aquí puedes realizar acciones basadas en el valor del switch (encendido/apagado)
+            if (isToggled)
+            {
+                // Código a ejecutar cuando el switch se enciende
+                Elementos.IsVisible = true;
+            }
+            else
+            {
+                // Código a ejecutar cuando el switch se apaga
+                Elementos.IsVisible = false;
+            }
+        }
+
     }
 }
