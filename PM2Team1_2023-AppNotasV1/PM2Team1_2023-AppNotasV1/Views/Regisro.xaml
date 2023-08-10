@@ -15,6 +15,20 @@
                  FontSize="30" />
             </StackLayout>
             
+            <Frame
+                Padding="0"
+                HeightRequest="100"
+                WidthRequest="0"
+                BackgroundColor="#202120"
+                CornerRadius="0"
+                BorderColor="#202120"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsClippedToBounds="False">
+
+
+            </Frame>
+
             <StackLayout>
                 <Label Text=" Ingrese un Correo"
                        TextColor="White"
@@ -44,7 +58,19 @@
                        ></Entry>
             </StackLayout>
 
+            <Frame
+                Padding="0"
+                HeightRequest="20"
+                WidthRequest="0"
+                BackgroundColor="#202120"
+                CornerRadius="0"
+                BorderColor="#202120"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsClippedToBounds="False">
 
+
+            </Frame>
 
             <Button 
                 VerticalOptions="Center"
