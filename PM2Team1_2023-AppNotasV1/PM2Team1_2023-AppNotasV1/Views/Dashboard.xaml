@@ -4,7 +4,8 @@
              BackgroundColor="#202120"
              Title="DashBoard">
     <ContentPage.Content>
-        <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
+        <ScrollView>
+            <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
 
                 <Frame
@@ -138,5 +139,6 @@
                 </StackLayout>
             </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

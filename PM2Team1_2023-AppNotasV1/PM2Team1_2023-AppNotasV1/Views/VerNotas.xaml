@@ -1,68 +1,63 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.VerNotas"
-                Title="Lista de Notas"
+             Title="Lista de Notas"
              BackgroundColor="#202120"
-             xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters"
-             
-             >
+             xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters">
     <ContentPage.Resources>
-        <!-- Define el convertidor de datos -->
         <converters:StringToUriConverter x:Key="StringToUriConverter" />
     </ContentPage.Resources>
     <ContentPage.Content>
 
         <StackLayout>
 
-            
-            
-            <ListView
-                x:Name="ListViewNotas"
-                ItemsSource="{Binding ListViewSource, Mode=TwoWay}"
-                IsRefreshing="{Binding IsRefreshing}"
-                ItemSelected="ListViewNotas_ItemSelected">
+            <ListView x:Name="ListViewNotas"
+                      ItemsSource="{Binding ListViewSource, Mode=TwoWay}"
+                      IsRefreshing="{Binding IsRefreshing}"
+                      ItemSelected="ListViewNotas_ItemSelected"
+                      BackgroundColor="Transparent"
+                      SeparatorVisibility="None">
               
                 <ListView.ItemTemplate>
-
                     <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="10"
+                                  Margin="5"
+                                  BackgroundColor="#303030"
+                                  RowSpacing="15"
+                                  ColumnSpacing="10">
 
-                       
-                        <ViewCell >
-
-                            <Grid>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="60"/>
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
-                                    
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="100" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                
-                                <Label Grid.Column="2" Grid.Row="0" Text="{Binding Titulo}"  FontSize="20"></Label>
-                                <Label Grid.Column="3" Grid.Row="0" Text="{Binding Detalles}" FontSize="20" ></Label>
-                                <Label Grid.Column="4" Grid.Row="0" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="20" ></Label>
-                                <Image Grid.Column="5" Grid.Row="0" Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}" WidthRequest="50" HeightRequest="50" />
+
+                                <Image Grid.Row="0"
+                                       Grid.Column="0"
+                                       Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}"
+                                       Aspect="AspectFit"
+                                       HeightRequest="100" />
+
+                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="5">
+                                    <Label Text="{Binding Titulo}" FontSize="18" TextColor="White" />
+                                    <Label Text="{Binding Detalles}" FontSize="14" TextColor="LightGray" />
+                                    <Label Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="14" TextColor="LightGray" />
+                                </StackLayout>
 
                             </Grid>
-
                         </ViewCell>
-
                     </DataTemplate>
-                    
                 </ListView.ItemTemplate>
-
             </ListView>
-           
 
-            <Button x:Name="btnRefresh" Command="{Binding RefreshCommand}" Text="Refresh"/>
-            <Button x:Name="btnAtras" Text="Atras" Clicked="btnAtras_Clicked"/>
+            <Button x:Name="btnRefresh" Command="{Binding RefreshCommand}" Text="Refresh" BackgroundColor="#4CAF50" TextColor="White" CornerRadius="5" Margin="10" />
+            <Button x:Name="btnAtras" Text="Atras" Clicked="btnAtras_Clicked" BackgroundColor="#FF5722" TextColor="White" CornerRadius="5" Margin="10" />
         </StackLayout>
-
  
     </ContentPage.Content>
 </ContentPage>
