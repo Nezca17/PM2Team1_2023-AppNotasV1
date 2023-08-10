@@ -284,6 +284,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             }
 
         }
+
         public string  ConvertirFechaTexto(DateTime fecha)
         {
             return fecha.ToString("dd/MM/yyyy");

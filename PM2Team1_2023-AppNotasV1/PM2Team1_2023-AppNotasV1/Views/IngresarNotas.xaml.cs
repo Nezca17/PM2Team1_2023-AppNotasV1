@@ -27,6 +27,10 @@ namespace PM2Team1_2023_AppNotasV1.Views
         ConvertStreamToByteArray converter;
         AudioRecorderService recorder;
         private Pin currentLocationPin;
+        private Color colorOriginalbotonfoto;
+        private Color colorOriginalbotonfoto2;
+        private Color colorOriginalbotonfoto3;
+        private Color colorOriginalbotonfoto4;
 
         NotasViewModel NotasViewModel = new NotasViewModel();
 
@@ -36,6 +40,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
             BindingContext = new NotasViewModel();
             converter = new ConvertStreamToByteArray();
             recorder = new AudioRecorderService
+
 
             {
                 StopRecordingOnSilence = true, //will stop recording after 2 seconds (default)
@@ -47,6 +52,12 @@ namespace PM2Team1_2023_AppNotasV1.Views
             lbRutaAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
             lbRutaFirebase.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
             MostrarUbicacionActual();
+            colorOriginalbotonfoto = MiBoton.BackgroundColor;
+            colorOriginalbotonfoto2 = btnEscucharAudio.BackgroundColor;
+            colorOriginalbotonfoto3 = btnGrabarAudio.BackgroundColor;
+            colorOriginalbotonfoto4 = btnGrabarAudio.BackgroundColor;
+
+
         }
         public async Task<string> TomarFoto(Stream fotoFile, string nombre)
         {
@@ -134,9 +145,16 @@ namespace PM2Team1_2023_AppNotasV1.Views
             }
         }
 
+
+
         private async void AgregarFotografia_Clicked(object sender, EventArgs e)
         {
-            //    await Navigation.PushAsync(new IngresarNotas());
+            MiBoton.BackgroundColor = Color.FromHex("#AED6F1"); // Cambiar el color a azul celeste
+            Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
+            {
+                MiBoton.BackgroundColor = colorOriginalbotonfoto; // Volver al color original
+                return false;
+            });
 
             try
             {
@@ -232,6 +250,12 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
         private async void AgregarAudio_Clicked(object sender, EventArgs e)
         {
+            btnGrabarAudio.BackgroundColor = Color.FromHex("#AED6F1"); // Cambiar el color a azul celeste
+            Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
+            {
+                btnGrabarAudio.BackgroundColor = colorOriginalbotonfoto3; // Volver al color original
+                return false;
+            });
             try
             {
                 lbAudio.Text = "Grabando";
@@ -252,6 +276,12 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
         private async void btnEscucharAudio_Clicked(object sender, EventArgs e)
         {
+            btnEscucharAudio.BackgroundColor = Color.FromHex("#AED6F1"); // Cambiar el color a azul celeste
+            Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
+            {
+                btnEscucharAudio.BackgroundColor = colorOriginalbotonfoto4; // Volver al color original
+                return false;
+            });
             try
             {
                 var audioFile = lbRutaAudio.Text;
