@@ -22,31 +22,31 @@
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid Padding="10"
-                                  Margin="5"
+                            <Grid Padding="0"
+                                  Margin="0"
                                   BackgroundColor="#303030"
-                                  RowSpacing="15"
-                                  ColumnSpacing="10">
+                                  RowSpacing="0"
+                                  ColumnSpacing="0">
 
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="100" />
                                 </Grid.RowDefinitions>
 
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="500" />
                                 </Grid.ColumnDefinitions>
 
                                 <Image Grid.Row="0"
                                        Grid.Column="0"
                                        Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}"
                                        Aspect="AspectFit"
-                                       HeightRequest="100" />
+                                       WidthRequest="100"/>
+                                        
 
-                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="5">
+                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="2">
                                     <Label Text="{Binding Titulo}" FontSize="18" TextColor="White" />
-                                    <Label Text="{Binding Detalles}" FontSize="14" TextColor="LightGray" />
-                                    <Label Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="14" TextColor="LightGray" />
+                                    <Label Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="12" TextColor="LightGray" />
                                 </StackLayout>
 
                             </Grid>
