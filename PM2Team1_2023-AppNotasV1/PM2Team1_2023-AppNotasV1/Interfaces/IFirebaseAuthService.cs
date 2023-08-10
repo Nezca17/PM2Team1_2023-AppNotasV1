@@ -15,6 +15,9 @@ namespace PM2Team1_2023_AppNotasV1.Interfaces
         Task<bool> SignInWithGoogle(String token);
         Task<bool> Logout();
         Task<bool> ResetPassword(String Correo);
+        Task<bool> UserAutentication(String Correo);
+        Task<bool> UserVerify();
+
 
 
     }

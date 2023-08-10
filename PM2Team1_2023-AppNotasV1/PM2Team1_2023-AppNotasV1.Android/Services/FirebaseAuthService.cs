@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Gms.Extensions;
 using Android.OS;
 using Android.Runtime;
 using Android.Views;
@@ -35,6 +36,7 @@ namespace PM2Team1_2023_AppNotasV1.Droid.Services
         {
             var user = Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).CurrentUser;
             var signedIn = user != null;
+
             return signedIn;
         }
 
@@ -56,9 +58,17 @@ namespace PM2Team1_2023_AppNotasV1.Droid.Services
             try
             {
                 await FirebaseAuth.GetInstance(MainActivity.app).SignInWithEmailAndPasswordAsync(email, password);
-                
-                
-                return true;
+                var user = Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).CurrentUser;
+
+                if (user.IsEmailVerified)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
             catch (Exception ex)
             {
@@ -93,11 +103,23 @@ namespace PM2Team1_2023_AppNotasV1.Droid.Services
             {
                 await Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).CreateUserWithEmailAndPasswordAsync(email, password);
 
+                await SignIn (email, password);
+
+                var user = Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).CurrentUser;
+                var actionCode = ActionCodeSettings.NewBuilder()
+                       .SetUrl("https://pm2team1-2023.firebaseapp.com/__/auth/action?mode=action&oobCode=code")
+                       .SetHandleCodeInApp(true).Build();
+                await user.SendEmailVerificationAsync(actionCode);
+
+                await Logout();
+
                 return true;
             }
             catch (Exception ex)
             {
+                Console.WriteLine($"**********************************************{ex}");
                 return false;
+               
             }
         }
 
@@ -115,6 +137,29 @@ namespace PM2Team1_2023_AppNotasV1.Droid.Services
             }
         }
 
+        public async Task<bool> UserAutentication(string email)
+        {
+            try
+            {
+                var actionCode = ActionCodeSettings.NewBuilder()
+                       .SetHandleCodeInApp(true).Build();
+                await Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).SendSignInLinkToEmail(email, actionCode);
 
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> UserVerify()
+        {
+            var user = Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).CurrentUser;
+
+            return  user.IsEmailVerified;
+
+
+        }
     }
 }
