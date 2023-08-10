@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(FirebaseAuthService))]
@@ -55,7 +56,7 @@ namespace PM2Team1_2023_AppNotasV1.Droid.Services
             try
             {
                 await FirebaseAuth.GetInstance(MainActivity.app).SignInWithEmailAndPasswordAsync(email, password);
-
+                
                 
                 return true;
             }
@@ -91,6 +92,21 @@ namespace PM2Team1_2023_AppNotasV1.Droid.Services
             try
             {
                 await Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).CreateUserWithEmailAndPasswordAsync(email, password);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public async Task<bool> ResetPassword(string email)
+        {
+            try
+            {
+                await Firebase.Auth.FirebaseAuth.GetInstance(MainActivity.app).SendPasswordResetEmailAsync(email);
+
                 return true;
             }
             catch (Exception ex)

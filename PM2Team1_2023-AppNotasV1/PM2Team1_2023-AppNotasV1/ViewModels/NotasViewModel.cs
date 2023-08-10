@@ -15,6 +15,7 @@ using Firebase.Storage;
 using System.ComponentModel;
 using Plugin.LocalNotification;
 using Xamarin.Forms.Maps;
+using System.Linq.Expressions;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -226,54 +227,136 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             try
             {
-                Random random = new Random();
-                IdNotif = random.Next(0, 999 + 1);
 
-                var nota = new Nota
+                if (txtTitulo == "")
                 {
-                    Titulo = txtTitulo,
-                    Detalles = txtDetalles,
-                    FechaIngreso = txtfecha.Date,
-                    IsRecordatorio = txtIsRecordatorio,
-                    Fecha = txtfecha.Date,
-                    Hora = txtHora,
-                    RutaImagenFile = txtRutaImagenFile,
-                    RutaAudioFile = txtRutaAudioFile,
-                    longitud = double.Parse(txtlongitud),
-                    latitude = double.Parse(txtLatitude),
-                    IdNoti = IdNotif
-                };
 
-                await firebaseHelper.AddNota(nota);
-              
+                    await App.Current.MainPage.DisplayAlert("Aviso", "Debe ingresar un totulo", "Ok");
+                    return;
 
-                TimeSpan horaMenos20 = Hora.Subtract(TimeSpan.FromMinutes(20));
-                DateTime HorayFecha = Fecha.Date + horaMenos20;
 
-                var notification = new NotificationRequest {
-                    Title = txtTitulo,
-                    NotificationId = IdNotif,
-                    Description = txtDetalles,
-                    Schedule =
+                } else if(txtDetalles == ""){
+
+                    await App.Current.MainPage.DisplayAlert("Aviso", "Debe ingresar un Detalle", "Ok");
+
+                } else if (IsRecordatorio == true)
+                {
+                    if (txtfecha.Date == null && txtHora == null)
+                    {
+
+                        await App.Current.MainPage.DisplayAlert("Aviso", "Debe ingresar una hora y fecha valida", "Ok");
+                        return;
+                    }
+                    else
+                    {
+                        Random random = new Random();
+                        IdNotif = random.Next(0, 999 + 1);
+
+                        var nota = new Nota
+                        {
+                            Titulo = txtTitulo,
+                            Detalles = txtDetalles,
+                            FechaIngreso = txtfecha.Date,
+                            IsRecordatorio = txtIsRecordatorio,
+                            Fecha = txtfecha.Date,
+                            Hora = txtHora,
+                            RutaImagenFile = txtRutaImagenFile,
+                            RutaAudioFile = txtRutaAudioFile,
+                            longitud = double.Parse(txtlongitud),
+                            latitude = double.Parse(txtLatitude),
+                            IdNoti = IdNotif
+                        };
+
+                        await firebaseHelper.AddNota(nota);
+
+
+                        TimeSpan horaMenos20 = Hora.Subtract(TimeSpan.FromMinutes(20));
+                        DateTime HorayFecha = Fecha.Date + horaMenos20;
+
+                        var notification = new NotificationRequest
+                        {
+                            Title = txtTitulo,
+                            NotificationId = IdNotif,
+                            Description = txtDetalles,
+                            Schedule =
                     {
                         NotifyTime = HorayFecha
                     }
-                    
-                };
 
-                
-                if (await LocalNotificationCenter.Current.Show(notification))
-                {
-                    Console.WriteLine("****************************Notificacion creada");
+                        };
+
+
+                        if (await LocalNotificationCenter.Current.Show(notification))
+                        {
+                            Console.WriteLine("****************************Notificacion creada");
+                        }
+                        else
+                        {
+                            Console.WriteLine("**************************Fallo al crear la notificacion");
+                        }
+
+                        //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
+                        await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
+                        await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
+
+
+                    }
+
                 }
                 else
                 {
-                    Console.WriteLine("**************************Fallo al crear la notificacion");
+                    Random random = new Random();
+                    IdNotif = random.Next(0, 999 + 1);
+
+                    var nota = new Nota
+                    {
+                        Titulo = txtTitulo,
+                        Detalles = txtDetalles,
+                        FechaIngreso = txtfecha.Date,
+                        IsRecordatorio = txtIsRecordatorio,
+                        Fecha = txtfecha.Date,
+                        Hora = txtHora,
+                        RutaImagenFile = txtRutaImagenFile,
+                        RutaAudioFile = txtRutaAudioFile,
+                        longitud = double.Parse(txtlongitud),
+                        latitude = double.Parse(txtLatitude),
+                        IdNoti = IdNotif
+                    };
+
+                    await firebaseHelper.AddNota(nota);
+
+
+                    TimeSpan horaMenos20 = Hora.Subtract(TimeSpan.FromMinutes(20));
+                    DateTime HorayFecha = Fecha.Date + horaMenos20;
+
+                    var notification = new NotificationRequest
+                    {
+                        Title = txtTitulo,
+                        NotificationId = IdNotif,
+                        Description = txtDetalles,
+                        Schedule =
+                    {
+                        NotifyTime = HorayFecha
+                    }
+
+                    };
+
+
+                    if (await LocalNotificationCenter.Current.Show(notification))
+                    {
+                        Console.WriteLine("****************************Notificacion creada");
+                    }
+                    else
+                    {
+                        Console.WriteLine("**************************Fallo al crear la notificacion");
+                    }
+
+                    //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
+                    await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
+                    await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
                 }
 
-             //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
-                await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
-                await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
+              
 
                
             }
