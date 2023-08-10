@@ -16,7 +16,7 @@
             <Image
                Source="logouth.png" WidthRequest="90" HeightRequest="50" />
             <Label
-               Text="APP NOTAS"
+               Text="NOTES JOBS"
                FontAttributes="Bold"
                FontSize="30"
                TextColor="#202120"
@@ -34,7 +34,7 @@
                 WidthRequest="150"
                 BackgroundColor="#202120"
                 CornerRadius="100"
-                BorderColor="#202120"
+                BorderColor="gray"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 IsClippedToBounds="True">

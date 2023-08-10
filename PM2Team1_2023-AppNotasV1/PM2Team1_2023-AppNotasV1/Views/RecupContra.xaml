@@ -1,9 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PM2Team1_2023_AppNotasV1.Views.RecupContra">
-  <!--Pages can be added as references or inline-->
-  <ContentPage Title="Tab 1" />
-  <ContentPage Title="Tab 2" />
-  <ContentPage Title="Tab 3" />
-</TabbedPage>
+             x:Class="PM2Team1_2023_AppNotasV1.Views.RecupContra"
+             Title="Recuperar contraseña">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Para recuperar tu contraseña,si el correo existe en nuestra Base de Datos, se enviara un nuevo correo electronico con Link donde podras introducir la nueva contraseña"
+                   FontSize="25" TextColor="Yellow"></Label>
+            <Label  Text="Correo Electronico" FontSize="Large"></Label>
+            <Entry x:Name="txtCorreo" Placeholder="n@gmail.com"></Entry>
+            <Button x:Name="btnEnviar" Text="Enviar" Clicked="btnEnviar_Clicked"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

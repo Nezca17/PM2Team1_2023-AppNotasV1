@@ -55,10 +55,6 @@ public partial class Dashboard : ContentPage
         {
          //   await Navigation.PushAsync(new IngresarNotas());
         }
-        private async void BtnImportantes_Clicked(object sender, EventArgs e)
-        {
-         //   await Navigation.PushAsync(new IngresarNotas());
-        }
 
 
         private async void btnSalir_Clicked(object sender, EventArgs e)
