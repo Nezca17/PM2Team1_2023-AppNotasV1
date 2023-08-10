@@ -1,60 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters"
              x:Class="PM2Team1_2023_AppNotasV1.Views.EditNotaPage"
-            Title="Actualizar o Elimnar una Nota"
-              xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
-             BackgroundColor="#202120"
-             >
-    
-    
-    <ContentPage.Resources>
-        <!-- Define el convertidor de datos -->
-        <converters:StringToUriConverter x:Key="StringToUriConverter" />
-    </ContentPage.Resources>
-    
+             Title="Actualizar o Eliminar una Nota"
+             BackgroundColor="#202120">
+
     <ContentPage.Content>
         <ScrollView>
-        <StackLayout>
+            <StackLayout Padding="20">
+                <Label Text="Titulo" TextColor="White"/>
+                <Entry x:Name="txtactTitulo"
+                       Text="{Binding txtTitulo, Mode=TwoWay}"
+                       Placeholder="Titulo"
+                       TextColor="White"/>
 
-            <Label Text="Titulo"/>
-            <Entry x:Name="txtactTitulo" Text="{Binding txtTitulo, Mode=TwoWay}" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
-            <Label Text="Detalles"/>
-            <Editor x:Name="txtactDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding txtDetalles, Mode=TwoWay}" PlaceholderColor="White" />
+                <Label Text="Detalles" TextColor="White"/>
+                <Editor x:Name="txtactDetal"
+                        Placeholder="Nota de Texto"
+                        HeightRequest="50"
+                        Text="{Binding txtDetalles, Mode=TwoWay}"
+                        PlaceholderColor="White" />
 
-            <Label Text="¿Es un Recordatorio?"/>
-            <Switch x:Name="swEsRecordatorio" IsToggled="{Binding IsRecordatorio, Mode=TwoWay}"></Switch>
-            <Label x:Name="lbIDNoti" Text="{Binding IdNotif, Mode=TwoWay}" IsVisible="false" ></Label>
-            <Label Text="Fecha y Hora del recordatorio"/>
-            <DatePicker x:Name="dtpActFecha" Date="{Binding dtFecha, Mode=TwoWay}"/>
-            <TimePicker x:Name="dtActHora" Time="{Binding timHora, Mode=TwoWay}" />
-            <Label Text="Datos de Localizacion"/>
-            <Entry x:Name="txtactLongitud" Text="{Binding txtLongitud, Mode=TwoWay}" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
-            <Entry x:Name="txtactLatitude" Text="{Binding txtLatitude, Mode=TwoWay}" Placeholder="Titulo" FontSize="Large" VerticalOptions="Center" TextColor="White"/>
+                <Switch x:Name="swEsRecordatorio"
+                        IsToggled="{Binding IsRecordatorio, Mode=TwoWay}"/>
+                <Label x:Name="lbIDNoti"
+                       Text="{Binding IdNotif, Mode=TwoWay}"
+                       IsVisible="false" />
+
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                    <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                    <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                </FlexLayout>
+
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                    <DatePicker x:Name="dtpActFecha" Date="{Binding dtFecha, Mode=TwoWay}"/>
+                    <TimePicker x:Name="dtActHora" Time="{Binding timHora, Mode=TwoWay}" />
+                </FlexLayout>
 
 
-            <FlexLayout>
-                <Image x:Name="imageActField" Source="{Binding RutaImagenFileUri, Mode=TwoWay}" WidthRequest="200" 
-               HeightRequest="200" 
-               Aspect="AspectFill"
-               BackgroundColor="Gray"/>
-                <Label x:Name="lbRutaImagen" Text="{Binding txtRutaImagenFile, Mode=TwoWay}" IsVisible="false" ></Label>
-               
-            </FlexLayout>
-            <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen" ></Button>
-            <FlexLayout>
-                <Label x:Name="lbEstadoAudio" Text="Estado del Audio" WidthRequest="200"></Label>
-                <Label x:Name="lbUriAudio" Text="{Binding txtRutaAudioFile, Mode=TwoWay}" IsVisible="false" ></Label>
+                
 
-                <Button x:Name="btnEscucharAudio" Text="Escuchar Audio"  Clicked="btnEscucharAudio_Clicked"  WidthRequest="200"></Button>
-            </FlexLayout>
-            <Button x:Name="btnActualizarAudio" Text="Cambiar el Audio"  Clicked="btnActualizarAudio_Clicked"></Button>
-            <Label Text="" VerticalTextAlignment="Center"  WidthRequest="100"></Label>
-            <Button Text="Actualizar" Command="{Binding UpdateCommand}"></Button>
-            <Button Text="Borrar" Command="{Binding DeleteCommand}"></Button>
 
-        </StackLayout>
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                    <Label  Text="Longitud: " TextColor="White"/>
+                    <Label Text="Latitud: " TextColor="White"/>
+                </FlexLayout>
+
+                <FlexLayout Margin="0,0,0,0" Direction="Row" JustifyContent="SpaceBetween">
+                    <Entry x:Name="txtactLongitud"
+                       Text="{Binding txtLongitud, Mode=TwoWay}"
+                       Placeholder="Longitud"
+                       TextColor="White"/>
+                    <Entry x:Name="txtactLatitude"
+                       Text="{Binding txtLatitude, Mode=TwoWay}"
+                       Placeholder="Latitud"
+                       TextColor="White"/>
+                </FlexLayout>
+                
+            
+
+                <Image x:Name="imageActField"
+                       Source="{Binding RutaImagenFileUri, Mode=TwoWay}"
+                       WidthRequest="200"
+                       HeightRequest="200"
+                       Aspect="AspectFill"
+                       BackgroundColor="Gray"/>
+                <Label x:Name="lbRutaImagen"
+                       Text="{Binding txtRutaImagenFile, Mode=TwoWay}"
+                       IsVisible="false" />
+
+                <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen"   BackgroundColor="Transparent"
+                BorderColor="#58A9D2"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                TextColor="White"/>
+
+                <Label x:Name="lbEstadoAudio"
+                       Text="Estado del Audio"
+                       TextColor="White"/>
+                <Label x:Name="lbUriAudio"
+                       Text="{Binding txtRutaAudioFile, Mode=TwoWay}"
+                       IsVisible="false" />
+                <Button x:Name="btnEscucharAudio"
+                        Text="Escuchar Audio"
+                        Clicked="btnEscucharAudio_Clicked"
+                          BackgroundColor="Transparent"
+                BorderColor="#58A9D2"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                TextColor="White"/>
+
+                <Button x:Name="btnActualizarAudio"
+                        Text="Cambiar el Audio"
+                        Clicked="btnActualizarAudio_Clicked"
+                          BackgroundColor="Transparent"
+                BorderColor="#58A9D2"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                TextColor="White"/>
+
+                <Button Text="Actualizar"
+                        Command="{Binding UpdateCommand}"
+                          BackgroundColor="Transparent"
+                BorderColor="#58A9D2"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                TextColor="White"/>
+                <Button Text="Borrar"
+                        Command="{Binding DeleteCommand}"
+                          BackgroundColor="Transparent"
+                BorderColor="red"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                TextColor="White"/>
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
