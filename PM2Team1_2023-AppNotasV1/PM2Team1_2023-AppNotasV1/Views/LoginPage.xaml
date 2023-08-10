@@ -14,22 +14,51 @@
           VerticalOptions="Center"
           Spacing="10">
             <Image
-               Source="lgrecordatorio.jpg" WidthRequest="50" HeightRequest="30" />
+               Source="logouth.png" WidthRequest="90" HeightRequest="50" />
             <Label
                Text="APP NOTAS"
                FontAttributes="Bold"
                FontSize="30"
-               TextColor="White"
+               TextColor="#202120"
                VerticalTextAlignment="Center" />
         </StackLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
         <StackLayout Padding="40"  HorizontalOptions="FillAndExpand">
+            
+            
+                <Frame
+                Padding="0"
+                HeightRequest="150"
+                WidthRequest="150"
+                BackgroundColor="#202120"
+                CornerRadius="100"
+                BorderColor="#202120"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsClippedToBounds="True">
+                    <Frame.Content>
+                        <Image Source="lgrecordatorio.jpg"
+                           Aspect="Fill"/>
+                    </Frame.Content>
 
-            <StackLayout >
-                <Image Source="logouth.png" WidthRequest="130" HeightRequest="130"></Image>
-            </StackLayout>
+                </Frame>
+
+            <Frame
+                Padding="0"
+                HeightRequest="50"
+                WidthRequest="0"
+                BackgroundColor="#202120"
+                CornerRadius="0"
+                BorderColor="#202120"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsClippedToBounds="False">
+                
+
+            </Frame>
+
 
             <StackLayout>
                     <Label Text=" Ingrese un Usuario"
@@ -62,6 +91,32 @@
                        ></Entry>
                 </StackLayout>
 
+            <Frame
+                Padding="0"
+                HeightRequest="10"
+                WidthRequest="0"
+                BackgroundColor="#202120"
+                CornerRadius="0"
+                BorderColor="#202120"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsClippedToBounds="False">
+
+
+            </Frame>
+
+            <StackLayout>
+                    <Button 
+                        VerticalOptions="Center"
+                        Text="Iniciar Secion"
+                        x:Name="btnInSecion" 
+                        Clicked="btnInSecion_Clicked"
+                        BackgroundColor="Transparent"
+                        BorderColor="White"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        TextColor="White"
+                        ></Button>
                 <StackLayout>
                     <Label>
                         <Label.FormattedText>
@@ -78,20 +133,7 @@
                     </Label>
                 </StackLayout>
 
-             <StackLayout>
-                    <Button 
-                        VerticalOptions="Center"
-                        Text="Iniciar Secion"
-                        x:Name="btnInSecion" 
-                        Clicked="btnInSecion_Clicked"
-                        BackgroundColor="Transparent"
-                        BorderColor="White"
-                        BorderWidth="1.5"
-                        CornerRadius="50"
-                        TextColor="White"
-                        ></Button>
-
-                    <Label HorizontalOptions="EndAndExpand">
+                <Label HorizontalOptions="EndAndExpand">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="No tienes una Cuenta?" TextColor="White"/>
@@ -102,7 +144,9 @@
                         </Label.GestureRecognizers>
                     </Label>
 
-                    <Label HorizontalOptions="EndAndExpand">
+               
+
+                <Label HorizontalOptions="EndAndExpand">
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span Text="Registrarse" TextColor="White" FontAttributes="Bold" TextDecorations="Underline"/>
