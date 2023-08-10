@@ -45,15 +45,22 @@ public partial class Dashboard : ContentPage
 
         private async void BtnAddNotasView_Clicked(object sender, EventArgs e)
         {
+            ImageButton btn = (ImageButton)sender;
+            btn.BackgroundColor = new Color(0.5, 0.5, 0.5, 0.5);
             await Navigation.PushAsync(new IngresarNotas());
+
         }
         private async void BtnMisNotas_Clicked(object sender, EventArgs e)
         {
+            ImageButton btn = (ImageButton)sender;
+            btn.BackgroundColor = new Color(0.5, 0.5, 0.5, 0.5);
             await Navigation.PushAsync(new VerNotas());
         }
         private async void BtnRecordatorio_Clicked(object sender, EventArgs e)
         {
-         //   await Navigation.PushAsync(new IngresarNotas());
+            ImageButton btn = (ImageButton)sender;
+            btn.BackgroundColor = new Color(0.5, 0.5, 0.5, 0.5);
+            //   await Navigation.PushAsync(new IngresarNotas());
         }
 
 
