@@ -34,8 +34,8 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 {
                     await DisplayAlert("Aviso", "Usuario Creado", "Ok");
 
-                    await _firebaseService.SignIn(Username, Password);
-                    await Navigation.PushAsync(new Dashboard());
+                   // await _firebaseService.SignIn(Username, Password);
+                    //await Navigation.PushAsync(new Dashboard());
 
                 }
                 else

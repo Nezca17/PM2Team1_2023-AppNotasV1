@@ -71,11 +71,13 @@
                     <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
                     <ProgressBar x:Name="progressBar2"/>
 
-                <Button Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked" BackgroundColor="Transparent"
+                <Button x:Name="MiBoton" Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked"
+                BackgroundColor="Transparent"
                 BorderColor="#58A9D2"
                 BorderWidth="1.5"
                 CornerRadius="50"
-                TextColor="White"/> 
+                TextColor="White"/>
+
                 <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Transparent"/>
                     <Label x:Name="lbRutaFirebase" Text="{Binding RutaImagenFile, Mode=TwoWay}" IsVisible="false"></Label>
                     <ProgressBar x:Name="progressBar"/>
