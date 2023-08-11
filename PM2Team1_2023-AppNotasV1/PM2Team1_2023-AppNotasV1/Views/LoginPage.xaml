@@ -39,7 +39,7 @@
                 VerticalOptions="Center"
                 IsClippedToBounds="True">
                     <Frame.Content>
-                        <Image Source="lgrecordatorio.jpg"
+                        <Image Source="logo.png"
                            Aspect="Fill"/>
                     </Frame.Content>
 
