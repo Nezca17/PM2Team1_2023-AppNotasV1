@@ -1,70 +1,49 @@
 ﻿<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.Dashboard"
-             BackgroundColor="#202120"
+             BackgroundColor="#244F52"
              Title="DashBoard">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                <Label Text="BIENVENIDO" FontSize="34" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Frame Padding="0" CornerRadius="30" Margin="0,20,0,0">
+                    <Frame.Background>
+                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                            <GradientStop Color="LightGray" Offset="0" />
+                            <GradientStop Color="White" Offset="1" />
+                        </LinearGradientBrush>
+                    </Frame.Background>
+                    <StackLayout Spacing="10">
+
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="10">
 
 
-                    <Label Text="BIENVENIDO" FontSize="34" TextColor="#808285" VerticalOptions="Center" HorizontalOptions="Center"/>
-                
 
-                </StackLayout>
-                <Frame
-                    Padding="0"
-                    HeightRequest="30"
-                    WidthRequest="0"
-                    BackgroundColor="#202120"
-                    CornerRadius="0"
-                    BorderColor="#202120"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    IsClippedToBounds="False">
-                </Frame>
-
-                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-
-                   
-
-                        <StackLayout Padding="40" VerticalOptions="Center">
-                        <ImageButton Source="img_agregar.png"
-                                         Clicked="BtnAddNotasView_Clicked"/>
-
-
-                        <ImageButton Source="img_recordatorios.png"
-                                         Clicked="BtnRecordatorio_Clicked"/>
-
-
-                        <ImageButton Source="img_mis_notas.png"
-                                         Clicked="BtnMisNotas_Clicked"/>
-                          
-
-                            <Frame Padding="0"
-                                   HeightRequest="50"
-                                   WidthRequest="0"
-                                   BackgroundColor="#202120"
-                                   CornerRadius="0"
-                                   BorderColor="#202120"
-                                   HorizontalOptions="Center"
-                                   VerticalOptions="Center"
-                                   IsClippedToBounds="False">
-                            </Frame>
-
-                            <Button VerticalOptions="Center"
-                                    Text="SALIR"
-                                    x:Name="btnSalir"
-                                    Clicked="btnSalir_Clicked"
-                                    BackgroundColor="Transparent"
-                                    BorderColor="White"
-                                    BorderWidth="1.5"
-                                    CornerRadius="50"
-                                    TextColor="White" />
                         </StackLayout>
-                   
-                </StackLayout>
+
+                        <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="20">
+
+                            <StackLayout Padding="40" VerticalOptions="Center" Spacing="20">
+                                <ImageButton Source="img_agregar.png" Clicked="BtnAddNotasView_Clicked"/>
+                                <ImageButton Source="img_recordatorios.png" Clicked="BtnRecordatorio_Clicked"/>
+                                <ImageButton Source="img_mis_notas.png" Clicked="BtnMisNotas_Clicked"/>
+                                <ImageButton Source="img_info.png" Clicked="BtnMisNotas_Clicked"/>
+                                <Button VerticalOptions="Center"
+                                        Text="SALIR"
+                                        x:Name="btnSalir"
+                                        Clicked="btnSalir_Clicked"
+                                        BackgroundColor="#DE9C5A"
+                                        BorderColor="White"
+                                        BorderWidth="1.5"
+                                        CornerRadius="50"
+                                        TextColor="White" 
+                                />
+                            </StackLayout>
+
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
