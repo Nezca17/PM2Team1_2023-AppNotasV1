@@ -25,10 +25,10 @@
                         <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand" Spacing="20">
 
                             <StackLayout Padding="40" VerticalOptions="Center" Spacing="20">
-                                <ImageButton Source="img_agregar.png" Clicked="BtnAddNotasView_Clicked"/>
-                                <ImageButton Source="img_recordatorios.png" Clicked="BtnRecordatorio_Clicked"/>
-                                <ImageButton Source="img_mis_notas.png" Clicked="BtnMisNotas_Clicked"/>
-                                <ImageButton Source="img_info.png" Clicked="BtnMisNotas_Clicked"/>
+                                <ImageButton Source="Recurso_5.png" Clicked="BtnAddNotasView_Clicked"/>
+                                <ImageButton Source="Recurso_4.png" Clicked="BtnRecordatorio_Clicked"/>
+                                <ImageButton Source="Recurso_2.png" Clicked="BtnMisNotas_Clicked"/>
+                                <ImageButton Source="Recurso_6.png" Clicked="BtnMisNotas_Clicked"/>
                                 <Button VerticalOptions="Center"
                                         Text="SALIR"
                                         x:Name="btnSalir"
