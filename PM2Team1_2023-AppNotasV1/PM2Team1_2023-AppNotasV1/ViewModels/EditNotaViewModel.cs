@@ -158,23 +158,33 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         private async void UpdateMethod()
         {
-            var nota = new Nota {
+            try
+            {
+                var nota = new Nota
+                {
 
-                Titulo = Titulo,
-                Detalles = Detalles,
-                Fecha = Fecha,
-                FechaIngreso = FechaIngreso,
-                IsRecordatorio = IsRecordatorio,
-                Hora = Hora,
-                RutaAudioFile = RutaAudioFile,
-                RutaImagenFile = RutaImagenFile,
-                latitude = latitude,
-                longitud = longitud
-            };
-            await firebaseHelper.UpdateNota(nota);
+                    Titulo = Titulo,
+                    Detalles = Detalles,
+                    Fecha = Fecha,
+                    FechaIngreso = FechaIngreso,
+                    IsRecordatorio = IsRecordatorio,
+                    Hora = Hora,
+                    RutaAudioFile = RutaAudioFile,
+                    RutaImagenFile = RutaImagenFile,
+                    latitude = latitude,
+                    longitud = longitud
+                };
+                await firebaseHelper.UpdateNota(nota);
 
-            await App.Current.MainPage.Navigation.PushAsync(new VerNotas());
+                await App.Current.MainPage.Navigation.PushAsync(new VerNotas());
 
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"************************************{ex}");
+
+            }
 
         }
 

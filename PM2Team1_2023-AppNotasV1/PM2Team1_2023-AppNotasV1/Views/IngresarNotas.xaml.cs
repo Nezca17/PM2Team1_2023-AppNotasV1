@@ -49,7 +49,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
             };
             dtFecha.Date = DateTime.Now;
-
+            /*Datos por DEfecto*/
             lbRutaAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
             lbRutaFirebase.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
             MostrarUbicacionActual();
@@ -74,7 +74,10 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
                         ThrowOnCancel = true
 
-                    }).Child("Notas").Child(nombre).PutAsync(photo);
+                    }).Child("Notas")
+                    .Child(txtTitu.Text)
+                    .Child(nombre)
+                    .PutAsync(photo);
 
                     task.Progress.ProgressChanged += (s, args) =>
                     {
@@ -117,7 +120,10 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
                         ThrowOnCancel = true
 
-                    }).Child("Notas").Child(nombre).PutAsync(audio);
+                    }).Child("Notas")
+                    .Child(txtTitu.Text)
+                    .Child(nombre)
+                    .PutAsync(audio);
 
                     task.Progress.ProgressChanged += (s, args) =>
                     {

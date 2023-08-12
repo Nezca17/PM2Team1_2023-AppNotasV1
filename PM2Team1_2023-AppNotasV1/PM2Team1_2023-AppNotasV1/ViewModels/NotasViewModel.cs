@@ -272,6 +272,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
                         TimeSpan horaMenos20 = Hora.Subtract(TimeSpan.FromMinutes(20));
                         DateTime HorayFecha = Fecha.Date + horaMenos20;
+                        DateTime HorayFechaT = Fecha.Date + Hora;
 
                         var notification = new NotificationRequest
                         {
@@ -279,9 +280,21 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                             NotificationId = IdNotif,
                             Description = txtDetalles,
                             Schedule =
-                    {
+                            {
                         NotifyTime = HorayFecha
-                    }
+                            }
+
+                        };
+
+                        var notification2 = new NotificationRequest
+                        {
+                            Title = txtTitulo,
+                            NotificationId = IdNotif+1,
+                            Description = txtDetalles,
+                            Schedule = 
+                            {
+                        NotifyTime = HorayFechaT
+                            }
 
                         };
 
@@ -289,6 +302,14 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                         if (await LocalNotificationCenter.Current.Show(notification))
                         {
                             Console.WriteLine("****************************Notificacion creada");
+                        }
+                        else
+                        {
+                            Console.WriteLine("**************************Fallo al crear la notificacion");
+                        }
+                        if (await LocalNotificationCenter.Current.Show(notification2))
+                        {
+                            Console.WriteLine("****************************Notificacion 2 creada");
                         }
                         else
                         {

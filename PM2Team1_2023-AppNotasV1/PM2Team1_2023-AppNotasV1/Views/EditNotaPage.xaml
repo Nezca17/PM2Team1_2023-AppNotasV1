@@ -73,12 +73,12 @@
                 <Label x:Name="lbRutaImagen"
                        Text="{Binding txtRutaImagenFile, Mode=TwoWay}"
                        IsVisible="false" />
-
+                <ProgressBar x:Name="PbImagen" BackgroundColor="Green"></ProgressBar>
                 <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen"   BackgroundColor="Transparent"
                 BorderColor="#58A9D2"
                 BorderWidth="1.5"
                 CornerRadius="50"
-                TextColor="White"/>
+                TextColor="White" Clicked="btnActualizarImagen_Clicked"/>
 
                 <Label x:Name="lbEstadoAudio"
                        Text="Estado del Audio"
@@ -86,6 +86,7 @@
                 <Label x:Name="lbUriAudio"
                        Text="{Binding txtRutaAudioFile, Mode=TwoWay}"
                        IsVisible="True" />
+                
                 <Button x:Name="btnEscucharAudio"
                         Text="Escuchar Audio"
                         Clicked="btnEscucharAudio_Clicked"
@@ -103,15 +104,16 @@
                 BorderWidth="1.5"
                 CornerRadius="50"
                 TextColor="White"/>
+                <ProgressBar x:Name="PbAudio" BackgroundColor="Green"></ProgressBar>
 
-                <Button Text="Actualizar"
+                <Button x:Name="btnActualizar" Text="Actualizar"
                         Command="{Binding UpdateCommand}"
                           BackgroundColor="Transparent"
                 BorderColor="#58A9D2"
                 BorderWidth="1.5"
                 CornerRadius="50"
                 TextColor="White"/>
-                <Button Text="Borrar"
+                <Button x:Name="btnBorrar" Text="Borrar"
                         Command="{Binding DeleteCommand}"
                           BackgroundColor="Transparent"
                 BorderColor="red"
