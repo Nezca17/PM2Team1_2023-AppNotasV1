@@ -228,14 +228,14 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             try
             {
 
-                if (txtTitulo == "")
+                if (txtTitulo == null )
                 {
 
                     await App.Current.MainPage.DisplayAlert("Aviso", "Debe ingresar un totulo", "Ok");
                     return;
 
 
-                } else if(txtDetalles == ""){
+                } else if(txtDetalles == null){
 
                     await App.Current.MainPage.DisplayAlert("Aviso", "Debe ingresar un Detalle", "Ok");
 

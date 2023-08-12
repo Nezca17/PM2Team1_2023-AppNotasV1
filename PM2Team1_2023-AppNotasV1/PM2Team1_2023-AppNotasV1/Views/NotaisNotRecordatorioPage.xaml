@@ -1,12 +1,52 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PM2Team1_2023_AppNotasV1.Views.NotaisNotRecordatorioPage">
+             x:Class="PM2Team1_2023_AppNotasV1.Views.NotaisNotRecordatorioPage"
+             Title="Lista de Notas"
+             BackgroundColor="#202120"
+             xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters">
+    <ContentPage.Resources>
+        <converters:StringToUriConverter x:Key="StringToUriConverter" />
+    </ContentPage.Resources>
+
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout Margin="20">
+            <CollectionView Margin="0,0,0,0" ItemsSource="{Binding ListViewSource}" SelectionChanged="CollectionView_SelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="15" BorderColor="Gray" HasShadow="True" BackgroundColor="DimGray">
+                            <Grid Margin="10">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+
+                                <Image Grid.Row="0" Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}"
+                           Aspect="AspectFit" HeightRequest="200" />
+
+                                <Label Grid.Row="1" Text="{Binding Titulo}" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" />
+                                <Label Grid.Row="2" Text="{Binding Detalles}" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" />
+                                <Label Grid.Row="3" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="14" TextColor="White" HorizontalTextAlignment="Center" />
+                                <Label Grid.Row="4" Text="{Binding Hora}" FontSize="14" TextColor="White" HorizontalTextAlignment="Center" />
+
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="30"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+
+
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20" Padding="20">
+                <Button x:Name="btnRefresh" Command="{Binding RefreshCommand}" Text="Refresh" BackgroundColor="#4CAF50" TextColor="White" CornerRadius="5" />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

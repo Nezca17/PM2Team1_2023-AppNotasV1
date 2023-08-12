@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PM2Team1_2023_AppNotasV1.Models;
+using PM2Team1_2023_AppNotasV1.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +17,18 @@ namespace PM2Team1_2023_AppNotasV1.Views
 		public NotaisNotRecordatorioPage ()
 		{
 			InitializeComponent ();
+			BindingContext = new NotaIsNotRecordatorioViewModel();
 		}
-	}
+
+        private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (e.CurrentSelection.FirstOrDefault() is Nota selectedItem)
+            {
+                await Navigation.PushAsync(new EditNotaPage(selectedItem));
+            }
+
+     // Limpiar la selección para permitir futuros eventos de selección
+            ((CollectionView)sender).SelectedItem = null;
+        }
+    }
 }

@@ -46,7 +46,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
             } 
 
     // Limpiar la selección para permitir futuros eventos de selección
-    ((CollectionView)sender).SelectedItem = null;
+             ((CollectionView)sender).SelectedItem = null;
         }
 
 
