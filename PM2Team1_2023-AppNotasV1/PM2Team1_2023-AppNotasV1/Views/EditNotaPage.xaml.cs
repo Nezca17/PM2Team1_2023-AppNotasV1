@@ -298,7 +298,7 @@ public partial class EditNotaPage : ContentPage
                 {
                     await recorder.StopRecording();
 
-                    btnActualizar.Text = "Grabar";
+                    btnActualizarAudio.Text = "Grabar";
                     lbEstadoAudio.Text = "Parado";
                     lbEstadoAudio.TextColor = Color.Red;
 
