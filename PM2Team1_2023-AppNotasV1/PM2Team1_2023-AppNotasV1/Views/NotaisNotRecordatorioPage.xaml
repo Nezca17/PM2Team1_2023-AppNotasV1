@@ -1,11 +1,10 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PM2Team1_2023_AppNotasV1.Views.VerNotas"
-             Title="Lista de Recordatorios"
+             x:Class="PM2Team1_2023_AppNotasV1.Views.NotaisNotRecordatorioPage"
+             Title="Lista de Notas"
              BackgroundColor="#202120"
              xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters">
-
     <ContentPage.Resources>
         <converters:StringToUriConverter x:Key="StringToUriConverter" />
     </ContentPage.Resources>

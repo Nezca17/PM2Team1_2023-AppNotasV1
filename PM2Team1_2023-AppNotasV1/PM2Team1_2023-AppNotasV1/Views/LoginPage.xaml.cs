@@ -73,18 +73,19 @@ namespace PM2Team1_2023_AppNotasV1.Views
                             if (await _firebaseService.SignIn(Username, Password))
                             {
 
-                            if (await _firebaseService.UserVerify()) {
+                                if (await _firebaseService.UserVerify()) {
 
                                 
-                                await Navigation.PushAsync(new Dashboard());
+                                    await Navigation.PushAsync(new Dashboard());
+
+                                }
+                                else
+                                {
+                                     await DisplayAlert("Aviso", "Email no Verificado, favor revisar el mail", "Ok");
+                                     await _firebaseService.Logout();
+                                }
 
                             }
-                            else
-                            {
-                                 await DisplayAlert("Aviso", "Email no Verificado, favor revisar el mail", "Ok");
-                            }
-
-                        }
                             else
                             {
                                 // _userDialogService.Toast();

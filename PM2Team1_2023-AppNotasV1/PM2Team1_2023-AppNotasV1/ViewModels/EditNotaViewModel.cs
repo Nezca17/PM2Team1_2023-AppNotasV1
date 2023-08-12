@@ -162,21 +162,24 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             {
                 var nota = new Nota
                 {
-
+                    Id = Id,
                     Titulo = Titulo,
                     Detalles = Detalles,
                     Fecha = Fecha,
                     FechaIngreso = FechaIngreso,
                     IsRecordatorio = IsRecordatorio,
                     Hora = Hora,
-                    RutaAudioFile = RutaAudioFile,
-                    RutaImagenFile = RutaImagenFile,
+                    RutaAudioFile = txtRutaAudioFile,
+                    RutaImagenFile = TxtRutaImagenFile,
                     latitude = latitude,
                     longitud = longitud
                 };
                 await firebaseHelper.UpdateNota(nota);
 
+                await App.Current.MainPage.DisplayAlert("Aviso","Guardado Correctamente!", "Ok");
+                
                 await App.Current.MainPage.Navigation.PushAsync(new VerNotas());
+
 
 
             }

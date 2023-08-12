@@ -28,7 +28,7 @@
                                 <ImageButton Source="Recurso_5.png" Clicked="BtnAddNotasView_Clicked"/>
                                 <ImageButton Source="Recurso_4.png" Clicked="BtnRecordatorio_Clicked"/>
                                 <ImageButton Source="Recurso_2.png" Clicked="BtnMisNotas_Clicked"/>
-                                <ImageButton Source="Recurso_6.png" Clicked="BtnMisNotas_Clicked"/>
+                                <ImageButton x:Name="btnAcercaDe" Source="Recurso_6.png" Clicked="btnAcercaDe_Clicked"/>
                                 <Button VerticalOptions="Center"
                                         Text="SALIR"
                                         x:Name="btnSalir"

@@ -47,6 +47,36 @@ namespace PM2Team1_2023_AppNotasV1.Services
 
         }
 
+        public async Task<List<Nota>> GetNotasIsNotRecordatorio()
+        {
+            var queryResult = await firebase
+            .Child("Notas")
+            .OnceAsync<Nota>();
+
+            var notas = queryResult
+                .Where(item => item.Object.IsRecordatorio == false)
+                .Select(item => new Nota
+                {
+                    Id = item.Object.Id,
+                    Titulo = item.Object.Titulo,
+                    Detalles = item.Object.Detalles,
+                    FechaIngreso = item.Object.FechaIngreso,
+                    IsRecordatorio = item.Object.IsRecordatorio,
+                    Fecha = item.Object.Fecha,
+                    Hora = item.Object.Hora,
+                    RutaImagenFile = item.Object.RutaImagenFile,
+                    RutaAudioFile = item.Object.RutaAudioFile,
+                    longitud = item.Object.longitud,
+                    latitude = item.Object.latitude,
+                    RutaAudioFileUri = new Uri(item.Object.RutaAudioFile),
+                    RutaImagenFileUri = new Uri(item.Object.RutaImagenFile),
+                    IdNoti = item.Object.IdNoti
+                })
+                .ToList();
+
+            return notas;
+        }
+
         public async Task AddNota(Nota _Nota)
         {
             await firebase.Child("Notas").PostAsync(new Nota()
