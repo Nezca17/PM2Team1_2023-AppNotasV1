@@ -6,169 +6,66 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
 
+
+                    <Label Text="BIENVENIDO" FontSize="34" TextColor="#808285" VerticalOptions="Center" HorizontalOptions="Center"/>
+                
+
+                </StackLayout>
                 <Frame
-                            Padding="0"
-                            HeightRequest="80"
-                            WidthRequest="380"
-                            BackgroundColor="gray"
-                            CornerRadius="10"
-                            BorderColor="white"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            IsClippedToBounds="True">
-                    <Label Text="BIENVENIDO" FontSize="34" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Center"/>
-                    
+                    Padding="0"
+                    HeightRequest="30"
+                    WidthRequest="0"
+                    BackgroundColor="#202120"
+                    CornerRadius="0"
+                    BorderColor="#202120"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    IsClippedToBounds="False">
                 </Frame>
 
-            </StackLayout>
-            <Frame
-                            Padding="0"
-                            HeightRequest="30"
-                            WidthRequest="0"
-                            BackgroundColor="#202120"
-                            CornerRadius="0"
-                            BorderColor="#202120"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            IsClippedToBounds="False">
+                <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+
+                   
+
+                        <StackLayout Padding="40" VerticalOptions="Center">
+                        <ImageButton Source="img_agregar.png"
+                                         Clicked="BtnAddNotasView_Clicked"/>
 
 
-            </Frame>
-
-            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-
-                <Frame
-                            Padding="0"
-                            HeightRequest="500"
-                            WidthRequest="380"
-                            BackgroundColor="#202120"
-                            CornerRadius="10"
-                            BorderColor="white"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            IsClippedToBounds="True">
-
-                    <StackLayout Padding="40" VerticalOptions="Center">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-
-                            <StackLayout Grid.Row="0" Grid.Column="0" HorizontalOptions="CenterAndExpand">
-
-                              <Frame
-                                Padding="0"
-                                HeightRequest="130"
-                                WidthRequest="130"
-                                BackgroundColor="#202120"
-                                CornerRadius="10"
-                                BorderColor="White"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                IsClippedToBounds="True">
-                                    <Frame.Content>
-                                        <ImageButton 
-                                        Source="agregar.jpg"
-                                        Clicked="BtnAddNotasView_Clicked"/>
-                                    </Frame.Content>
-
-                                </Frame>
-                                <Label Text="Agregar" TextColor="White"
-                               FontSize="20" FontAttributes="Bold"
-                               HorizontalTextAlignment="Center" />
-                            </StackLayout>
+                        <ImageButton Source="img_recordatorios.png"
+                                         Clicked="BtnRecordatorio_Clicked"/>
 
 
+                        <ImageButton Source="img_mis_notas.png"
+                                         Clicked="BtnMisNotas_Clicked"/>
+                          
 
+                            <Frame Padding="0"
+                                   HeightRequest="50"
+                                   WidthRequest="0"
+                                   BackgroundColor="#202120"
+                                   CornerRadius="0"
+                                   BorderColor="#202120"
+                                   HorizontalOptions="Center"
+                                   VerticalOptions="Center"
+                                   IsClippedToBounds="False">
+                            </Frame>
 
-                            <StackLayout Grid.Row="0" Grid.Column="1" HorizontalOptions="CenterAndExpand">
-                                <Frame
-                            Padding="0"
-                            HeightRequest="130"
-                            WidthRequest="130"
-                            BackgroundColor="#202120"
-                            CornerRadius="10"
-                            BorderColor="White"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            IsClippedToBounds="True">
-                                    <Frame.Content>
-                                        <ImageButton Source="recordatorio.jpg"
-                                    Clicked="BtnRecordatorio_Clicked"/>
-                                    </Frame.Content>
-
-                                </Frame>
-                                <Label Text="Recordatorios" TextColor="White"
-                               FontSize="20" FontAttributes="Bold"
-                               HorizontalTextAlignment="Center" />
-                            </StackLayout>
-
-                            <StackLayout Grid.Row="1" Grid.Column="0" HorizontalOptions="Center">
-                                <Frame
-                            Padding="0"
-                            HeightRequest="130"
-                            WidthRequest="130"
-                            BackgroundColor="#202120"
-                            CornerRadius="10"
-                            BorderColor="White"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            IsClippedToBounds="True">
-                                    <Frame.Content>
-                                        <ImageButton Source="misNot.jpg"
-                                   Clicked="BtnMisNotas_Clicked"/>
-                                    </Frame.Content>
-
-                                </Frame>
-
-                                <Label Text="Mis Notas" TextColor="White"
-                               FontSize="20" FontAttributes="Bold"
-                               HorizontalTextAlignment="Center" />
-                            </StackLayout>
-
-                        </Grid>
-                        <Frame
-                            Padding="0"
-                            HeightRequest="50"
-                            WidthRequest="0"
-                            BackgroundColor="#202120"
-                            CornerRadius="0"
-                            BorderColor="#202120"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            IsClippedToBounds="False">  
-
-
-                        </Frame>
-
-                        <StackLayout HorizontalOptions="Center">
                             <Button VerticalOptions="Center"
-                            Text="SALIR"
-                            x:Name="btnSalir"
-                            Clicked="btnSalir_Clicked"
-                            BackgroundColor="Transparent"
-                            BorderColor="White"
-                            BorderWidth="1.5"
-                            CornerRadius="50"
-                            TextColor="White" />
+                                    Text="SALIR"
+                                    x:Name="btnSalir"
+                                    Clicked="btnSalir_Clicked"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="White"
+                                    BorderWidth="1.5"
+                                    CornerRadius="50"
+                                    TextColor="White" />
                         </StackLayout>
-                    </StackLayout>
-
-
-                </Frame>
-
-
+                   
+                </StackLayout>
             </StackLayout>
-
-           
-        </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

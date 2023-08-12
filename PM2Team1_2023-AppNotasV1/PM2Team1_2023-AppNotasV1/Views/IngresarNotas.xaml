@@ -2,25 +2,25 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xct="http://xamarin.com/schemas/2020/toolkit" 
-             xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels" xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps" x:DataType="viewmodels:NotasViewModel"
+             xmlns:viewmodels="clr-namespace:PM2Team1_2023_AppNotasV1.ViewModels"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:DataType="viewmodels:NotasViewModel"
              x:Class="PM2Team1_2023_AppNotasV1.Views.IngresarNotas"
-             Title="       Agregar Nueva Nota"
-             
+             Title="Agregar Nueva Nota"
              BackgroundColor="#202120">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-                <Entry x:Name="txtTitu" Placeholder="Título"  Text="{Binding Titulo, Mode=TwoWay}" PlaceholderColor="White"/>
-            <Editor x:Name="txtDetal" Placeholder="Nota de Texto"  HeightRequest="50" Text="{Binding Detalles, Mode=TwoWay}" PlaceholderColor="White" />
-            
-           
-            <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                <Label Text="Es un recordatorio?" TextColor="White"></Label>
-                    <Switch x:Name="switch" OnColor="AliceBlue" ThumbColor="AntiqueWhite" IsToggled="{Binding IsRecordatorio, Mode=TwoWay}" Toggled="Switch_Toggled"></Switch>
-            </FlexLayout>
+            <StackLayout Padding="20">
+                <Entry x:Name="txtTitu" Placeholder="Título" Text="{Binding Titulo, Mode=TwoWay}" PlaceholderColor="White" BackgroundColor="#475A70" TextColor="White"/>
+                <Editor x:Name="txtDetal" Placeholder="Nota de Texto" HeightRequest="100" Text="{Binding Detalles, Mode=TwoWay}" PlaceholderColor="White" BackgroundColor="#475A70" TextColor="White"/>
 
-                <StackLayout x:Name="Elementos" IsVisible="False">
-                    
+                <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,10,0,0">
+                    <Label Text="Es un recordatorio?" TextColor="White" VerticalOptions="Center"/>
+                    <Switch x:Name="switch" OnColor="#58A9D2" ThumbColor="White" IsToggled="{Binding IsRecordatorio, Mode=TwoWay}" Toggled="Switch_Toggled"/>
+                </FlexLayout>
+
+                <StackLayout x:Name="Elementos" IsVisible="False" Margin="0,10,0,0">
+
 
                     <maps:Map x:Name="mapView"
                           VerticalOptions="FillAndExpand"
@@ -28,9 +28,9 @@
                           MapType="Satellite"
                          MapClicked="mapView_MapClicked"/>
 
-                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                        <Label  Text="Longitud: " TextColor="White"/>
-                        <Label Text="Latitud: " TextColor="White"/>
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,10,0,0">
+                        <Label Text="Longitud:" TextColor="White" VerticalOptions="Center"/>
+                        <Label Text="Latitud:" TextColor="White" VerticalOptions="Center"/>
                     </FlexLayout>
 
                     <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
@@ -42,9 +42,9 @@
 
 
 
-                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                        <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
-                        <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,10,0,0">
+                        <Label Text="Seleccione la fecha" TextColor="White" FontSize="16" VerticalOptions="Center"/>
+                        <Label Text="Seleccione la hora" TextColor="White" FontSize="16" VerticalOptions="Center"/>
                     </FlexLayout>
 
                     <!-- FlexLayout para alinear horizontalmente el DatePicker y el TimePicker -->
@@ -58,39 +58,53 @@
                 </StackLayout>
 
                 <Label x:Name="lbAudio" />
-                <Button x:Name="btnGrabarAudio"  Text="Agregar Audio" Clicked="AgregarAudio_Clicked" BackgroundColor="Transparent"
-                BorderColor="#58A9D2"
-                BorderWidth="1.5"
-                CornerRadius="50"
-                TextColor="White" />
-                <Button x:Name="btnEscucharAudio"  Text="Escuchar Audio" Clicked="btnEscucharAudio_Clicked" IsEnabled="false" BackgroundColor="Transparent"
-                BorderColor="#58A9D2"
-                BorderWidth="1.5"
-                CornerRadius="50"
-                TextColor="White"/>
-                    <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
-                    <ProgressBar x:Name="progressBar2"/>
+                <BoxView HeightRequest="20" BackgroundColor="Transparent"/>
 
                 <Button x:Name="MiBoton" Text="Agregar Fotografía" Clicked="AgregarFotografia_Clicked"
-                BackgroundColor="Transparent"
-                BorderColor="#58A9D2"
-                BorderWidth="1.5"
-                CornerRadius="50"
-                TextColor="White"/>
+                        BackgroundColor="Transparent"
+                        BorderColor="#58A9D2"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        TextColor="White"/>
 
                 <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Transparent"/>
-                    <Label x:Name="lbRutaFirebase" Text="{Binding RutaImagenFile, Mode=TwoWay}" IsVisible="false"></Label>
-                    <ProgressBar x:Name="progressBar"/>
+                <Label x:Name="lbRutaFirebase" Text="{Binding RutaImagenFile, Mode=TwoWay}" IsVisible="false"></Label>
+                <ProgressBar x:Name="progressBar"/>
+
+                <Button x:Name="btnGrabarAudio"  Text="Agregar Audio" Clicked="AgregarAudio_Clicked"
+                        BackgroundColor="Transparent"
+                        BorderColor="#58A9D2"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        TextColor="White" />
+
+                <Button x:Name="btnEscucharAudio"  Text="Escuchar Audio" Clicked="btnEscucharAudio_Clicked" IsEnabled="false"
+                        BackgroundColor="Transparent"
+                        BorderColor="#58A9D2"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        TextColor="White"/>
+
+                <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
+                <ProgressBar x:Name="progressBar2"/>
+
+                <Button x:Name="btnwhatsap" Text="Enviar a Whatsapp" Clicked="btnwhatsap_Clicked"
+                        BackgroundColor="Transparent"
+                        BorderColor="Green"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        TextColor="White"/>
 
                 <Button x:Name="btnGuardar" Text="Guardar"  Command="{Binding insertCommand}" BackgroundColor="Transparent"
-                BorderColor="#58A9D2"
-                BorderWidth="1.5"
-                CornerRadius="50"
-                TextColor="White"/>
-                    <Image Source="{Binding ImagenFile, Mode=TwoWay}" WidthRequest="50" HeightRequest="50"  />
-                    <!--<Label Text="{Binding ImageName}" VerticalOptions="Center" />-->
+                        BorderColor="#58A9D2"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        TextColor="White"/>
 
-                
+                <!-- Espacio flexible para separar los botones del final -->
+                <BoxView HeightRequest="20" BackgroundColor="Transparent"/>
+
+
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -221,6 +221,9 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 
                 TimeSpan horaMenos20 = item.Hora.Subtract(TimeSpan.FromMinutes(20));
                 DateTime HorayFecha = item.Fecha.Date + horaMenos20;
+
+                Console.WriteLine($"Titulo: {item.Titulo}, Detalles: {item.Detalles}");
+
                 var notification = new NotificationRequest
                 {
               
@@ -248,6 +251,8 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             ImagenFile = fotoFile;
         }
 
+
+      
 
 
 

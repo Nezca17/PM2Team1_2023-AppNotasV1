@@ -38,18 +38,25 @@ namespace PM2Team1_2023_AppNotasV1.Views
          
         }
 
-        public async void ListViewNotas_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            await Navigation.PushAsync(new EditNotaPage(e.SelectedItem as Nota));
-            
-           
+            if (e.CurrentSelection.FirstOrDefault() is Nota selectedItem)
+            {
+                await Navigation.PushAsync(new EditNotaPage(selectedItem));
+            } 
+
+    // Limpiar la selección para permitir futuros eventos de selección
+    ((CollectionView)sender).SelectedItem = null;
         }
+
 
         private async void btnAtras_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new Dashboard());
 
         }
+
+       
     }
 
     

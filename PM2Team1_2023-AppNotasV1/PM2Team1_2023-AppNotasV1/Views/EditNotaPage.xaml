@@ -6,6 +6,10 @@
              Title="Actualizar o Eliminar una Nota"
              BackgroundColor="#202120">
 
+    <ContentPage.Resources>
+        <converters:StringToUriConverter x:Key="StringToUriConverter" />
+    </ContentPage.Resources>
+
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20">
@@ -81,7 +85,7 @@
                        TextColor="White"/>
                 <Label x:Name="lbUriAudio"
                        Text="{Binding txtRutaAudioFile, Mode=TwoWay}"
-                       IsVisible="false" />
+                       IsVisible="True" />
                 <Button x:Name="btnEscucharAudio"
                         Text="Escuchar Audio"
                         Clicked="btnEscucharAudio_Clicked"

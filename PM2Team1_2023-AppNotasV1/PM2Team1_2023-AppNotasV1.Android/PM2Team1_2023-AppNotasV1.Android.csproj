@@ -152,6 +152,9 @@
     <AndroidResource Include="Resources\drawable\agregar.jpg" />
     <AndroidResource Include="Resources\drawable\recordatorio.jpg" />
     <AndroidResource Include="Resources\drawable\logo.png" />
+    <AndroidResource Include="Resources\drawable\img_agregar.png" />
+    <AndroidResource Include="Resources\drawable\img_recordatorios.png" />
+    <AndroidResource Include="Resources\drawable\img_mis_notas.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

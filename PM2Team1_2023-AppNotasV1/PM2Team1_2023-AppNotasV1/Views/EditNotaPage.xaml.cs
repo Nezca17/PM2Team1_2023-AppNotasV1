@@ -34,7 +34,9 @@ public partial class EditNotaPage : ContentPage
     public EditNotaPage()
     {
         InitializeComponent();
-        BindingContext = new EditNotaViewModel(); 
+           
+            NavigationPage.SetHasBackButton(this, true);
+            BindingContext = new EditNotaViewModel(); 
             playbites=  new PlayAudioService();
         }
     
@@ -66,7 +68,7 @@ public partial class EditNotaPage : ContentPage
                 await CrossMediaManager.Current.Play(audioUrl);
 
 
-                /*
+                
                 byte[] audioFile = await DownloadByteArrayAsync(new Uri(lbUriAudio.Text));
 
 
@@ -79,7 +81,7 @@ public partial class EditNotaPage : ContentPage
                 else
                 {
                     await DisplayAlert("Aviso","No logro descargar el Audio","Ok");
-                }*/
+                }
 
               
             }
@@ -89,6 +91,8 @@ public partial class EditNotaPage : ContentPage
                 Console.WriteLine($"{ex}");
             }
         }
+
+
 
 
 

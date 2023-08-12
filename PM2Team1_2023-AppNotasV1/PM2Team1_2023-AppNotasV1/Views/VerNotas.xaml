@@ -5,59 +5,47 @@
              Title="Lista de Notas"
              BackgroundColor="#202120"
              xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters">
+
     <ContentPage.Resources>
         <converters:StringToUriConverter x:Key="StringToUriConverter" />
     </ContentPage.Resources>
+
     <ContentPage.Content>
-
-        <StackLayout>
-
-            <ListView x:Name="ListViewNotas"
-                      ItemsSource="{Binding ListViewSource, Mode=TwoWay}"
-                      IsRefreshing="{Binding IsRefreshing}"
-                      ItemSelected="ListViewNotas_ItemSelected"
-                      BackgroundColor="Transparent"
-                      SeparatorVisibility="None">
-              
-                <ListView.ItemTemplate>
+        <StackLayout Margin="20">
+            <CollectionView Margin="0,0,0,0" ItemsSource="{Binding ListViewSource}" SelectionChanged="CollectionView_SelectionChanged"
+                SelectionMode="Single">
+                <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Grid Padding="0"
-                                  Margin="0"
-                                  BackgroundColor="#303030"
-                                  RowSpacing="0"
-                                  ColumnSpacing="0">
-
+                        <Frame CornerRadius="15" BorderColor="Gray" HasShadow="True" BackgroundColor="DimGray">
+                            <Grid Margin="10">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="100" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="100" />
-                                    <ColumnDefinition Width="500" />
-                                </Grid.ColumnDefinitions>
+                                <Image Grid.Row="0" Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}"
+                           Aspect="AspectFit" HeightRequest="200" />
 
-                                <Image Grid.Row="0"
-                                       Grid.Column="0"
-                                       Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}"
-                                       Aspect="AspectFit"
-                                       WidthRequest="100"/>
-                                        
+                                <Label Grid.Row="1" Text="{Binding Titulo}" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" />
 
-                                <StackLayout Grid.Row="0" Grid.Column="1" Spacing="2">
-                                    <Label Text="{Binding Titulo}" FontSize="18" TextColor="White" />
-                                    <Label Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="12" TextColor="LightGray" />
-                                </StackLayout>
+                                <Label Grid.Row="2" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="14" TextColor="White" HorizontalTextAlignment="Center" />
 
                             </Grid>
-                        </ViewCell>
+                        </Frame>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CollectionView.ItemTemplate>
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" ItemSpacing="30"/>
+                </CollectionView.ItemsLayout>
+            </CollectionView>
 
-            <Button x:Name="btnRefresh" Command="{Binding RefreshCommand}" Text="Refresh" BackgroundColor="#4CAF50" TextColor="White" CornerRadius="5" Margin="10" />
-            <Button x:Name="btnAtras" Text="Atras" Clicked="btnAtras_Clicked" BackgroundColor="#FF5722" TextColor="White" CornerRadius="5" Margin="10" />
+
+
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="20" Padding="20">
+                <Button x:Name="btnRefresh" Command="{Binding RefreshCommand}" Text="Refresh" BackgroundColor="#4CAF50" TextColor="White" CornerRadius="5" />
+            </StackLayout>
         </StackLayout>
- 
     </ContentPage.Content>
 </ContentPage>
