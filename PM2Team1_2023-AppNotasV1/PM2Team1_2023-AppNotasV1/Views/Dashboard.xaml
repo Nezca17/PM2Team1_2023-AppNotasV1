@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="10" HorizontalOptions="FillAndExpand">
-                <Label Text="BIENVENIDO" FontSize="34" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center"/>
+                <Label Text="BIENVENIDO" FontSize="34" TextColor="White" VerticalOptions="Center" HorizontalOptions="Center" FontAttributes="Bold"/>
                 <Frame Padding="0" CornerRadius="30" Margin="0,20,0,0">
                     <Frame.Background>
                         <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">

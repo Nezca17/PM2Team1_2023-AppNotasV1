@@ -156,7 +156,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
         private async void AgregarFotografia_Clicked(object sender, EventArgs e)
         {
-            MiBoton.BackgroundColor = Color.FromHex("#AED6F1"); // Cambiar el color a azul celeste
+            MiBoton.BackgroundColor = Color.FromHex("#349DA4"); // Cambiar el color a azul celeste
             Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
             {
                 MiBoton.BackgroundColor = colorOriginalbotonfoto; // Volver al color original
@@ -257,7 +257,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
         private async void AgregarAudio_Clicked(object sender, EventArgs e)
         {
-            btnGrabarAudio.BackgroundColor = Color.FromHex("#AED6F1"); // Cambiar el color a azul celeste
+            btnGrabarAudio.BackgroundColor = Color.FromHex("#349DA4"); // Cambiar el color a azul celeste
             Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
             {
                 btnGrabarAudio.BackgroundColor = colorOriginalbotonfoto3; // Volver al color original
@@ -283,7 +283,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
         private async void btnEscucharAudio_Clicked(object sender, EventArgs e)
         {
-            btnEscucharAudio.BackgroundColor = Color.FromHex("#AED6F1"); // Cambiar el color a azul celeste
+            btnEscucharAudio.BackgroundColor = Color.FromHex("#349DA4"); // Cambiar el color a azul celeste
             Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
             {
                 btnEscucharAudio.BackgroundColor = colorOriginalbotonfoto4; // Volver al color original
