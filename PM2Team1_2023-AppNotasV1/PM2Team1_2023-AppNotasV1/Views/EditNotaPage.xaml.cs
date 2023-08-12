@@ -136,10 +136,7 @@ public partial class EditNotaPage : ContentPage
             }
         }
 
-
-
-
-
+        #region Methods
         static async Task<byte[]> DownloadByteArrayAsync(Uri uri)
         {
             using (HttpClient client = new HttpClient())
@@ -334,7 +331,7 @@ public partial class EditNotaPage : ContentPage
             }
 
         }
-
+        #endregion
 
     }
 }
