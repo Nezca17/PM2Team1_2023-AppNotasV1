@@ -72,7 +72,6 @@
                        Aspect="AspectFill"
                        BackgroundColor="Gray"/>
 
-                <ProgressBar x:Name="PbImagen" BackgroundColor="Green"></ProgressBar>
                 <Label x:Name="lbRutaImagen2"
                        Text="{Binding RutaImagenFileUri, Mode=TwoWay}"
                        IsVisible="false" />
