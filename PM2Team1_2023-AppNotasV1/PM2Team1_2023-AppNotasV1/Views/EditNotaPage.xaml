@@ -73,7 +73,7 @@
                 <Label x:Name="lbRutaImagen"
                        Text="{Binding txtRutaImagenFile, Mode=TwoWay}"
                        IsVisible="false" />
-                <ProgressBar x:Name="PbImagen" BackgroundColor="Green"></ProgressBar>
+                <ProgressBar x:Name="PbImagen"  ProgressColor="Green"></ProgressBar>
                 <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen"   BackgroundColor="Transparent"
                 BorderColor="#58A9D2"
                 BorderWidth="1.5"
@@ -104,7 +104,7 @@
                 BorderWidth="1.5"
                 CornerRadius="50"
                 TextColor="White"/>
-                <ProgressBar x:Name="PbAudio" BackgroundColor="Green"></ProgressBar>
+                <ProgressBar x:Name="PbAudio" ProgressColor="Green"></ProgressBar>
 
                 <Button x:Name="btnActualizar" Text="Actualizar"
                         Command="{Binding UpdateCommand}"
