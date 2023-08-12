@@ -13,6 +13,7 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout Padding="20">
+                <Label Text="{Binding txtID, Mode=TwoWay}" IsVisible="false"></Label>
                 <Label Text="Titulo" TextColor="White"/>
                 <Entry x:Name="txtactTitulo"
                        Text="{Binding txtTitulo, Mode=TwoWay}"
@@ -70,10 +71,14 @@
                        HeightRequest="200"
                        Aspect="AspectFill"
                        BackgroundColor="Gray"/>
-                <Label x:Name="lbRutaImagen"
-                       Text="{Binding txtRutaImagenFile, Mode=TwoWay}"
-                       IsVisible="false" />
+
                 <ProgressBar x:Name="PbImagen" BackgroundColor="Green"></ProgressBar>
+                <Label x:Name="lbRutaImagen2"
+                       Text="{Binding RutaImagenFileUri, Mode=TwoWay}"
+                       IsVisible="false" />
+                <Label x:Name="lbRutaImagen"
+                       Text="{Binding TxtRutaImagenFile, Mode=TwoWay}"
+                       IsVisible="false" />
                 <Button x:Name="btnActualizarImagen" Text="Cambiar Imagen"   BackgroundColor="Transparent"
                 BorderColor="#58A9D2"
                 BorderWidth="1.5"
@@ -85,7 +90,7 @@
                        TextColor="White"/>
                 <Label x:Name="lbUriAudio"
                        Text="{Binding txtRutaAudioFile, Mode=TwoWay}"
-                       IsVisible="True" />
+                       IsVisible="false" />
                 
                 <Button x:Name="btnEscucharAudio"
                         Text="Escuchar Audio"

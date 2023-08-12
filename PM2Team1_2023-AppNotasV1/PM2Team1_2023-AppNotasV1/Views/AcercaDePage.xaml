@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PM2Team1_2023_AppNotasV1.Views.AcercaDePage"
+             Title="Acerca de Nosotros">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Programación Móvil 2 | 2023"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Large" TextColor="Green"/>
+
+            <Label Text="Integrantes:"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Medium"/>
+
+            <Label Text="👨‍💻 Nestor David Zepeda Castañeda 201810040133"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Small"/>
+
+            <Label Text="👨‍💻 Gereld"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Small"/>
+
+            <Label Text="👩‍💻 Loyda"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Small"/>
+
+            <Label Text="👨‍💻 Marlon"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Small"/>
+
+            <Label Text="👩‍💻 Meylin"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Small"/>
+
+            <Label Text="👩‍💻 Carolina"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Small"/>
+
+            <Label Text="👩‍💻 Lixa"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Small"/>
+
+            <Label Text="¡Realizado con mucho esfuerzo para el examen final de la Clase!"
+                   VerticalOptions="CenterAndExpand" 
+                   HorizontalOptions="CenterAndExpand" 
+                   FontSize="Small"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

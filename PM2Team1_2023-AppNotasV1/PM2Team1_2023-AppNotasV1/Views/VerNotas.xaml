@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.VerNotas"
-             Title="Lista de Notas"
+             Title="Lista de Recordatorios"
              BackgroundColor="#202120"
              xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters">
 
@@ -22,14 +22,16 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
                                 <Image Grid.Row="0" Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}"
                            Aspect="AspectFit" HeightRequest="200" />
 
                                 <Label Grid.Row="1" Text="{Binding Titulo}" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" />
-
-                                <Label Grid.Row="2" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="14" TextColor="White" HorizontalTextAlignment="Center" />
+                                <Label Grid.Row="2" Text="{Binding Detalles}" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" />
+                                <Label Grid.Row="3" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="14" TextColor="White" HorizontalTextAlignment="Center" />
+                                <Label Grid.Row="4" Text="{Binding Hora}" FontSize="14" TextColor="White" HorizontalTextAlignment="Center" />
 
                             </Grid>
                         </Frame>
