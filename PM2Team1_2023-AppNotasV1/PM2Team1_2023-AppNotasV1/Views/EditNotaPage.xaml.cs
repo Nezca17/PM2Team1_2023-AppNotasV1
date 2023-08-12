@@ -56,10 +56,12 @@ public partial class EditNotaPage : ContentPage
             InitializeComponent();
             BindingContext = new EditNotaViewModel(_nota);
             playbites =  new PlayAudioService();
-            /*
-            CrossMediaManager.Current.ShuffleMode = ShuffleMode.All;
-            CrossMediaManager.Current.PlayNextOnFailed = true;
-            CrossMediaManager.Current.AutoPlay = true;*/
+            recorder = new AudioRecorderService
+            {
+                StopRecordingOnSilence = true, //will stop recording after 2 seconds (default)
+                StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
+                TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
+            };
         }
 
 
@@ -111,23 +113,6 @@ public partial class EditNotaPage : ContentPage
                // var result = false;
                 await CrossMediaManager.Current.Play(audioUrl);
 
-
-                
-                byte[] audioFile = await DownloadByteArrayAsync(new Uri(lbUriAudio.Text));
-
-
-                if(audioFile != null)
-                {
-                    Console.WriteLine("Bytes descargados: " + audioFile.Length);
-                    playbites.Play(audioFile);
-                   // audioPlayer.Play();
-                }
-                else
-                {
-                    await DisplayAlert("Aviso","No logro descargar el Audio","Ok");
-                }
-
-              
             }
             catch (Exception ex)
             {
@@ -333,5 +318,53 @@ public partial class EditNotaPage : ContentPage
         }
         #endregion
 
+        private async void btnActualizarImagen_Clicked(object sender, EventArgs e)
+        {
+            try
+            {
+                btnActualizar.IsEnabled = false;
+                // Verificar si se otorgó el permiso de cámara
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    await DisplayAlert("Error", "La cámara no está disponible.", "OK");
+                    return;
+                }
+
+                // Solicitar permisos para acceder a la cámara
+                var status = await CrossMedia.Current.Initialize();
+                if (!status)
+                {
+                    await DisplayAlert("Permiso denegado", "No se ha otorgado el permiso para acceder a la cámara.", "OK");
+                    return;
+                }
+
+                // Tomar una foto
+                photo = await CrossMedia.Current.TakePhotoAsync(new StoreCameraMediaOptions
+                {
+                    Directory = "CapturedPhotos",
+                    Name = "capturedImage.jpg",
+                    SaveToAlbum = true // Guardar la foto en el álbum de fotos del dispositivo (opcional)
+                });
+
+                if (photo != null)
+                {
+                    // Obtener la ruta de la foto capturada
+                    filePath = photo.Path;
+
+                    imageActField.Source = ImageSource.FromFile(filePath);
+
+                }
+                var stream = photo.GetStream();
+
+                //  NotasViewModel.StreamFoto = stream;
+                lbRutaImagen.Text = await TomarFoto(stream, photo.OriginalFilename);
+                btnActualizar.IsEnabled = true;
+            }
+            catch (Exception ex)
+            {
+                // Manejar cualquier excepción que pueda ocurrir
+                await DisplayAlert("Error", $"Ha ocurrido un error: {ex.Message}", "OK");
+            }
+        }
     }
 }

@@ -78,7 +78,7 @@
                 BorderColor="#58A9D2"
                 BorderWidth="1.5"
                 CornerRadius="50"
-                TextColor="White"/>
+                TextColor="White" Clicked="btnActualizarImagen_Clicked"/>
 
                 <Label x:Name="lbEstadoAudio"
                        Text="Estado del Audio"
