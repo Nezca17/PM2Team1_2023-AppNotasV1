@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -17,6 +17,7 @@
     <PackageReference Include="Plugin.AudioRecorder" Version="1.1.0" />
     <PackageReference Include="Plugin.LocalNotification" Version="10.1.8" />
     <PackageReference Include="Plugin.MediaManager.Forms" Version="1.0.9" />
+    <PackageReference Include="SixLabors.ImageSharp" Version="3.0.1" />
     <PackageReference Include="Xam.Plugin.Media" Version="6.0.2" />
     <PackageReference Include="Xamarin.CommunityToolkit" Version="2.0.6" />
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2578" />  

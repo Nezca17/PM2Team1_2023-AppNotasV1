@@ -373,25 +373,6 @@ namespace PM2Team1_2023_AppNotasV1.Views
             }
         }
 
-        private void btnwhatsap_Clicked(object sender, EventArgs e)
-        {
-            try
-            {
-                if(!string.IsNullOrEmpty(txtTitu.Text))
-                {
-                    string CodigoPaisCelular;
-                    CodigoPaisCelular = "+50499015347";
-                    Chat.Open(CodigoPaisCelular, txtTitu.Text);
-                }
-            }
-            catch (Exception ex)
-            {
-
-                DisplayAlert("Alerta", ex.Message, "Ok");
-            }
-
-
-
-        }
+        
     }
 }
