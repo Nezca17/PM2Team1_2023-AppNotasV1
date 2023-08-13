@@ -319,7 +319,6 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                         await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
                         await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
 
-
                     }
 
                 }
