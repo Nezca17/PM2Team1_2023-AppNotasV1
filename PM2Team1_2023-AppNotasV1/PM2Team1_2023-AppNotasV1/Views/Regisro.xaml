@@ -2,88 +2,81 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.Regisro"
-             BackgroundColor="#202120">
+             BackgroundColor="#244F52"
+             Title="Registrate">
     <ContentPage.Content>
-        
-        <StackLayout Padding="40"  >
-            <StackLayout>
+        <StackLayout Padding="40">
             <Label 
-                 Text="Registrate"
-                 TextColor="White"
-                 HorizontalOptions="Center"
-                 FontAttributes="Bold"
-                 FontSize="30" />
-            </StackLayout>
-            
+                        Text="Registrate"
+                        TextColor="White"
+                        HorizontalOptions="Center"
+                        FontAttributes="Bold"
+                        Margin="0,0,0,0"
+                        FontSize="30" />
             <Frame
-                Padding="0"
-                HeightRequest="100"
-                WidthRequest="0"
-                BackgroundColor="#202120"
-                CornerRadius="0"
-                BorderColor="#202120"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                IsClippedToBounds="False">
-
-
-            </Frame>
-
-            <StackLayout>
-                <Label Text=" Ingrese un Correo"
-                       TextColor="White"
-                       FontSize="20">
-                    
-                </Label>
-                <Entry x:Name="txtcorreo" 
-                       TextColor="White"
-                       PlaceholderColor="gray" 
-                       Placeholder="usuario@gmail.com" 
-                       Keyboard="Email" 
-                       ></Entry>
-            </StackLayout>
-
-            <StackLayout>
-                <Label Text=" Ingrese una Contraseña"
-                       TextColor="White"
-                       FontSize="20">
-                    
-                </Label>
-                <Entry x:Name="txtcontraseña" 
-                       TextColor="White"
-                       PlaceholderColor="gray"
-                       Placeholder="Contraseña" 
-                       Keyboard="Text" 
-                       IsPassword="True"
-                       ></Entry>
-            </StackLayout>
-
-            <Frame
-                Padding="0"
-                HeightRequest="20"
-                WidthRequest="0"
-                BackgroundColor="#202120"
-                CornerRadius="0"
-                BorderColor="#202120"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                IsClippedToBounds="False">
-
-
-            </Frame>
-
-            <Button 
-                VerticalOptions="Center"
-                Text="REGISTRARME"
-                x:Name="btnRegistrar" 
-                Clicked="btnRegistrar_Clicked"
+                Padding="30"
+                HeightRequest="150"
+                Margin="0,-30,0,0"
+                WidthRequest="150"
                 BackgroundColor="Transparent"
-                BorderColor="WhiteSmoke"
-                BorderWidth="1.5"
-                CornerRadius="50"
-                TextColor="White"
-                ></Button>
+                CornerRadius="100"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsClippedToBounds="True">
+                <Frame.Content>
+                    <Image Source="registrarse.png"
+                           Aspect="Fill"/>
+                </Frame.Content>
+            </Frame>
+            <Frame
+                BackgroundColor="#349DA4"
+                CornerRadius="20"
+                Margin="0,-30,0,0"
+                >
+                <StackLayout>
 
+                    <Label Text="Correo"
+                           TextColor="Black"
+                           FontSize="20">
+                    </Label>
+                    <Entry x:Name="txtcorreo" 
+                           TextColor="White"
+                           PlaceholderColor="White" 
+                           Placeholder="usuario@gmail.com" 
+                           Keyboard="Email" />
+
+                    <Label Text="Contraseña"
+                           TextColor="Black"
+                           FontSize="20">
+                    </Label>
+                    <Entry x:Name="txtcontraseña" 
+                           TextColor="White"
+                           PlaceholderColor="White"
+                           Placeholder="****************" 
+                           Keyboard="Text" 
+                           IsPassword="True" />
+                    <Label Text="Confirmar contraseña"
+                           TextColor="Black"
+                           FontSize="20">
+                    </Label>
+                    <Entry x:Name="txtcontraseña2" 
+                           TextColor="White"
+                           PlaceholderColor="White"
+                           Placeholder="****************" 
+                           Keyboard="Text" 
+                           IsPassword="True" />
+                </StackLayout>
+            </Frame>
+            <Button 
+                        VerticalOptions="Center"
+                        Text="REGISTRARME"
+                        x:Name="btnRegistrar" 
+                        Clicked="btnRegistrar_Clicked"
+                        BackgroundColor="#DE9C5A"
+                        BorderWidth="1.5"
+                        Margin="0,20,0,0"
+                        CornerRadius="50"
+                        TextColor="White" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
