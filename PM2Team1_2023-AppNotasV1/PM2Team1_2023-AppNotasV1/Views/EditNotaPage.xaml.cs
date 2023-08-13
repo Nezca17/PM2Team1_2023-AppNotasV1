@@ -70,6 +70,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
             if (!swEsRecordatorio.IsToggled)
             {
+                mapView1.IsVisible = false;
                 dtActHora.IsVisible = false;
                 dtpActFecha.IsVisible = false;
                 txtactLongitud.IsVisible = false;
@@ -82,6 +83,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
             }
             else
             {
+                mapView1.IsVisible = true;
                 dtActHora.IsVisible = true;
                 dtpActFecha.IsVisible = true;
                 txtactLongitud.IsVisible = true;
@@ -437,6 +439,8 @@ namespace PM2Team1_2023_AppNotasV1.Views
         {
             if (!swEsRecordatorio.IsToggled)
             {
+
+                mapView1.IsVisible = false;
                 dtActHora.IsVisible = false;
                 dtpActFecha.IsVisible = false;
                 txtactLongitud.IsVisible = false;
@@ -449,6 +453,8 @@ namespace PM2Team1_2023_AppNotasV1.Views
             }
             else
             {
+
+                mapView1.IsVisible = true;
                 dtActHora.IsVisible = true;
                 dtpActFecha.IsVisible = true;
                 txtactLongitud.IsVisible = true;
@@ -458,6 +464,14 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 lbLatitud.IsVisible = true;
                 lbLongitud.IsVisible = true;
             }
+        }
+
+        private void mapView1_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
+        {
+
+
+
+
         }
     }
 }

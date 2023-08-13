@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.NotaisNotRecordatorioPage"
              Title="Lista de Notas"
-             BackgroundColor="#202120"
+             BackgroundColor="#244F52"
              xmlns:converters="clr-namespace:PM2Team1_2023_AppNotasV1.Converters">
     <ContentPage.Resources>
         <converters:StringToUriConverter x:Key="StringToUriConverter" />
@@ -15,7 +15,7 @@
                 SelectionMode="Single">
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
-                        <Frame CornerRadius="15" BorderColor="Gray" HasShadow="True" BackgroundColor="DimGray">
+                        <Frame CornerRadius="15" BorderColor="Gray" HasShadow="True" BackgroundColor="#DE9C5A">
                             <Grid Margin="10">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto" />
@@ -24,12 +24,22 @@
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
 
-                                <Image Grid.Row="0" Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}"
-                           Aspect="AspectFit" HeightRequest="200" />
+                                <Frame
+                                    Grid.Row="0"
+                                  BackgroundColor="#349DA4"
+                                  CornerRadius="10"
+                                  Padding="0">
+                                    <Image Grid.Row="0" Source="{Binding RutaImagenFile, Converter={StaticResource StringToUriConverter}}"
+                                    Aspect="AspectFit"
+                                    HeightRequest="200"
+                                    BackgroundColor="Transparent"/>
+                                </Frame>
+
+                              
 
                                 <Label Grid.Row="1" Text="{Binding Titulo}" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" />
                                 <Label Grid.Row="2" Text="{Binding Detalles}" FontSize="20" TextColor="Black" HorizontalTextAlignment="Center" />
-                                <Label Grid.Row="3" Text="{Binding FechaIngreso, StringFormat=\{0:yyyy-MM-dd\}}" FontSize="14" TextColor="White" HorizontalTextAlignment="Center" />
+          
 
                             </Grid>
                         </Frame>

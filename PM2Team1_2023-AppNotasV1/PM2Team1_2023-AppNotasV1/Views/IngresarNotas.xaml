@@ -42,11 +42,9 @@
                             <Label Text="Latitud:" TextColor="Black" VerticalOptions="Center" Margin="-30,0,-30,0"/>
                     </FlexLayout>
 
-                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-
+                        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
                             <Entry x:Name="txtLongi" Text="{Binding Longitud, Mode=TwoWay}" TextColor="Black" WidthRequest="120" Margin="-30,0,-30,0"/>
-
-                            <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}" TextColor="Black" WidthRequest="120" Margin="-30,0,-30,0" />
+                            <Entry x:Name="txtLatit" Text="{Binding Latitude, Mode=TwoWay}" TextColor="Black" WidthRequest="120" Margin="-30,0,-30,0"/>
                     </FlexLayout>
 
 
@@ -56,12 +54,10 @@
                             <Label Text="Seleccione la hora" TextColor="Black"  VerticalOptions="Center" Margin="-30,0,-30,0"/>
                     </FlexLayout>
 
-                    <!-- FlexLayout para alinear horizontalmente el DatePicker y el TimePicker -->
-                    <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                        <!-- Calendario (DatePicker) -->
-                        <DatePicker x:Name="dtFecha" Date="{Binding Fecha, Mode=TwoWay}"  FlexLayout.AlignSelf="Start" Margin="-30,0,-30,0" />
-                        <!-- Reloj (TimePicker) -->
-                        <TimePicker x:Name="dtHora" Time="{Binding Hora, Mode=TwoWay}" FlexLayout.AlignSelf="End" Margin="-30,0,-30,0" />
+
+                        <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
+                            <DatePicker x:Name="dtFecha" Date="{Binding Fecha, Mode=TwoWay}"  FlexLayout.AlignSelf="Start" Margin="-30,0,-30,0" TextColor="Black" />
+                            <TimePicker x:Name="dtHora" Time="{Binding Hora, Mode=TwoWay}" FlexLayout.AlignSelf="End" Margin="-30,0,-30,0" TextColor="Black"/>
                     </FlexLayout>
 
                 </StackLayout>
@@ -80,6 +76,10 @@
                 <Image x:Name="imageField" WidthRequest="120" BackgroundColor="Transparent"/>
                 <Label x:Name="lbRutaFirebase" Text="{Binding RutaImagenFile, Mode=TwoWay}" IsVisible="false"></Label>
                 <ProgressBar x:Name="progressBar"/>
+                    
+                    <Label x:Name="lbEstadoAudio1"
+                       Text="Estado del Audio"
+                       TextColor="Black"/>
 
                 <Button x:Name="btnGrabarAudio"  Text="Agregar Audio" Clicked="AgregarAudio_Clicked"
                         BackgroundColor="#DE9C5A"
@@ -95,7 +95,9 @@
                         Margin="-30,0,-30,0"
                         TextColor="White"/>
 
-                <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
+                    
+
+                    <Label x:Name="lbRutaAudio" Text="{Binding RutaAudioFile, Mode=TwoWay}" IsVisible="false"/>
                 <ProgressBar x:Name="progressBar2"/>
 
 
