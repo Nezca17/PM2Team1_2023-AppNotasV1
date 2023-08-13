@@ -21,12 +21,14 @@ using Plugin.Media.Abstractions;
 using Firebase.Storage;
 using System.IO;
 using static Android.Provider.MediaStore;
+using Xamarin.Forms.OpenWhatsApp;
+
 
 namespace PM2Team1_2023_AppNotasV1.Views
 {
-	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class EditNotaPage : ContentPage
-{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class EditNotaPage : ContentPage
+    {
         PlayAudioService playbites;
 
         AudioPlayer audioPlayer = new AudioPlayer();
@@ -38,24 +40,27 @@ public partial class EditNotaPage : ContentPage
 
         public EditNotaPage()
         {
-        InitializeComponent();
-           
+            InitializeComponent();
+
             NavigationPage.SetHasBackButton(this, true);
-            BindingContext = new EditNotaViewModel(); 
-            playbites=  new PlayAudioService();
+            BindingContext = new EditNotaViewModel();
+            playbites = new PlayAudioService();
             recorder = new AudioRecorderService
             {
                 StopRecordingOnSilence = true, //will stop recording after 2 seconds (default)
                 StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
                 TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
             };
+
+            lbUriAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
+            lbRutaImagen.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
         }
-    
+
         public EditNotaPage(Nota _nota)
         {
             InitializeComponent();
             BindingContext = new EditNotaViewModel(_nota);
-            playbites =  new PlayAudioService();
+            playbites = new PlayAudioService();
             recorder = new AudioRecorderService
             {
                 StopRecordingOnSilence = true, //will stop recording after 2 seconds (default)
@@ -118,10 +123,11 @@ public partial class EditNotaPage : ContentPage
                     await DisplayAlert("Aviso", $"{ex}", "Ok");
 
                 }
-               // await GrabarAudio();
+                // await GrabarAudio();
 
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
 
                 Console.WriteLine($"*******************************{ex}");
 
@@ -135,7 +141,7 @@ public partial class EditNotaPage : ContentPage
             {
 
                 var audioUrl = lbUriAudio.Text;
-               // var result = false;
+                // var result = false;
                 await CrossMediaManager.Current.Play(audioUrl);
 
             }
@@ -390,6 +396,41 @@ public partial class EditNotaPage : ContentPage
                 // Manejar cualquier excepción que pueda ocurrir
                 await DisplayAlert("Error", $"Ha ocurrido un error: {ex.Message}", "OK");
             }
+        }
+
+        private async void EnviarDatosWhatsApp()
+        {
+            string mensaje = $"Título: {txtactTitulo.Text}\nDetalles: {txtactDetal.Text}\nFecha: {dtpActFecha.Date} {dtActHora.Time}\nLongitud: {txtactLongitud.Text}\nLatitud: {txtactLatitude.Text}";
+
+            try
+            {
+                if (!string.IsNullOrEmpty(lbRutaImagen.Text))
+                {
+                    mensaje += $"\nImagen: {lbRutaImagen.Text}";
+                }
+
+                if (!string.IsNullOrEmpty(lbUriAudio.Text))
+                {
+                    mensaje += $"\nAudio: {lbUriAudio.Text}";
+                }
+
+                var request = new ShareTextRequest
+                {
+                    Text = mensaje,
+                    Title = "Compartir a través de WhatsApp"
+                };
+
+                await Share.RequestAsync(request);
+            }
+            catch (Exception ex)
+            {
+                // Manejar errores aquí
+            }
+        }
+
+        private void btnwhatsap_Clicked(object sender, EventArgs e)
+        {
+            EnviarDatosWhatsApp();
         }
 
         private void swEsRecordatorio_Toggled(object sender, ToggledEventArgs e)
