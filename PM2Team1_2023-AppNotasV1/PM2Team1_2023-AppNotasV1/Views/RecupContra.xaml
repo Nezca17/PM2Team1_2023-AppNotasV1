@@ -2,14 +2,40 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PM2Team1_2023_AppNotasV1.Views.RecupContra"
-             Title="Recuperar contraseña">
+             Title="Recuperar contraseña"
+             BackgroundColor="#244F52">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Para recuperar tu contraseña,si el correo existe en nuestra Base de Datos, se enviara un nuevo correo electronico con Link donde podras introducir la nueva contraseña"
-                   FontSize="25" TextColor="Yellow"></Label>
-            <Label  Text="Correo Electronico" FontSize="Large"></Label>
-            <Entry x:Name="txtCorreo" Placeholder="n@gmail.com"></Entry>
-            <Button x:Name="btnEnviar" Text="Enviar" Clicked="btnEnviar_Clicked"></Button>
+            <Frame
+                Padding="30"
+                HeightRequest="150"
+                Margin="0,0,0,0"
+                WidthRequest="100"
+                BackgroundColor="Transparent"
+                CornerRadius="100"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                IsClippedToBounds="True">
+                <Frame.Content>
+                    <Image Source="recuperar.png"
+                           Aspect="AspectFit"/>
+                </Frame.Content>
+            </Frame>
+            <Frame
+                 BackgroundColor="#349DA4"
+                CornerRadius="20"
+                Margin="20,-30,20,0">
+                <StackLayout>
+                    <Label Text="Correo Electrónico" FontSize="Large" TextColor="Black"/>
+                    <Entry x:Name="txtCorreo" Placeholder="usuario@gmail.com" PlaceholderColor="White" />
+                </StackLayout>
+            </Frame>
+            <Button x:Name="btnEnviar" Text="Enviar" Clicked="btnEnviar_Clicked"
+                        BackgroundColor="#DE9C5A"
+                        BorderWidth="1.5"
+                        Margin="20,20,20,0"
+                        CornerRadius="50"
+                        TextColor="White"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

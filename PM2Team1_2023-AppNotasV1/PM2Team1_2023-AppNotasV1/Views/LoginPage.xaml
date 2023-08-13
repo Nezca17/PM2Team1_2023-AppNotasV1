@@ -6,160 +6,113 @@
              mc:Ignorable="d"
              x:Class="PM2Team1_2023_AppNotasV1.Views.LoginPage"
             Shell.NavBarIsVisible="True"
-             BackgroundColor="#202120">
+             BackgroundColor="#244F52">
 
     <NavigationPage.TitleView>
         <StackLayout
           Orientation="Horizontal"
           VerticalOptions="Center"
-          Spacing="10">
+          Spacing="5">
             <Image
-               Source="logouth.png" WidthRequest="90" HeightRequest="50" />
+               Source="logofinal.png" WidthRequest="90" HeightRequest="50" />
             <Label
                Text="NOTES JOBS"
                FontAttributes="Bold"
                FontSize="30"
-               TextColor="#202120"
+               TextColor="White"
                VerticalTextAlignment="Center" />
         </StackLayout>
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
         <StackLayout Padding="40"  HorizontalOptions="FillAndExpand">
-            
-            
-                <Frame
+            <Frame
                 Padding="0"
                 HeightRequest="150"
+                Margin="0,0,0,0"
                 WidthRequest="150"
-                BackgroundColor="#202120"
+                BackgroundColor="Transparent"
                 CornerRadius="100"
-                BorderColor="gray"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 IsClippedToBounds="True">
-                    <Frame.Content>
-                        <Image Source="logo.png"
+                <Frame.Content>
+                    <Image Source="personas.png"
                            Aspect="Fill"/>
-                    </Frame.Content>
-
-                </Frame>
-
-            <Frame
-                Padding="0"
-                HeightRequest="50"
-                WidthRequest="0"
-                BackgroundColor="#202120"
-                CornerRadius="0"
-                BorderColor="#202120"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                IsClippedToBounds="False">
-                
+                </Frame.Content>
 
             </Frame>
 
-
-            <StackLayout>
-                    <Label Text=" Ingrese un Usuario"
-                       TextColor="White"
-                       FontSize="20">
-                    </Label>
-
-                    <Entry x:Name="txtusuario" 
-                        TextColor="White"
-                       PlaceholderColor="Gray" 
-                       Placeholder="Usuario" 
-                       Keyboard="Email" >
-                        
-                    </Entry>
-                </StackLayout>
-
-
-                <StackLayout>
-                    <Label Text=" Ingrese una Contraseña"
-                       TextColor="White"
-                       FontSize="20">
-                    </Label>
-                    
-                    <Entry x:Name="txtcontraseña" 
-                       TextColor="White"
-                       PlaceholderColor="gray"
-                       Placeholder="Contraseña" 
-                       IsPassword="True"
-                       Keyboard="Text" 
-                       ></Entry>
-                </StackLayout>
-
             <Frame
-                Padding="0"
-                HeightRequest="10"
-                WidthRequest="0"
-                BackgroundColor="#202120"
-                CornerRadius="0"
-                BorderColor="#202120"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                IsClippedToBounds="False">
+             CornerRadius="20"
+             Padding="10"
+             Margin="0,-20,0,10"
+             BackgroundColor="#349DA4">
 
+                <StackLayout Spacing="10">
+
+                    <Label Text="Ingrese un Usuario"
+               TextColor="Black"
+               FontSize="20" />
+
+                    <Entry x:Name="txtusuario"
+               TextColor="White"
+               PlaceholderColor="White"
+               Placeholder="Usuario"
+               Keyboard="Email" />
+                    <Label Text="Ingrese una Contraseña"
+               TextColor="Black"
+               FontSize="20" />
+                    <Entry x:Name="txtcontraseña"
+               TextColor="White"
+               PlaceholderColor="White"
+               Placeholder="Contraseña"
+               IsPassword="True"
+               Keyboard="Text" />
+                </StackLayout>
 
             </Frame>
-
-            <StackLayout>
-                    <Button 
-                        VerticalOptions="Center"
-                        Text="Iniciar Secion"
-                        x:Name="btnInSecion" 
-                        Clicked="btnInSecion_Clicked"
-                        BackgroundColor="Transparent"
-                        BorderColor="White"
-                        BorderWidth="1.5"
-                        CornerRadius="50"
-                        TextColor="White"
-                        ></Button>
-                <StackLayout>
-                    <Label>
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Recuperar Contraseña" 
+            <Button VerticalOptions="Center"
+                Text="Iniciar Sesión"
+                x:Name="btnInSecion"
+                Clicked="btnInSecion_Clicked"
+                BackgroundColor="#DE9C5A"
+                BorderWidth="1.5"
+                CornerRadius="50"
+                TextColor="White" />
+            <Label>
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Recuperar Contraseña"
                                       TextColor="White" 
                                       FontAttributes="Bold" 
                                       TextDecorations="Underline"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
-
-                <Label HorizontalOptions="EndAndExpand">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="No tienes una Cuenta?" TextColor="White"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-
-               
-
-                <Label HorizontalOptions="EndAndExpand">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <Span Text="Registrarse" TextColor="White" FontAttributes="Bold" TextDecorations="Underline"/>
-                            </FormattedString>
-                        </Label.FormattedText>
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
-                        </Label.GestureRecognizers>
-                    </Label>
-                </StackLayout>
-    
-    
-          
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_2"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label HorizontalOptions="EndAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="No tienes una Cuenta?" TextColor="White"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Label.GestureRecognizers>
+            </Label>
+            <Label HorizontalOptions="EndAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Registrarse" TextColor="White" FontAttributes="Bold" TextDecorations="Underline"/>
+                    </FormattedString>
+                </Label.FormattedText>
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped_1"/>
+                </Label.GestureRecognizers>
+            </Label>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

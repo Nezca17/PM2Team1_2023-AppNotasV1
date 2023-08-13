@@ -23,7 +23,15 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
         private async void btnRegistrar_Clicked(object sender, EventArgs e)
         {
-           await RegistrarCommandExecute(txtcorreo.Text, txtcontraseña.Text);
+            if (txtcontraseña.Text.Equals(txtcontraseña2.Text))
+            {
+                await RegistrarCommandExecute(txtcorreo.Text, txtcontraseña.Text);
+            }
+            else
+            {
+               await DisplayAlert("Error", "Las contraseñas no coinciden!","Ok");
+            }
+           
         }
 
         private async Task RegistrarCommandExecute(string Username, string Password)
