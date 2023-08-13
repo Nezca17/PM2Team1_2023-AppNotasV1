@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight.Command;
+using Plugin.LocalNotification;
 using PM2Team1_2023_AppNotasV1.Models;
 using PM2Team1_2023_AppNotasV1.Services;
 using PM2Team1_2023_AppNotasV1.Views;
@@ -160,6 +161,9 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         {
             try
             {
+                //Nota Simple
+                Random random = new Random();
+                IdNotif = random.Next(0, 999 + 1);
                 var nota = new Nota
                 {
                     Id = Id,
@@ -175,6 +179,33 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                     longitud = longitud
                 };
                 await firebaseHelper.UpdateNota(nota);
+
+
+                TimeSpan horaMenos20 = Hora.Subtract(TimeSpan.FromMinutes(20));
+                DateTime HorayFecha = Fecha.Date + horaMenos20;
+
+                var notification = new NotificationRequest
+                {
+                    Title = txtTitulo,
+                    NotificationId = IdNotif,
+                    Description = txtDetalles,
+                    Schedule =
+                    {
+                        NotifyTime = HorayFecha
+                    }
+
+                };
+
+
+                if (await LocalNotificationCenter.Current.Show(notification))
+                {
+                    Console.WriteLine("****************************Notificacion creada");
+                }
+                else
+                {
+                    Console.WriteLine("**************************Fallo al crear la notificacion");
+                }
+
 
                 await App.Current.MainPage.DisplayAlert("Aviso","Guardado Correctamente!", "Ok");
                 

@@ -23,27 +23,32 @@ namespace PM2Team1_2023_AppNotasV1.Services
 
         public async Task<List<Nota>> GetNotas()
         {
-           // Uri conversor;
-            return (await firebase
-                .Child("Notas")
-                .OnceAsync<Nota>()).Select(Item => new Nota
-                {
+            var queryResult = await firebase
+             .Child("Notas")
+             .OnceAsync<Nota>();
 
-                    Id = Item.Object.Id,
-                    Titulo = Item.Object.Titulo,
-                    Detalles = Item.Object.Detalles,
-                    FechaIngreso = Item.Object.FechaIngreso,
-                    IsRecordatorio = Item.Object.IsRecordatorio,
-                    Fecha = Item.Object.Fecha,
-                    Hora = Item.Object.Hora,
-                    RutaImagenFile = Item.Object.RutaImagenFile,
-                    RutaAudioFile = Item.Object.RutaAudioFile,
-                    longitud = Item.Object.longitud,
-                    latitude = Item.Object.latitude,
-                    RutaAudioFileUri = new Uri(Item.Object.RutaAudioFile),
-                    RutaImagenFileUri =  new Uri(Item.Object.RutaImagenFile),
-                    IdNoti = Item.Object.IdNoti
-                }).ToList();
+            var notas = queryResult
+                .Where(item => item.Object.IsRecordatorio == true)
+                .Select(item => new Nota
+                {
+                    Id = item.Object.Id,
+                    Titulo = item.Object.Titulo,
+                    Detalles = item.Object.Detalles,
+                    FechaIngreso = item.Object.FechaIngreso,
+                    IsRecordatorio = item.Object.IsRecordatorio,
+                    Fecha = item.Object.Fecha,
+                    Hora = item.Object.Hora,
+                    RutaImagenFile = item.Object.RutaImagenFile,
+                    RutaAudioFile = item.Object.RutaAudioFile,
+                    longitud = item.Object.longitud,
+                    latitude = item.Object.latitude,
+                    RutaAudioFileUri = new Uri(item.Object.RutaAudioFile),
+                    RutaImagenFileUri = new Uri(item.Object.RutaImagenFile),
+                    IdNoti = item.Object.IdNoti
+                })
+                .ToList();
+
+            return notas;
 
         }
 

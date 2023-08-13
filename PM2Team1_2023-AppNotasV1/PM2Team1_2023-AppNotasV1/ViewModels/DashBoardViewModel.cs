@@ -40,37 +40,54 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         public async void LoadDataDash()
         {
+            try {
+                var notas = await firebaseHelper.GetNotas();
+                ListViewSource = new ObservableCollection<Nota>(notas);
 
 
-       //     this.IsRefreshing = true;
-
-            var notas = await firebaseHelper.GetNotas();
-       //     await Task.Delay(1000);
-            ListViewSource = new ObservableCollection<Nota>(notas);
-         //   this.IsRefreshing = false;
-
-
-            foreach (var item in ListViewSource)
-            {
-
-                TimeSpan horaMenos20 = item.Hora.Subtract(TimeSpan.FromMinutes(20));
-                DateTime HorayFecha = item.Fecha.Date + horaMenos20;
-                var notification = new NotificationRequest
+                foreach (var item in ListViewSource)
                 {
 
-                    Title = item.Titulo,
-                   // NotificationId = item.IdNoti,
-                    Description = item.Detalles,
-                    Schedule =
+                    TimeSpan horaMenos20 = item.Hora.Subtract(TimeSpan.FromMinutes(20));
+                    DateTime HorayFecha = item.Fecha.Date + horaMenos20;
+                    DateTime HorayFecha2 = item.Fecha.Date + item.Hora;
+                    var notification = new NotificationRequest
+                    {
+
+
+                        Title = item.Titulo,
+                        NotificationId = item.IdNoti,
+                        Description = item.Detalles,
+                        Schedule =
                     {
                         NotifyTime = HorayFecha
                     }
 
-                };
+                    };
 
-                await LocalNotificationCenter.Current.Show(notification);
+                    await LocalNotificationCenter.Current.Show(notification);
+
+                    var notification2 = new NotificationRequest
+                    {
+                        Title = item.Titulo,
+                        NotificationId = item.IdNoti + 1,
+                        Description = item.Detalles,
+                        Schedule =
+                    {
+                        NotifyTime = HorayFecha2
+                    }
+
+                    };
+
+                    await LocalNotificationCenter.Current.Show(notification2);
+                }
+                Console.WriteLine("***********************************Notificaciones Cargadas Dash");
+
             }
-            Console.WriteLine("Notificaciones Cargadas Dash");
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
         }
     }
 }

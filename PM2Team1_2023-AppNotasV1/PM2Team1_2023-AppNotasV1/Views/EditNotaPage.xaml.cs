@@ -62,6 +62,31 @@ public partial class EditNotaPage : ContentPage
                 StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
                 TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
             };
+
+            if (!swEsRecordatorio.IsToggled)
+            {
+                dtActHora.IsVisible = false;
+                dtpActFecha.IsVisible = false;
+                txtactLongitud.IsVisible = false;
+                txtactLatitude.IsVisible = false;
+                lbfecha.IsVisible = false;
+                lbHora.IsVisible = false;
+                lbLatitud.IsVisible = false;
+                lbLongitud.IsVisible=false;
+
+            }
+            else
+            {
+                dtActHora.IsVisible = true;
+                dtpActFecha.IsVisible = true;
+                txtactLongitud.IsVisible = true;
+                txtactLatitude.IsVisible = true;
+                lbfecha.IsVisible = true;
+                lbHora.IsVisible = true;
+                lbLatitud.IsVisible = true;
+                lbLongitud.IsVisible = true;
+            }
+
         }
 
 
@@ -364,6 +389,33 @@ public partial class EditNotaPage : ContentPage
             {
                 // Manejar cualquier excepción que pueda ocurrir
                 await DisplayAlert("Error", $"Ha ocurrido un error: {ex.Message}", "OK");
+            }
+        }
+
+        private void swEsRecordatorio_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (!swEsRecordatorio.IsToggled)
+            {
+                dtActHora.IsVisible = false;
+                dtpActFecha.IsVisible = false;
+                txtactLongitud.IsVisible = false;
+                txtactLatitude.IsVisible = false;
+                lbfecha.IsVisible = false;
+                lbHora.IsVisible = false;
+                lbLatitud.IsVisible = false;
+                lbLongitud.IsVisible = false;
+
+            }
+            else
+            {
+                dtActHora.IsVisible = true;
+                dtpActFecha.IsVisible = true;
+                txtactLongitud.IsVisible = true;
+                txtactLatitude.IsVisible = true;
+                lbfecha.IsVisible = true;
+                lbHora.IsVisible = true;
+                lbLatitud.IsVisible = true;
+                lbLongitud.IsVisible = true;
             }
         }
     }

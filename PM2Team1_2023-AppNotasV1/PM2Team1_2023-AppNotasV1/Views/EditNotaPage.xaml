@@ -28,14 +28,14 @@
                         PlaceholderColor="White" />
 
                 <Switch x:Name="swEsRecordatorio"
-                        IsToggled="{Binding IsRecordatorio, Mode=TwoWay}"/>
+                        IsToggled="{Binding IsRecordatorio, Mode=TwoWay}" Toggled="swEsRecordatorio_Toggled"/>
                 <Label x:Name="lbIDNoti"
                        Text="{Binding IdNotif, Mode=TwoWay}"
                        IsVisible="false" />
 
                 <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                    <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
-                    <Label Text="Seleccione la hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                    <Label x:Name="lbfecha" Text="Seleccione la Fecha" TextColor="White" FontSize="16" HorizontalOptions="Center" />
+                    <Label x:Name="lbHora" Text="Seleccione la Hora" TextColor="White" FontSize="16" HorizontalOptions="Center" />
                 </FlexLayout>
 
                 <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
@@ -48,8 +48,8 @@
 
 
                 <FlexLayout Direction="Row" JustifyContent="SpaceBetween" Margin="0,0,0,0">
-                    <Label  Text="Longitud: " TextColor="White"/>
-                    <Label Text="Latitud: " TextColor="White"/>
+                    <Label  x:Name="lbLongitud" Text="Longitud: " TextColor="White"/>
+                    <Label x:Name="lbLatitud" Text="Latitud: " TextColor="White"/>
                 </FlexLayout>
 
                 <FlexLayout Margin="0,0,0,0" Direction="Row" JustifyContent="SpaceBetween">

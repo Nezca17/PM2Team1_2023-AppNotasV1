@@ -326,6 +326,9 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                 }
                 else
                 {
+
+
+                    //Nota Simple
                     Random random = new Random();
                     IdNotif = random.Next(0, 999 + 1);
 

@@ -35,7 +35,7 @@ public partial class RecupContra : ContentPage
             {
                 if (await _firebaseService.ResetPassword(Username))
                 {
-                    await DisplayAlert("Aviso", "Se ha enviado a Evaluacin, si pasa se enviara un correo", "Ok");
+                    await DisplayAlert("Aviso", "Se ha enviado a Evaluación, si pasa se enviara un correo", "Ok");
                     await Navigation.PushAsync(new LoginPage());
 
                 }
