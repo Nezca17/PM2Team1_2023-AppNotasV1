@@ -11,6 +11,7 @@ using System.IO;
 using System.Collections.ObjectModel;
 using PM2Team1_2023_AppNotasV1.Converters;
 using Plugin.LocalNotification;
+using PM2Team1_2023_AppNotasV1.Interfaces;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -20,12 +21,13 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         private ImageSource imageData;
 
         ConvertStreamToByteArray convert = new ConvertStreamToByteArray();
+        ICalendarService Calendar;
 
         public NotasViewModel() {
 
             GetLocation();
             LoadData();
-        
+            Calendar = DependencyService.Get<ICalendarService>();
         }
 
         public NotasViewModel(INavigation navigation)
@@ -311,10 +313,11 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                             Console.WriteLine("**************************Fallo al crear la notificacion");
                         }
 
+                      //  Calendar.AddEventToCalendar(Titulo, Detalles, HorayFecha, HorayFechaT);
+
                         //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
                         await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
                         await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
-
 
                     }
 
@@ -370,7 +373,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                         Console.WriteLine("**************************Fallo al crear la notificacion");
                     }
 
-                    //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
+                     //  CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
                     await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
                     await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
                 }

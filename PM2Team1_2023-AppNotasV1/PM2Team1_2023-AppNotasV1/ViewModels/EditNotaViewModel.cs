@@ -1,5 +1,6 @@
 ﻿using GalaSoft.MvvmLight.Command;
 using Plugin.LocalNotification;
+using PM2Team1_2023_AppNotasV1.Interfaces;
 using PM2Team1_2023_AppNotasV1.Models;
 using PM2Team1_2023_AppNotasV1.Services;
 using PM2Team1_2023_AppNotasV1.Views;
@@ -15,6 +16,8 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
     public class EditNotaViewModel : BaseViewModel
     {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
+       
+
 
         #region Attributes
         private Guid Id;
@@ -209,7 +212,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
                 await App.Current.MainPage.DisplayAlert("Aviso","Guardado Correctamente!", "Ok");
                 
-                await App.Current.MainPage.Navigation.PushAsync(new VerNotas());
+                await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
 
 
 
@@ -225,7 +228,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         private async void DeleteMethod() {
 
             await firebaseHelper.DeleteNota(Id);
-            await App.Current.MainPage.Navigation.PushAsync(new VerNotas());
+            await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
         }
 
 
