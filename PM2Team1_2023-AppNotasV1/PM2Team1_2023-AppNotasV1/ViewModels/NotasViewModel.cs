@@ -10,12 +10,7 @@ using Xamarin.Forms;
 using System.IO;
 using System.Collections.ObjectModel;
 using PM2Team1_2023_AppNotasV1.Converters;
-using Acr.UserDialogs;
-using Firebase.Storage;
-using System.ComponentModel;
 using Plugin.LocalNotification;
-using Xamarin.Forms.Maps;
-using System.Linq.Expressions;
 
 namespace PM2Team1_2023_AppNotasV1.ViewModels
 {
@@ -447,7 +442,42 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
             }
         }
 
- 
+       /* public async Task Calanderizar() {
+            ContentValues eventValues = new ContentValues();
+
+            eventValues.Put(CalendarContract.Events.InterfaceConsts.CalendarId,
+                _calId);
+            eventValues.Put(CalendarContract.Events.InterfaceConsts.Title,
+                "Test Event from M4A");
+            eventValues.Put(CalendarContract.Events.InterfaceConsts.Description,
+                "This is an event created from Xamarin.Android");
+            eventValues.Put(CalendarContract.Events.InterfaceConsts.Dtstart,
+                GetDateTimeMS(2011, 12, 15, 10, 0));
+            eventValues.Put(CalendarContract.Events.InterfaceConsts.Dtend,
+                GetDateTimeMS(2011, 12, 15, 11, 0));
+
+            eventValues.Put(CalendarContract.Events.InterfaceConsts.EventTimezone,
+                "UTC");
+            eventValues.Put(CalendarContract.Events.InterfaceConsts.EventEndTimezone,
+                "UTC");
+
+            var uri = ContentResolver.Insert(CalendarContract.Events.ContentUri,
+                eventValues);
+        }
+        long GetDateTimeMS(int yr, int month, int day, int hr, int min)
+        {
+            Calendar c = Calendar.GetInstance(Java.Util.TimeZone.Default);
+
+            c.Set(Java.Util.CalendarField.DayOfMonth, 15);
+            c.Set(Java.Util.CalendarField.HourOfDay, hr);
+            c.Set(Java.Util.CalendarField.Minute, min);
+            c.Set(Java.Util.CalendarField.Month, Calendar.December);
+            c.Set(Java.Util.CalendarField.Year, 2011);
+
+            return c.TimeInMillis;
+        }*/
+
+
         #endregion
 
 
