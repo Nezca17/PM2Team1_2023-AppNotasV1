@@ -51,7 +51,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
             dtFecha.Date = DateTime.Now;
             /*Datos por DEfecto*/
             lbRutaAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
-            lbRutaFirebase.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
+            lbRutaFirebase.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FArchivosPorDefecto%2F4634167.png?alt=media&token=8ae35fee-410e-467a-9019-2befa0e6bfed";
             MostrarUbicacionActual();
             colorOriginalbotonfoto = MiBoton.BackgroundColor;
             colorOriginalbotonfoto2 = btnEscucharAudio.BackgroundColor;

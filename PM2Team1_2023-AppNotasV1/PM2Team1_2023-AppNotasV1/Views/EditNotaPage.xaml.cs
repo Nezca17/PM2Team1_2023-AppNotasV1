@@ -52,8 +52,8 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
             };
 
-            lbUriAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
-            lbRutaImagen.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
+           // lbUriAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
+          //  lbRutaImagen.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
         }
 
         public EditNotaPage(Nota _nota)
@@ -67,6 +67,31 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
                 TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
             };
+
+            if (!swEsRecordatorio.IsToggled)
+            {
+                dtActHora.IsVisible = false;
+                dtpActFecha.IsVisible = false;
+                txtactLongitud.IsVisible = false;
+                txtactLatitude.IsVisible = false;
+                lbfecha.IsVisible = false;
+                lbHora.IsVisible = false;
+                lbLatitud.IsVisible = false;
+                lbLongitud.IsVisible=false;
+
+            }
+            else
+            {
+                dtActHora.IsVisible = true;
+                dtpActFecha.IsVisible = true;
+                txtactLongitud.IsVisible = true;
+                txtactLatitude.IsVisible = true;
+                lbfecha.IsVisible = true;
+                lbHora.IsVisible = true;
+                lbLatitud.IsVisible = true;
+                lbLongitud.IsVisible = true;
+            }
+
         }
 
 
@@ -406,6 +431,33 @@ namespace PM2Team1_2023_AppNotasV1.Views
         private void btnwhatsap_Clicked(object sender, EventArgs e)
         {
             EnviarDatosWhatsApp();
+        }
+
+        private void swEsRecordatorio_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (!swEsRecordatorio.IsToggled)
+            {
+                dtActHora.IsVisible = false;
+                dtpActFecha.IsVisible = false;
+                txtactLongitud.IsVisible = false;
+                txtactLatitude.IsVisible = false;
+                lbfecha.IsVisible = false;
+                lbHora.IsVisible = false;
+                lbLatitud.IsVisible = false;
+                lbLongitud.IsVisible = false;
+
+            }
+            else
+            {
+                dtActHora.IsVisible = true;
+                dtpActFecha.IsVisible = true;
+                txtactLongitud.IsVisible = true;
+                txtactLatitude.IsVisible = true;
+                lbfecha.IsVisible = true;
+                lbHora.IsVisible = true;
+                lbLatitud.IsVisible = true;
+                lbLongitud.IsVisible = true;
+            }
         }
     }
 }
