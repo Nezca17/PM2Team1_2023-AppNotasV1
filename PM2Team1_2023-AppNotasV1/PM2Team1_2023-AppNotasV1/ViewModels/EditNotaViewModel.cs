@@ -212,7 +212,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
                 await App.Current.MainPage.DisplayAlert("Aviso","Guardado Correctamente!", "Ok");
                 
-                await App.Current.MainPage.Navigation.PushAsync(new VerNotas());
+                await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
 
 
 
@@ -228,7 +228,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
         private async void DeleteMethod() {
 
             await firebaseHelper.DeleteNota(Id);
-            await App.Current.MainPage.Navigation.PushAsync(new VerNotas());
+            await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
         }
 
 

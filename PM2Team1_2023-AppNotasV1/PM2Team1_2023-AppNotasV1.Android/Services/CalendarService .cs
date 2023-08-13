@@ -18,9 +18,7 @@ namespace PM2Team1_2023_AppNotasV1.Droid.Services
                 .PutExtra(CalendarContract.Events.InterfaceConsts.Title, title)
                 .PutExtra(CalendarContract.Events.InterfaceConsts.Description, description)
                 .PutExtra(CalendarContract.Events.InterfaceConsts.Dtstart, GetDateTimeMillis(startDate))
-                .PutExtra(CalendarContract.Events.InterfaceConsts.Dtend, GetDateTimeMillis(endDate))
-                .PutExtra(CalendarContract.Events.InterfaceConsts.EventTimezone,
-                          (Android.OS.IParcelable)TimeZone.CurrentTimeZone);
+                .PutExtra(CalendarContract.Events.InterfaceConsts.Dtend, GetDateTimeMillis(endDate));
 
 
             Android.App.Application.Context.StartActivity(intent);
