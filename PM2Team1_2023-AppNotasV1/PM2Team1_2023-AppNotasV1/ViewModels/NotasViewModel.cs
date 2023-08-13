@@ -313,6 +313,8 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
                             Console.WriteLine("**************************Fallo al crear la notificacion");
                         }
 
+                        Calendar.AddEventToCalendar(Titulo, Detalles, HorayFecha, HorayFechaT);
+
                         //   CrossLocalNotifications.Current.Show(Titulo, Detalles, ContadorNotifi, HorayFecha);
                         await App.Current.MainPage.DisplayAlert("Aviso", "Guardado", "Ok");
                         await App.Current.MainPage.Navigation.PushAsync(new Dashboard());

@@ -16,7 +16,7 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
     public class EditNotaViewModel : BaseViewModel
     {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
-        ICalendarService Calendar = new ICalendarService();
+       
 
 
         #region Attributes
