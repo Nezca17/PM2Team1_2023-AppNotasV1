@@ -40,17 +40,18 @@ namespace PM2Team1_2023_AppNotasV1.Views
         
         {
             InitializeComponent();
-            MostrarUbicacionActual();
+           
             BindingContext = new NotasViewModel();
             converter = new ConvertStreamToByteArray();
             recorder = new AudioRecorderService
 
-
+             
             {
                 StopRecordingOnSilence = true, //will stop recording after 2 seconds (default)
                 StopRecordingAfterTimeout = true,  //stop recording after a max timeout (defined below)
                 TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
             };
+            MostrarUbicacionActual();
             dtFecha.Date = DateTime.Now;
             /*Datos por DEfecto*/
             lbRutaAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";

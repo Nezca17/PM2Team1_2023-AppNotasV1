@@ -16,8 +16,6 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
     public class EditNotaViewModel : BaseViewModel
     {
         FirebaseHelper firebaseHelper = new FirebaseHelper();
-       
-
 
         #region Attributes
         private Guid Id;

@@ -65,6 +65,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
         {
             InitializeComponent();
             BindingContext = new EditNotaViewModel(_nota);
+            Task.Delay(1000);
             MostrarUbicacionActual2();
             playbites = new PlayAudioService();
             recorder = new AudioRecorderService
@@ -508,7 +509,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 {
                     // Centrar el mapa en la ubicación actual
                     mapView1.MoveToRegion(MapSpan.FromCenterAndRadius(
-                        new Position(location.Latitude, location.Longitude),
+                        new Position(Double.Parse(txtactLatitude.Text), Double.Parse(txtactLongitud.Text)),
                         Distance.FromMiles(0.1))); // Ajusta el radio según tus necesidades
                 }
             }
