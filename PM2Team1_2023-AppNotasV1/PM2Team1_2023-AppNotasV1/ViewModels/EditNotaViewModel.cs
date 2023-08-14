@@ -225,8 +225,14 @@ namespace PM2Team1_2023_AppNotasV1.ViewModels
 
         private async void DeleteMethod() {
 
-            await firebaseHelper.DeleteNota(Id);
-            await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
+          if (await App.Current.MainPage.DisplayAlert("Aviso", "Se eliminara la nota ¿Desea continuar?", "Ok", "Cancelar"))
+            {
+                await firebaseHelper.DeleteNota(Id);
+                await App.Current.MainPage.Navigation.PushAsync(new Dashboard());
+
+            }
+
+          
         }
 
 
