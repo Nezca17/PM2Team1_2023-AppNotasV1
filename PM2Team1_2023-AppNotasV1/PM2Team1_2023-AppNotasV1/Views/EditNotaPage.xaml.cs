@@ -19,9 +19,11 @@ using MediaManager.Queue;
 using Android.Views.Animations;
 using Plugin.Media.Abstractions;
 using Firebase.Storage;
+using Xamarin.Forms.Maps;
 using System.IO;
 using static Android.Provider.MediaStore;
 using Xamarin.Forms.OpenWhatsApp;
+
 
 
 namespace PM2Team1_2023_AppNotasV1.Views
@@ -29,6 +31,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class EditNotaPage : ContentPage
     {
+        private Pin selectedPin;
         PlayAudioService playbites;
 
         AudioPlayer audioPlayer = new AudioPlayer();
@@ -41,6 +44,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
         public EditNotaPage()
         {
             InitializeComponent();
+          
 
             NavigationPage.SetHasBackButton(this, true);
             BindingContext = new EditNotaViewModel();
@@ -52,9 +56,11 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 TotalAudioTimeout = TimeSpan.FromSeconds(15) //audio will stop recording after 15 seconds
             };
 
-           // lbUriAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
-          //  lbRutaImagen.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
+            // lbUriAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
+            //  lbRutaImagen.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
+            MostrarUbicacionActual2();
         }
+
 
         public EditNotaPage(Nota _nota)
         {
@@ -469,9 +475,49 @@ namespace PM2Team1_2023_AppNotasV1.Views
         private void mapView1_MapClicked(object sender, Xamarin.Forms.Maps.MapClickedEventArgs e)
         {
 
+            Position selectedPosition = e.Position;
+            mapView1.Pins.Remove(selectedPin);
 
+            selectedPin = new Pin
+            {
+                Position = selectedPosition,
+                Label = "Ubicación seleccionada",
+                Type = PinType.Place
+            };
+            mapView1.Pins.Add(selectedPin);
 
+            txtactLongitud.Text = selectedPosition.Longitude.ToString();
+            txtactLatitude.Text = selectedPosition.Latitude.ToString();
+        }
 
+        private async void MostrarUbicacionActual2()
+        {
+            var status = await Permissions.CheckStatusAsync<Permissions.LocationWhenInUse>();
+
+            if (status != PermissionStatus.Granted)
+            {
+                status = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
+            }
+
+            if (status == PermissionStatus.Granted)
+            {
+                // Obtener la ubicación actual del dispositivo
+                var location = await Geolocation.GetLocationAsync();
+
+                if (location != null)
+                {
+                    // Centrar el mapa en la ubicación actual
+                    mapView1.MoveToRegion(MapSpan.FromCenterAndRadius(
+                        new Position(Double.Parse(txtactLongitud.Text), Double.Parse(txtactLatitude.Text)),
+                        Distance.FromMiles(0.1))); // Ajusta el radio según tus necesidades
+                        
+                }
+             
+            }
+            else
+            {
+                // No se otorgó el permiso de ubicación, manejar según tus necesidades
+            }
         }
     }
 }
