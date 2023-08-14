@@ -44,7 +44,6 @@ namespace PM2Team1_2023_AppNotasV1.Views
         public EditNotaPage()
         {
             InitializeComponent();
-          
 
             NavigationPage.SetHasBackButton(this, true);
             BindingContext = new EditNotaViewModel();
@@ -58,7 +57,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
 
             // lbUriAudio.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2Faudio.wav?alt=media&token=cba091af-0f8f-49fb-805f-f7bd379fd0ef";
             //  lbRutaImagen.Text = "https://firebasestorage.googleapis.com/v0/b/pm2team1-2023.appspot.com/o/Notas%2FcapturedImage_17.jpg?alt=media&token=70a3d78f-a0a1-4e41-90d3-021005f1c03a";
-            MostrarUbicacionActual2();
+           
         }
 
 
@@ -66,6 +65,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
         {
             InitializeComponent();
             BindingContext = new EditNotaViewModel(_nota);
+            MostrarUbicacionActual2();
             playbites = new PlayAudioService();
             recorder = new AudioRecorderService
             {
@@ -508,11 +508,9 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 {
                     // Centrar el mapa en la ubicación actual
                     mapView1.MoveToRegion(MapSpan.FromCenterAndRadius(
-                        new Position(Double.Parse(txtactLongitud.Text), Double.Parse(txtactLatitude.Text)),
+                        new Position(location.Latitude, location.Longitude),
                         Distance.FromMiles(0.1))); // Ajusta el radio según tus necesidades
-                        
                 }
-             
             }
             else
             {

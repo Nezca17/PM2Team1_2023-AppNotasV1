@@ -358,7 +358,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                 // No se otorgó el permiso de ubicación, manejar según tus necesidades
             }
         }
-
+      
 
         private void Switch_Toggled(object sender, ToggledEventArgs e)
         {

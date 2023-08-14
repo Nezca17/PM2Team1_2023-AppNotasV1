@@ -64,7 +64,7 @@ namespace PM2Team1_2023_AppNotasV1.Views
                     {
                         await Navigation.PushAsync(new Dashboard());
                     }else{
-                        if(txtusuario.Text.Equals("") || txtcontraseña.Text.Equals("")) {
+                        if( txtusuario.Text == null || txtcontraseña.Text == null) {
                             await DisplayAlert("Aviso","Datos incompletos","Ok");
                         }
                         else
